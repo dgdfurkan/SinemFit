@@ -5023,13 +5023,14 @@
         
         function parseKykMealsText(text) {
             const meals = {};
-            const lines = text.split('\n');
+            const lines = text.split('\n').map(line => line.trim()).filter(line => line);
+            
             let currentDate = null;
             let currentMeal = null;
+            let currentCalories = 0;
             
             for (let i = 0; i < lines.length; i++) {
-                const line = lines[i].trim();
-                if (!line) continue;
+                const line = lines[i];
                 
                 // Date line (e.g., "15 Eylül 2025")
                 if (line.match(/^\d+\s+\w+\s+\d+$/)) {
@@ -5064,29 +5065,42 @@
                         meals[currentDate].day = line;
                     }
                 }
-                // Meal type (e.g., "☀️ Kahvaltı" or "🌙 Akşam Yemeği")
-                else if (line.includes('☀️') && line.includes('Kahvaltı')) {
+                // Meal type indicators
+                else if (line === '☀️') {
                     currentMeal = 'breakfast';
-                    const caloriesMatch = line.match(/(\d+)\s+kalori/);
-                    if (caloriesMatch && currentDate) {
-                        meals[currentDate].breakfast.calories = parseInt(caloriesMatch[1]);
-                    }
+                    currentCalories = 0;
                 }
-                else if (line.includes('🌙') && line.includes('Akşam Yemeği')) {
+                else if (line === '🌙') {
                     currentMeal = 'dinner';
+                    currentCalories = 0;
+                }
+                // Meal type with calories (e.g., "Kahvaltı" or "Akşam Yemeği")
+                else if (line === 'Kahvaltı') {
+                    currentMeal = 'breakfast';
+                    currentCalories = 0;
+                }
+                else if (line === 'Akşam Yemeği') {
+                    currentMeal = 'dinner';
+                    currentCalories = 0;
+                }
+                // Calories line (e.g., "770 kalori")
+                else if (line.match(/\d+\s+kalori/)) {
                     const caloriesMatch = line.match(/(\d+)\s+kalori/);
-                    if (caloriesMatch && currentDate) {
-                        meals[currentDate].dinner.calories = parseInt(caloriesMatch[1]);
+                    if (caloriesMatch && currentMeal && currentDate) {
+                        currentCalories = parseInt(caloriesMatch[1]);
+                        meals[currentDate][currentMeal].calories = currentCalories;
                     }
                 }
-                // Meal items
-                else if (currentMeal && currentDate && !line.includes('kalori') && !line.includes('☀️') && !line.includes('🌙')) {
-                    if (line.trim()) {
-                        meals[currentDate][currentMeal].items.push(line.trim());
-                    }
+                // Meal items (everything else that's not empty)
+                else if (currentMeal && currentDate && line && 
+                         !line.includes('kalori') && 
+                         line !== '☀️' && line !== '🌙' &&
+                         line !== 'Kahvaltı' && line !== 'Akşam Yemeği') {
+                    meals[currentDate][currentMeal].items.push(line);
                 }
             }
             
+            console.log('Final parsed meals:', meals);
             return meals;
         }
         
@@ -5405,3 +5419,4 @@
     </nav>
   </body>
 </html>
+
