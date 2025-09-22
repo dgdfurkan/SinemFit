@@ -1518,6 +1518,246 @@
             margin-top: 0.25rem;
         }
         
+        /* Todo Styles */
+        .quick-todo-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .quick-todo-btn {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quick-todo-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .health-btn:hover {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        
+        .study-btn:hover {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+        }
+        
+        .work-btn:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        
+        .personal-btn:hover {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        
+        .custom-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        
+        .todo-icon {
+            font-size: 2rem;
+        }
+        
+        .quick-todo-btn span {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        
+        .progress-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .progress-item {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .progress-icon {
+            font-size: 2.5rem;
+        }
+        
+        .progress-info {
+            flex: 1;
+        }
+        
+        .progress-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .progress-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+        
+        .todo-item {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .todo-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .todo-item.completed {
+            opacity: 0.6;
+            border-left-color: var(--success);
+        }
+        
+        .todo-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gray-300);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .todo-checkbox.checked {
+            background: var(--success);
+            border-color: var(--success);
+            color: var(--white);
+        }
+        
+        .todo-content {
+            flex: 1;
+        }
+        
+        .todo-title {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .todo-description {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        .todo-category {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            background: var(--gray-100);
+            color: var(--gray-600);
+        }
+        
+        .todo-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .todo-actions button {
+            background: none;
+            border: none;
+            padding: 0.25rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        
+        .edit-todo-btn {
+            color: var(--primary);
+        }
+        
+        .edit-todo-btn:hover {
+            background: var(--primary-light);
+        }
+        
+        .delete-todo-btn {
+            color: var(--error);
+        }
+        
+        .delete-todo-btn:hover {
+            background: var(--error);
+            color: var(--white);
+        }
+        
+        .todo-templates {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .todo-template-btn {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 15px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+        
+        .todo-template-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .todo-template-btn .template-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+        
+        .todo-template-btn .template-info {
+            flex: 1;
+        }
+        
+        .todo-template-btn .template-title {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .todo-template-btn .template-desc {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -1587,12 +1827,19 @@
                             </svg>
                             Beslenme
                         </a>
-                        <a href="#" class="nav-item" onclick="showScreen('rewards')">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            Ödüller
-                        </a>
+                                <a href="#" class="nav-item" onclick="showScreen('rewards')">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                    </svg>
+                                    Ödüller
+                                </a>
+                                <a href="#" class="nav-item" onclick="showScreen('todos')">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 11l3 3L22 4"></path>
+                                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                    </svg>
+                                    Görevler
+                                </a>
                         <a href="#" class="nav-item" onclick="showScreen('admin')">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="12" cy="12" r="3"></circle>
@@ -1978,6 +2225,112 @@
                     </div>
                 </div>
                 
+                <!-- Todos Screen -->
+                <div id="todos" class="screen">
+                    <div class="card">
+                        <h2 class="card-title">Günlük Görevler</h2>
+                        <p class="text-gray-600">Günlük hedeflerinizi takip edin ve tamamlayın.</p>
+                        
+                        <!-- Quick Add Buttons -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Hızlı Görev Ekleme</h3>
+                            <div class="quick-todo-buttons">
+                                <button class="quick-todo-btn health-btn" onclick="showQuickTodoForm('health')">
+                                    <div class="todo-icon">🏥</div>
+                                    <span>Sağlık</span>
+                                </button>
+                                <button class="quick-todo-btn study-btn" onclick="showQuickTodoForm('study')">
+                                    <div class="todo-icon">📚</div>
+                                    <span>Ders</span>
+                                </button>
+                                <button class="quick-todo-btn work-btn" onclick="showQuickTodoForm('work')">
+                                    <div class="todo-icon">💼</div>
+                                    <span>İş</span>
+                                </button>
+                                <button class="quick-todo-btn personal-btn" onclick="showQuickTodoForm('personal')">
+                                    <div class="todo-icon">👤</div>
+                                    <span>Kişisel</span>
+                                </button>
+                                <button class="quick-todo-btn custom-btn" onclick="showCustomTodoForm()">
+                                    <div class="todo-icon">✏️</div>
+                                    <span>Özel</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Today's Progress -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Bugünkü İlerleme</h3>
+                            <div class="progress-summary">
+                                <div class="progress-item">
+                                    <div class="progress-icon">✅</div>
+                                    <div class="progress-info">
+                                        <div class="progress-number" id="completed-todos">0</div>
+                                        <div class="progress-label">Tamamlanan</div>
+                                    </div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="progress-icon">⏳</div>
+                                    <div class="progress-info">
+                                        <div class="progress-number" id="pending-todos">0</div>
+                                        <div class="progress-label">Bekleyen</div>
+                                    </div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="progress-icon">📊</div>
+                                    <div class="progress-info">
+                                        <div class="progress-number" id="completion-rate">0%</div>
+                                        <div class="progress-label">Tamamlanma</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Todo List -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Bugünkü Görevler</h3>
+                            <div id="todos-list">
+                                <!-- Todos will be listed here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Todo Templates -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Görev Şablonları</h3>
+                            <div class="todo-templates">
+                                <button class="todo-template-btn" onclick="useTodoTemplate('morning-routine')">
+                                    <div class="template-icon">🌅</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Sabah Rutini</div>
+                                        <div class="template-desc">Su iç, kahvaltı yap, hazırlan</div>
+                                    </div>
+                                </button>
+                                <button class="todo-template-btn" onclick="useTodoTemplate('evening-routine')">
+                                    <div class="template-icon">🌙</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Akşam Rutini</div>
+                                        <div class="template-desc">Yemek yap, temizlik, dinlen</div>
+                                    </div>
+                                </button>
+                                <button class="todo-template-btn" onclick="useTodoTemplate('study-session')">
+                                    <div class="template-icon">📖</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Ders Çalışma</div>
+                                        <div class="template-desc">2 saat ders, not al, tekrar et</div>
+                                    </div>
+                                </button>
+                                <button class="todo-template-btn" onclick="useTodoTemplate('workout-session')">
+                                    <div class="template-icon">💪</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Spor Seansı</div>
+                                        <div class="template-desc">Isınma, antrenman, soğuma</div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Admin Screen -->
                 <div id="admin" class="screen">
                     <div class="card">
@@ -2075,6 +2428,7 @@
         let events = JSON.parse(localStorage.getItem('sinemfit-events') || '[]');
         let workouts = JSON.parse(localStorage.getItem('sinemfit-workouts') || '[]');
         let meals = JSON.parse(localStorage.getItem('sinemfit-meals') || '[]');
+        let todos = JSON.parse(localStorage.getItem('sinemfit-todos') || '[]');
         let workoutSession = null;
         let workoutTimer = null;
         let workoutStartTime = null;
@@ -2210,6 +2564,8 @@
             loadMeals();
             updateAdminStats();
             updateNutritionSummary();
+            initializeNotifications();
+            loadTodos();
         });
         
         // Nutrition Functions
@@ -2777,6 +3133,300 @@
             
             document.body.appendChild(modal);
             modal.style.display = 'flex';
+        }
+        
+        // Todo Functions
+        function showQuickTodoForm(category) {
+            const categoryData = {
+                health: { title: 'Sağlık', icon: '🏥', color: '#ef4444' },
+                study: { title: 'Ders', icon: '📚', color: '#8b5cf6' },
+                work: { title: 'İş', icon: '💼', color: '#3b82f6' },
+                personal: { title: 'Kişisel', icon: '👤', color: '#10b981' }
+            };
+            
+            const data = categoryData[category];
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">${data.title} Görevi Ekle</h3>
+                        <button class="modal-close" onclick="closeModal(this)">&times;</button>
+                    </div>
+                    <div class="quick-todo-form">
+                        <div class="form-group">
+                            <label class="form-label">Görev Başlığı</label>
+                            <input type="text" class="form-input" id="quick-todo-title" placeholder="${data.title} görevi">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Açıklama</label>
+                            <textarea class="form-input" id="quick-todo-description" rows="2" placeholder="Görev açıklaması"></textarea>
+                        </div>
+                        <button class="btn btn-primary" onclick="addQuickTodo('${category}')">Görev Ekle</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+        }
+        
+        function showCustomTodoForm() {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Özel Görev Ekle</h3>
+                        <button class="modal-close" onclick="closeModal(this)">&times;</button>
+                    </div>
+                    <div class="custom-todo-form">
+                        <div class="form-group">
+                            <label class="form-label">Görev Başlığı</label>
+                            <input type="text" class="form-input" id="custom-todo-title" placeholder="Görev başlığı">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Kategori</label>
+                            <select class="form-input" id="custom-todo-category">
+                                <option value="health">🏥 Sağlık</option>
+                                <option value="study">📚 Ders</option>
+                                <option value="work">💼 İş</option>
+                                <option value="personal">👤 Kişisel</option>
+                                <option value="custom">✏️ Özel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Açıklama</label>
+                            <textarea class="form-input" id="custom-todo-description" rows="3" placeholder="Görev açıklaması"></textarea>
+                        </div>
+                        <button class="btn btn-primary" onclick="addCustomTodo()">Görev Ekle</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+        }
+        
+        function addQuickTodo(category) {
+            const title = document.getElementById('quick-todo-title').value;
+            const description = document.getElementById('quick-todo-description').value;
+            
+            if (!title) {
+                alert('Lütfen görev başlığını girin!');
+                return;
+            }
+            
+            const todo = {
+                id: Date.now(),
+                title: title,
+                category: category,
+                description: description,
+                completed: false,
+                date: new Date().toISOString().split('T')[0],
+                createdAt: new Date().toISOString()
+            };
+            
+            todos.push(todo);
+            saveData();
+            loadTodos();
+            updateTodoProgress();
+            
+            closeModal(document.querySelector('.modal-close'));
+            showNotification('Görev Eklendi', `${title} görevi eklendi!`);
+        }
+        
+        function addCustomTodo() {
+            const title = document.getElementById('custom-todo-title').value;
+            const category = document.getElementById('custom-todo-category').value;
+            const description = document.getElementById('custom-todo-description').value;
+            
+            if (!title) {
+                alert('Lütfen görev başlığını girin!');
+                return;
+            }
+            
+            const todo = {
+                id: Date.now(),
+                title: title,
+                category: category,
+                description: description,
+                completed: false,
+                date: new Date().toISOString().split('T')[0],
+                createdAt: new Date().toISOString()
+            };
+            
+            todos.push(todo);
+            saveData();
+            loadTodos();
+            updateTodoProgress();
+            
+            closeModal(document.querySelector('.modal-close'));
+            showNotification('Görev Eklendi', `${title} görevi eklendi!`);
+        }
+        
+        function loadTodos() {
+            const todosList = document.getElementById('todos-list');
+            if (!todosList) return;
+            
+            todosList.innerHTML = '';
+            
+            const today = new Date().toISOString().split('T')[0];
+            const todayTodos = todos.filter(todo => todo.date === today);
+            
+            if (todayTodos.length === 0) {
+                todosList.innerHTML = '<p class="text-gray-500 text-center">Bugün henüz görev yok.</p>';
+                return;
+            }
+            
+            // Sort by completion status
+            todayTodos.sort((a, b) => a.completed - b.completed);
+            
+            todayTodos.forEach(todo => {
+                const todoDiv = document.createElement('div');
+                todoDiv.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+                
+                const categoryIcon = getCategoryIcon(todo.category);
+                
+                todoDiv.innerHTML = `
+                    <div class="todo-checkbox ${todo.completed ? 'checked' : ''}" onclick="toggleTodo(${todo.id})">
+                        ${todo.completed ? '✓' : ''}
+                    </div>
+                    <div class="todo-content">
+                        <div class="todo-title">${todo.title}</div>
+                        ${todo.description ? `<div class="todo-description">${todo.description}</div>` : ''}
+                        <div class="todo-category">${categoryIcon} ${getCategoryName(todo.category)}</div>
+                    </div>
+                    <div class="todo-actions">
+                        <button class="edit-todo-btn" onclick="editTodo(${todo.id})">✏️</button>
+                        <button class="delete-todo-btn" onclick="deleteTodo(${todo.id})">🗑️</button>
+                    </div>
+                `;
+                todosList.appendChild(todoDiv);
+            });
+        }
+        
+        function toggleTodo(id) {
+            const todo = todos.find(t => t.id === id);
+            if (!todo) return;
+            
+            todo.completed = !todo.completed;
+            saveData();
+            loadTodos();
+            updateTodoProgress();
+            
+            const status = todo.completed ? 'tamamlandı' : 'beklemede';
+            showNotification('Görev Güncellendi', `${todo.title} ${status}!`);
+        }
+        
+        function editTodo(id) {
+            const todo = todos.find(t => t.id === id);
+            if (!todo) return;
+            
+            const newTitle = prompt('Görev başlığı:', todo.title);
+            if (newTitle === null) return;
+            
+            const newDescription = prompt('Açıklama:', todo.description || '');
+            if (newDescription === null) return;
+            
+            todo.title = newTitle;
+            todo.description = newDescription;
+            
+            saveData();
+            loadTodos();
+            updateTodoProgress();
+            
+            showNotification('Görev Güncellendi', `${newTitle} güncellendi!`);
+        }
+        
+        function deleteTodo(id) {
+            todos = todos.filter(todo => todo.id !== id);
+            saveData();
+            loadTodos();
+            updateTodoProgress();
+        }
+        
+        function updateTodoProgress() {
+            const today = new Date().toISOString().split('T')[0];
+            const todayTodos = todos.filter(todo => todo.date === today);
+            
+            const completed = todayTodos.filter(todo => todo.completed).length;
+            const pending = todayTodos.filter(todo => !todo.completed).length;
+            const total = todayTodos.length;
+            const completionRate = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            document.getElementById('completed-todos').textContent = completed;
+            document.getElementById('pending-todos').textContent = pending;
+            document.getElementById('completion-rate').textContent = `${completionRate}%`;
+        }
+        
+        function useTodoTemplate(templateType) {
+            const templates = {
+                'morning-routine': [
+                    { title: 'Su İç', category: 'health', description: 'Güne başlarken su iç' },
+                    { title: 'Kahvaltı Yap', category: 'health', description: 'Sağlıklı kahvaltı hazırla' },
+                    { title: 'Hazırlan', category: 'personal', description: 'Günlük hazırlık yap' }
+                ],
+                'evening-routine': [
+                    { title: 'Yemek Yap', category: 'personal', description: 'Akşam yemeği hazırla' },
+                    { title: 'Temizlik', category: 'personal', description: 'Ev temizliği yap' },
+                    { title: 'Dinlen', category: 'personal', description: 'Rahatla ve dinlen' }
+                ],
+                'study-session': [
+                    { title: 'Ders Çalış', category: 'study', description: '2 saat ders çalış' },
+                    { title: 'Not Al', category: 'study', description: 'Önemli notları yaz' },
+                    { title: 'Tekrar Et', category: 'study', description: 'Öğrendiklerini tekrar et' }
+                ],
+                'workout-session': [
+                    { title: 'Isınma', category: 'health', description: '5 dakika ısınma hareketleri' },
+                    { title: 'Antrenman', category: 'health', description: 'Ana antrenman programı' },
+                    { title: 'Soğuma', category: 'health', description: '5 dakika soğuma hareketleri' }
+                ]
+            };
+            
+            const templateTodos = templates[templateType];
+            const today = new Date().toISOString().split('T')[0];
+            
+            templateTodos.forEach(template => {
+                const todo = {
+                    id: Date.now() + Math.random(),
+                    title: template.title,
+                    category: template.category,
+                    description: template.description,
+                    completed: false,
+                    date: today,
+                    createdAt: new Date().toISOString()
+                };
+                todos.push(todo);
+            });
+            
+            saveData();
+            loadTodos();
+            updateTodoProgress();
+            
+            showNotification('Şablon Eklendi', `${templateTodos.length} görev eklendi!`);
+        }
+        
+        function getCategoryIcon(category) {
+            switch(category) {
+                case 'health': return '🏥';
+                case 'study': return '📚';
+                case 'work': return '💼';
+                case 'personal': return '👤';
+                case 'custom': return '✏️';
+                default: return '📝';
+            }
+        }
+        
+        function getCategoryName(category) {
+            switch(category) {
+                case 'health': return 'Sağlık';
+                case 'study': return 'Ders';
+                case 'work': return 'İş';
+                case 'personal': return 'Kişisel';
+                case 'custom': return 'Özel';
+                default: return 'Genel';
+            }
         }
         
         // Equipment Guide Functions
@@ -3386,6 +4036,7 @@
             localStorage.setItem('sinemfit-events', JSON.stringify(events));
             localStorage.setItem('sinemfit-workouts', JSON.stringify(workouts));
             localStorage.setItem('sinemfit-meals', JSON.stringify(meals));
+            localStorage.setItem('sinemfit-todos', JSON.stringify(todos));
         }
         
         // Events
@@ -3691,6 +4342,101 @@
             localStorage.setItem('sinemfit-reward', JSON.stringify(reward));
             
             alert('Ödül güncellendi!');
+        }
+        
+        // Notification System
+        function initializeNotifications() {
+            // Initialize notification system
+            if ('Notification' in window) {
+                console.log('Notifications supported');
+                scheduleWorkoutNotifications();
+                scheduleRewardNotifications();
+            }
+        }
+        
+        function scheduleWorkoutNotifications() {
+            // Schedule morning notifications for workout days
+            workouts.forEach(workout => {
+                const today = new Date();
+                const workoutDay = getDayNumber(workout.day);
+                
+                if (today.getDay() === workoutDay) {
+                    // Morning notification (8 AM)
+                    scheduleNotification(
+                        'Spor Günü! 💪',
+                        `Bugün ${workout.type} antrenmanınız var. Saat ${workout.time}`,
+                        new Date(today.getFullYear(), today.getMonth(), today.getDate(), 8, 0, 0)
+                    );
+                    
+                    // 1 hour before notification
+                    const workoutTime = parseTime(workout.time);
+                    const notificationTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), workoutTime.hours, workoutTime.minutes - 60, 0);
+                    
+                    if (notificationTime > new Date()) {
+                        scheduleNotification(
+                            'Spora Hazırlan! 🏃‍♀️',
+                            `${workout.type} antrenmanınıza 1 saat kaldı!`,
+                            notificationTime
+                        );
+                    }
+                }
+            });
+        }
+        
+        function scheduleRewardNotifications() {
+            // Check if reward is ready
+            const rewardData = JSON.parse(localStorage.getItem('sinemfit-reward') || '{}');
+            if (rewardData.message && rewardData.targetWorkouts) {
+                const completedWorkouts = workouts.length;
+                if (completedWorkouts >= rewardData.targetWorkouts) {
+                    // Schedule reward notification for tomorrow
+                    const tomorrow = new Date();
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    tomorrow.setHours(9, 0, 0, 0);
+                    
+                    scheduleNotification(
+                        'Ödülünüz Hazır! 🎁',
+                        'Ay sonu ödülünüzü almaya hazır! Hediye kutunuzu açın!',
+                        tomorrow
+                    );
+                }
+            }
+        }
+        
+        function scheduleNotification(title, body, time) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                const now = new Date();
+                const delay = time.getTime() - now.getTime();
+                
+                if (delay > 0) {
+                    setTimeout(() => {
+                        new Notification(title, {
+                            body: body,
+                            icon: '/logo.png',
+                            badge: '/logo.png',
+                            tag: 'sinemfit-notification'
+                        });
+                    }, delay);
+                }
+            }
+        }
+        
+        function getDayNumber(dayName) {
+            const days = {
+                'monday': 1,
+                'tuesday': 2,
+                'wednesday': 3,
+                'thursday': 4,
+                'friday': 5,
+                'saturday': 6,
+                'sunday': 0
+            };
+            return days[dayName] || 0;
+        }
+        
+        function parseTime(timeString) {
+            const [hours, minutes] = timeString.split(':').map(Number);
+            return { hours, minutes };
         }
     </script>
   </body>
