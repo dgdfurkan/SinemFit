@@ -5000,14 +5000,16 @@
             }
             
             try {
+                console.log('Parsing input:', input);
                 const parsedMeals = parseKykMealsText(input);
+                console.log('Parsed meals:', parsedMeals);
+                
                 kykMeals = parsedMeals;
                 
                 // Save to JSON file (simulate)
                 saveKykMealsToFile(parsedMeals);
                 
                 updateKykMealsDisplay();
-                updateKykMealsButtons();
                 showNotification('Başarılı', 'KYK yemekleri yüklendi ve kaydedildi!');
                 
                 // Clear input
@@ -5265,7 +5267,6 @@
                 .then(data => {
                     kykMeals = data;
                     updateKykMealsDisplay();
-                    updateKykMealsButtons();
                     showNotification('Başarılı', 'KYK yemekleri JSON dosyasından yüklendi!');
                 })
                 .catch(error => {
