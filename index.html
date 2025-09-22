@@ -5308,8 +5308,8 @@
         function processMealItems(items) {
             return items.map(item => {
                 // "/" işareti varsa seçenekleri ayır
-                if (item.includes('/')) {
-                    const options = item.split('/').map(opt => opt.trim());
+                if (item.includes(' / ')) {
+                    const options = item.split(' / ').map(opt => opt.trim());
                     return `
                         <div class="meal-item-group">
                             <div class="meal-item-label">🔀</div>
