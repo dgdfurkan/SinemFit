@@ -998,11 +998,13 @@
         
         .equipment-guide {
             text-align: center;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
         }
         
         .steps-list, .warnings-list {
             text-align: left;
-            margin: 1rem 0;
+            margin: 0.5rem 0;
         }
         
         .steps-list li, .warnings-list li {
@@ -2070,32 +2072,32 @@
                         <div class="mt-6">
                             <h3 class="text-lg font-semibold mb-4">Spor Şablonları</h3>
                             <div class="workout-templates">
-                                <button class="workout-template-btn" onclick="useWorkoutTemplate('morning-cardio')">
-                                    <div class="template-icon">🌅</div>
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('kyk-cardio')">
+                                    <div class="template-icon">🏃‍♀️</div>
                                     <div class="template-info">
-                                        <div class="template-title">Sabah Kardiyo</div>
-                                        <div class="template-desc">30 dk koşu/yürüyüş</div>
+                                        <div class="template-title">KYK Kardiyo</div>
+                                        <div class="template-desc">30 dk koşu bandı/eliptik</div>
                                     </div>
                                 </button>
-                                <button class="workout-template-btn" onclick="useWorkoutTemplate('evening-strength')">
-                                    <div class="template-icon">🌙</div>
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('kyk-strength')">
+                                    <div class="template-icon">💪</div>
                                     <div class="template-info">
-                                        <div class="template-title">Akşam Güç</div>
-                                        <div class="template-desc">45 dk ağırlık antrenmanı</div>
+                                        <div class="template-title">KYK Güç Antrenmanı</div>
+                                        <div class="template-desc">45 dk makine antrenmanı</div>
                                     </div>
                                 </button>
-                                <button class="workout-template-btn" onclick="useWorkoutTemplate('yoga-session')">
-                                    <div class="template-icon">🧘‍♀️</div>
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('kyk-full-body')">
+                                    <div class="template-icon">🏋️‍♀️</div>
                                     <div class="template-info">
-                                        <div class="template-title">Yoga Seansı</div>
-                                        <div class="template-desc">60 dk yoga ve meditasyon</div>
+                                        <div class="template-title">KYK Tam Vücut</div>
+                                        <div class="template-desc">60 dk tüm vücut</div>
                                     </div>
                                 </button>
-                                <button class="workout-template-btn" onclick="useWorkoutTemplate('dance-party')">
-                                    <div class="template-icon">💃</div>
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('kyk-quick')">
+                                    <div class="template-icon">⚡</div>
                                     <div class="template-info">
-                                        <div class="template-title">Dans Partisi</div>
-                                        <div class="template-desc">40 dk dans ve eğlence</div>
+                                        <div class="template-title">KYK Hızlı Antrenman</div>
+                                        <div class="template-desc">20 dk hızlı antrenman</div>
                                     </div>
                                 </button>
                             </div>
@@ -2477,83 +2479,227 @@
         };
         let equipmentGuides = {
             treadmill: {
-                title: 'Koşu Bandı Kullanım Rehberi',
+                title: 'Koşu Bandı',
                 icon: '🏃‍♀️',
-                description: 'Koşu bandı ile güvenli ve etkili kardiyovasküler egzersiz yapın.',
+                description: 'Kardiyovasküler fitness için mükemmel.',
                 steps: [
-                    'Ayakkabılarınızı bağlayın ve rahat kıyafetler giyin',
-                    'Koşu bandının üzerine çıkın ve güvenlik klipsini takın',
-                    'Yavaş bir hızla başlayın (3-4 km/saat)',
-                    'Duruşunuzu dik tutun ve doğal adımlar atın',
+                    'Isınma için 5 dakika yavaş tempoda başlayın',
                     'Hızı kademeli olarak artırın',
-                    'Son 5 dakikada hızı yavaşlatın',
-                    'Soğuma için yürüyüş yapın'
+                    'Duruşunuzu dik tutun',
+                    'Son 5 dakikayı yavaşlatın'
                 ],
                 warnings: [
-                    'Asla arkaya bakmayın',
-                    'Güvenlik klipsini mutlaka takın',
                     'Su içmeyi unutmayın',
-                    'Baş dönmesi durumunda durun'
+                    'Güvenlik klipsini takın',
+                    'Dengenizi koruyun'
+                ]
+            },
+            elliptical: {
+                title: 'Eliptik Bisiklet',
+                icon: '🚴‍♀️',
+                description: 'Eklemlere daha az yük bindiren kardiyo.',
+                steps: [
+                    'Ayaklarınızı pedallara yerleştirin',
+                    'Dik duruş pozisyonu alın',
+                    'Kolları kullanarak tam vücut antrenmanı yapın',
+                    'Son 5 dakikayı yavaşlatın'
+                ],
+                warnings: [
+                    'Pedalları tamamen çevirin',
+                    'Kolları aktif kullanın',
+                    'Dengenizi koruyun'
                 ]
             },
             bike: {
-                title: 'Bisiklet Kullanım Rehberi',
+                title: 'Kondisyon Bisikleti',
                 icon: '🚴‍♀️',
-                description: 'Bisiklet ile alt vücut kaslarınızı güçlendirin.',
+                description: 'Düşük etkili kardiyovasküler egzersiz.',
                 steps: [
-                    'Bisiklet koltuğunu boyunuza ayarlayın',
-                    'Pedalları ayaklarınızla kontrol edin',
+                    'Sandalye yüksekliğini ayarlayın',
+                    'Ayaklarınızı pedallara yerleştirin',
                     'Dik duruş pozisyonu alın',
-                    'Yavaş tempoda başlayın',
-                    'Direnci kademeli olarak artırın',
-                    'Nefes alışverişinizi kontrol edin',
-                    'Son 5 dakikada direnci azaltın'
+                    'Son 5 dakikayı yavaşlatın'
                 ],
                 warnings: [
-                    'Dizlerinizi aşırı zorlamayın',
-                    'Su içmeyi unutmayın',
-                    'Baş dönmesi durumunda durun',
-                    'Ayaklarınızı pedallardan çıkarın'
+                    'Dizleriniz hafif bükülü olsun',
+                    'Sırtınızı dik tutun',
+                    'Su içmeyi unutmayın'
                 ]
             },
-            weights: {
-                title: 'Ağırlık Kullanım Rehberi',
+            chestPress: {
+                title: 'Göğüs Pres Makinesi',
+                icon: '💪',
+                description: 'Göğüs kaslarını güvenli şekilde çalıştırır.',
+                steps: [
+                    'Sandalye yüksekliğini ayarlayın',
+                    'Sırtınızı tamamen destekleyin',
+                    'Ağırlığı kontrollü şekilde itin',
+                    'Yavaşça başlangıç pozisyonuna dönün'
+                ],
+                warnings: [
+                    'Uygun ağırlık seçin',
+                    'Tam hareket aralığı kullanın',
+                    'Nefes alışverişinizi kontrol edin'
+                ]
+            },
+            latPulldown: {
+                title: 'Lat Pulldown Makinesi',
+                icon: '💪',
+                description: 'Sırt kaslarını güçlendiren temel makine.',
+                steps: [
+                    'Sandalye yüksekliğini ayarlayın',
+                    'Barı geniş kavrayın',
+                    'Sırtınızı dik tutun',
+                    'Barı göğsünüze doğru çekin'
+                ],
+                warnings: [
+                    'Omuzlarınızı geriye çekin',
+                    'Göğsünüzü öne çıkarın',
+                    'Kontrollü hareket edin'
+                ]
+            },
+            legPress: {
+                title: 'Bacak İtiş Makinesi',
+                icon: '🦵',
+                description: 'Bacak kaslarını güvenli şekilde çalıştırır.',
+                steps: [
+                    'Sandalye pozisyonunu ayarlayın',
+                    'Ayaklarınızı platforma yerleştirin',
+                    'Ağırlığı kontrollü şekilde itin',
+                    'Yavaşça başlangıç pozisyonuna dönün'
+                ],
+                warnings: [
+                    'Dizlerinizi kilitlemeyin',
+                    'Ayaklarınızı omuz genişliğinde tutun',
+                    'Kontrollü hareket edin'
+                ]
+            },
+            dumbbells: {
+                title: 'Dambıllar',
                 icon: '🏋️‍♀️',
-                description: 'Ağırlıklarla kas gücünüzü artırın.',
+                description: 'Tüm vücut kaslarını çalıştırmak için ideal.',
                 steps: [
-                    'Uygun ağırlık seçin (başlangıç için hafif)',
-                    'Duruşunuzu kontrol edin',
-                    'Yavaş ve kontrollü hareketler yapın',
+                    'Uygun ağırlığı seçin',
+                    'Doğru formu koruyun',
                     'Nefes alışverişinizi kontrol edin',
-                    'Kaslarınızı sıkın',
-                    'Ağırlığı kontrollü şekilde indirin',
-                    'Setler arası dinlenin'
+                    'Yavaş ve kontrollü hareket edin'
                 ],
                 warnings: [
-                    'Ağırlığı asla bırakmayın',
-                    'Duruşunuzu bozmayın',
-                    'Aşırı ağırlık kullanmayın',
-                    'Yardım isteyin'
+                    'Ağırlığı kademeli artırın',
+                    'Sırtınızı dik tutun',
+                    'Dengenizi koruyun'
                 ]
             },
-            yoga: {
-                title: 'Yoga Rehberi',
-                icon: '🧘‍♀️',
-                description: 'Yoga ile esneklik ve denge kazanın.',
+            barbell: {
+                title: 'Bar ve Ağırlık Plakaları',
+                icon: '🏋️‍♀️',
+                description: 'Güç antrenmanı için temel ekipman.',
                 steps: [
-                    'Rahat kıyafetler giyin',
-                    'Matınızı hazırlayın',
-                    'Nefes alışverişinizi kontrol edin',
-                    'Temel pozisyonlarla başlayın',
-                    'Vücudunuzu dinleyin',
-                    'Zorlanmayın, sınırlarınızı bilin',
-                    'Meditasyon ile bitirin'
+                    'Uygun ağırlık plakalarını seçin',
+                    'Barı güvenli şekilde kaldırın',
+                    'Doğru formu koruyun',
+                    'Ağırlığı güvenli şekilde bırakın'
                 ],
                 warnings: [
-                    'Zorlanmayın',
-                    'Nefes alışverişinizi kontrol edin',
-                      'Su içmeyi unutmayın',
+                    'Spotter kullanın',
+                    'Sırtınızı dik tutun',
+                    'Kademeli ağırlık artırın'
+                ]
+            },
+            bench: {
+                title: 'Sehpalar',
+                icon: '🪑',
+                description: 'Dambıl ve bar egzersizleri için temel.',
+                steps: [
+                    'Sehpa yüksekliğini ayarlayın',
+                    'Güvenli pozisyon alın',
+                    'Ağırlığı kontrollü şekilde kaldırın',
+                    'Ağırlığı güvenli şekilde bırakın'
+                ],
+                warnings: [
+                    'Spotter kullanın',
+                    'Sırtınızı destekleyin',
+                    'Kontrollü hareket edin'
+                ]
+            },
+            smithMachine: {
+                title: 'Smith Machine',
+                icon: '🏋️‍♀️',
+                description: 'Güvenli squat ve press hareketleri için.',
+                steps: [
+                    'Bar yüksekliğini ayarlayın',
+                    'Güvenli pozisyon alın',
+                    'Barı kontrollü şekilde kaldırın',
+                    'Barı güvenli şekilde bırakın'
+                ],
+                warnings: [
+                    'Dengenizi koruyun',
+                    'Sırtınızı dik tutun',
+                    'Kontrollü hareket edin'
+                ]
+            },
+            pullUpBar: {
+                title: 'Barfiks Demiri',
+                icon: '🆙',
+                description: 'Üst vücut gücü için mükemmel.',
+                steps: [
+                    'Barı omuz genişliğinde kavrayın',
+                    'Vücudunuzu yukarı çekin',
+                    'Çenenizi barın üzerine getirin',
+                    'Yavaşça aşağı inin'
+                ],
+                warnings: [
+                    'Tam hareket aralığı kullanın',
+                    'Kontrollü hareket edin',
+                    'Nefes alışverişinizi kontrol edin'
+                ]
+            },
+            dipsStation: {
+                title: 'Dips İstasyonu',
+                icon: '💪',
+                description: 'Arka kol ve göğüs için etkili.',
+                steps: [
+                    'Kollarınızı destekleyin',
+                    'Vücudunuzu aşağı indirin',
+                    'Göğsünüzü öne çıkarın',
+                    'Kollarınızla yukarı itin'
+                ],
+                warnings: [
+                    'Tam hareket aralığı kullanın',
+                    'Kontrollü hareket edin',
                     'Dengenizi koruyun'
+                ]
+            },
+            abBench: {
+                title: 'Mekik Sehpası',
+                icon: '🔄',
+                description: 'Karın kasları için özel tasarım.',
+                steps: [
+                    'Sehpa pozisyonunu ayarlayın',
+                    'Ayaklarınızı sabitleyin',
+                    'Üst vücudunuzu yukarı kaldırın',
+                    'Yavaşça başlangıç pozisyonuna dönün'
+                ],
+                warnings: [
+                    'Boynunuzu zorlamayın',
+                    'Karın kaslarınızı aktif kullanın',
+                    'Kontrollü hareket edin'
+                ]
+            },
+            exerciseMats: {
+                title: 'Egzersiz Matları',
+                icon: '🧘‍♀️',
+                description: 'Yerde yapılan egzersizler için.',
+                steps: [
+                    'Matı düz bir yere serin',
+                    'Güvenli pozisyon alın',
+                    'Egzersizi kontrollü şekilde yapın',
+                    'Formunuzu koruyun'
+                ],
+                warnings: [
+                    'Matı temiz tutun',
+                    'Güvenli pozisyon alın',
+                    'Kontrollü hareket edin'
                 ]
             }
         };
@@ -3055,29 +3201,33 @@
         
         function useWorkoutTemplate(templateType) {
             const templates = {
-                'morning-cardio': {
-                    type: 'Sabah Kardiyo',
+                'kyk-cardio': {
+                    type: 'KYK Kardiyo',
                     time: '07:00',
                     duration: 30,
-                    category: 'cardio'
+                    category: 'cardio',
+                    equipment: 'Koşu Bandı, Eliptik Bisiklet'
                 },
-                'evening-strength': {
-                    type: 'Akşam Güç',
+                'kyk-strength': {
+                    type: 'KYK Güç Antrenmanı',
                     time: '19:00',
                     duration: 45,
-                    category: 'strength'
+                    category: 'strength',
+                    equipment: 'Dambıllar, Göğüs Pres, Lat Pulldown'
                 },
-                'yoga-session': {
-                    type: 'Yoga Seansı',
-                    time: '20:00',
-                    duration: 60,
-                    category: 'yoga'
-                },
-                'dance-party': {
-                    type: 'Dans Partisi',
+                'kyk-full-body': {
+                    type: 'KYK Tam Vücut',
                     time: '18:00',
-                    duration: 40,
-                    category: 'dance'
+                    duration: 60,
+                    category: 'fullbody',
+                    equipment: 'Tüm Makineler'
+                },
+                'kyk-quick': {
+                    type: 'KYK Hızlı Antrenman',
+                    time: '12:00',
+                    duration: 20,
+                    category: 'quick',
+                    equipment: 'Dambıllar, Mat'
                 }
             };
             
