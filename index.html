@@ -2162,25 +2162,24 @@
         .meal-detail-items {
             margin-bottom: 0.75rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-            justify-content: center;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: stretch;
         }
         
         .meal-item {
             background: var(--gray-50);
             border: 1px solid var(--gray-200);
             border-radius: 6px;
-            padding: 0.4rem 0.6rem;
-            font-size: 0.75rem;
+            padding: 0.6rem;
+            font-size: 0.85rem;
             color: var(--gray-700);
-            text-align: center;
+            text-align: left;
             transition: all 0.2s ease;
             cursor: pointer;
             user-select: none;
-            display: inline-block;
-            margin: 0.2rem;
-            min-width: fit-content;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .meal-item:hover {
@@ -2201,16 +2200,15 @@
             background: var(--white);
             border: 1px solid var(--gray-300);
             border-radius: 6px;
-            padding: 0.3rem 0.5rem;
-            font-size: 0.7rem;
+            padding: 0.5rem;
+            font-size: 0.8rem;
             color: var(--gray-600);
-            text-align: center;
+            text-align: left;
             transition: all 0.2s ease;
             cursor: pointer;
             user-select: none;
-            display: inline-block;
-            margin: 0.1rem;
-            min-width: fit-content;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .meal-item-option:hover {
@@ -2222,11 +2220,10 @@
         
         .meal-item-group {
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.3rem;
-            margin: 0.2rem 0;
-            padding: 0.5rem;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+            padding: 0.75rem;
             background: var(--gray-100);
             border-radius: 8px;
             border: 1px solid var(--gray-300);
@@ -5620,196 +5617,20 @@
                 }
             }
             
-            // If localStorage is empty, load from embedded JSON data
-            console.log('Loading from embedded JSON data...');
-            kykMeals = {
-                "2025-09-15": {
-                    "date": "15 Eylül 2025",
-                    "day": "Pazartesi",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍟 Patates Kızartması", "🥚 Haşlanmış Yumurta", "🧀 Beyaz Peynir", "🫒 Siyah/Yeşil Zeytin", "🥗 Mevsim Sebzeleri Söğüş", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Mercimek Çorba / Kremalı Mantar Çorba", "🍖 Buğu Kebabı / İmam Bayıldı", "🍚 Şehriyeli Pirinç Pilavı", "🥬 Yoğurtlu Semizotu", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-16": {
-                    "date": "16 Eylül 2025",
-                    "day": "Salı",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍳 Peynirli Omlet", "🥨 Simit", "🧀 Kaşar Peyniri", "🫒 Siyah/Yeşil Zeytin", "🍫 Sürülebilir Çikolata", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Arabaşı Çorba / Anadolu Çorba", "🥩 Kadınbudu Köfte+Fırın Sebze / Mücver", "🍝 Salçalı Makarna", "🥛 Ayran", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-17": {
-                    "date": "17 Eylül 2025",
-                    "day": "Çarşamba",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍕 Karışık Pizza", "🥚 Haşlanmış Yumurta", "🧀 Krem Peynir", "🫒 Siyah/Yeşil Zeytin", "🥗 Mevsim Sebzeleri Söğüş", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Şehriye Çorba / Tavuk Suyu Çorba", "🍖 Etli Çökertme Kebabı / Yeşil Fasulye Yemeği", "🍚 Şehriyeli Bulgur Pilavı", "🥗 Karışık Salata", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-18": {
-                    "date": "18 Eylül 2025",
-                    "day": "Perşembe",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍳 Peynirli Omlet", "🥐 Zeytinli/Peynirli Açma", "🧀 Kaşar Peyniri", "🫒 Siyah/Yeşil Zeytin", "🍯 Reçel Çeşitleri", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Şehriye Çorba", "🥩 Salçalı Köfte", "🍚 Şehriyeli Bulgur Pilavı", "🍈 Kavun", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-19": {
-                    "date": "19 Eylül 2025",
-                    "day": "Cuma",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🥐 Zeytinli/Peynirli Açma", "🥚 Haşlanmış Yumurta", "🧀 Kaşar Peyniri", "🫒 Siyah/Yeşil Zeytin", "🍯 Bal+Tereyağ", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Ezogelin Çorba / Cennet Çorba", "🍖 Şinitzel+Söğüş / Karışık Dolma + Yoğurt", "🍝 Spagetti Napoliten", "🍰 Supangle", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-20": {
-                    "date": "20 Eylül 2025",
-                    "day": "Cumartesi",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍳 Sucuklu Yumurta", "🥐 Çikolatalı Milföy Börek", "🧀 Yöresel Peynir", "🫒 Siyah/Yeşil Zeytin", "🥗 Mevsim Sebzeleri Söğüş", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Mercimek Çorba", "🍖 Tavuk Şiş+Köz Sebzeler / Ispanak Yemeği", "🍝 Fırın Makarna", "🥛 Yoğurt", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-21": {
-                    "date": "21 Eylül 2025",
-                    "day": "Pazar",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍟 Patates Kızartması", "🥚 Haşlanmış Yumurta", "🧀 Labne Peynir", "🫒 Siyah/Yeşil Zeytin", "🍯 Tahinli Pekmez", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Arabaşı Çorba / Ayran Aşı Çorba", "🍲 Kuru Fasulye / Şakşuka", "🍚 Şehriyeli Pirinç Pilavı", "🍰 Baklava-Kadayıf(Cevizli/Fındıklı)", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-22": {
-                    "date": "22 Eylül 2025",
-                    "day": "Pazartesi",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍳 Menemen", "🥐 Dere Otlu Poğaça", "🧀 Labne Peynir", "🫒 Siyah/Yeşil Zeytin", "🍯 Reçel Çeşitleri", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Yayla Çorba / Tarhana Çorba", "🍖 Et Tantuni+Lavaş+Patates Kızartması / Bezelye Yemeği", "🍚 Salçalı Bulgur Pilavı", "🥗 Kaşık Salata", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-23": {
-                    "date": "23 Eylül 2025",
-                    "day": "Salı",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🌭 Sosis Kokteyl(Salçalı veya Kızartma)", "🥚 Haşlanmış Yumurta", "🧀 Beyaz Peynir", "🫒 Siyah/Yeşil Zeytin", "🥗 Mevsim Sebzeleri Söğüş", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Ezogelin Çorba / Sebze Çorba", "🍖 Tavuk Fajita / Barbunya Yemeği", "🍝 Erişte", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-24": {
-                    "date": "24 Eylül 2025",
-                    "day": "Çarşamba",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍳 Kaşarlı Omlet", "🧁 Mozaik Kek", "🧀 Yöresel Peynir", "🫒 Siyah/Yeşil Zeytin", "🍯 Tahinli Pekmez", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Şehriye Çorba / Tavuk Suyu Çorba", "🍖 Izgara Köfte+Söğüş / Patlıcan Çığırtma", "🍝 Yoğurtlu Makarna", "🍰 Yaş Pasta", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-25": {
-                    "date": "25 Eylül 2025",
-                    "day": "Perşembe",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍟 Karışık Kızartma", "🥚 Haşlanmış Yumurta", "🧀 Beyaz Peynir", "🫒 Siyah/Yeşil Zeytin", "🥗 Mevsim Sebzeleri Söğüş", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Yayla Çorba / Köylüm Çorba", "🍖 Köri Soslu Tavuk+Elma Dilim Patates / Mücver", "🍚 Sebzeli Bulgur Pilavı", "🥗 Rus Salatası", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-26": {
-                    "date": "26 Eylül 2025",
-                    "day": "Cuma",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍳 Sade Omlet", "🥨 Simit", "🧀 Kaşar Peyniri", "🫒 Siyah/Yeşil Zeytin", "🍫 Sürülebilir Çikolata", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Arabaşı Çorba / Anadolu Çorba", "🍲 Nohut Yemeği / Napoliten Soslu Karışık Kızartma+Yoğurt", "🍚 Şehriyeli Pirinç Pilavı", "🍰 Şekerpare", "🥒 Turşu", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-27": {
-                    "date": "27 Eylül 2025",
-                    "day": "Cumartesi",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍟 Patates Kızartması", "🥚 Haşlanmış Yumurta", "🧀 Beyaz Peynir", "🫒 Siyah/Yeşil Zeytin", "🥗 Mevsim Sebzeleri Söğüş", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Mercimek Çorba / Domates Çorba", "🍖 Tavuk Sote / Karışık Dolma", "🍝 Salçalı Makarna", "🥛 Cacık", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-29": {
-                    "date": "29 Eylül 2025",
-                    "day": "Pazartesi",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🥐 Patatesli Börek", "🥚 Haşlanmış Yumurta", "🧀 Kaşar Peyniri", "🫒 Siyah/Yeşil Zeytin", "🥗 Mevsim Sebzeleri Söğüş", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Yayla Çorba / Yüksük Çorba", "🍖 Tavuk Köfte+Fırın Sebze / Mevsim Türlü", "🍚 Şehriyeli Pirinç Pilavı", "🥛 Tarator", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                },
-                "2025-09-30": {
-                    "date": "30 Eylül 2025",
-                    "day": "Salı",
-                    "breakfast": {
-                        "calories": 770,
-                        "items": ["🍳 Sucuklu Yumurta", "🥐 Sade Açma", "🧀 Yöresel Peynir", "🫒 Siyah/Yeşil Zeytin", "🍯 Reçel Çeşitleri", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    },
-                    "dinner": {
-                        "calories": 1300,
-                        "items": ["🍲 Ezogelin Çorba / Cennet Çorba", "🍖 Kaşarlı Köfte+Karışık Salata / Ispanak Yemeği+Yoğurt", "🍝 Salçalı Makarna", "🥛 Ayran", "💧 500 ml su", "🍞 Çeyrek Ekmek"]
-                    }
-                }
-            };
-            
-            // Save to localStorage for future use
-            localStorage.setItem('sinemfit-kyk-meals', JSON.stringify(kykMeals));
-            updateKykMealsDisplay();
-            showNotification('Başarılı', 'KYK yemekleri embedded JSON\'dan yüklendi!');
-            console.log('Loaded from embedded JSON and saved to localStorage:', kykMeals);
+            // Try to load from JSON file
+            fetch('./kyk-meals.json')
+                .then(response => response.json())
+                .then(data => {
+                    kykMeals = data;
+                    localStorage.setItem('sinemfit-kyk-meals', JSON.stringify(data));
+                    updateKykMealsDisplay();
+                    showNotification('Başarılı', 'KYK yemekleri JSON dosyasından yüklendi!');
+                    console.log('Loaded from JSON file:', kykMeals);
+                })
+                .catch(error => {
+                    console.error('Error loading JSON file:', error);
+                    showNotification('Hata', 'KYK yemekleri yüklenemedi!');
+                });
         }
         
         function saveKykMeals() {
