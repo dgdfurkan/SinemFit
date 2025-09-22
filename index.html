@@ -967,6 +967,299 @@
             box-shadow: var(--shadow);
         }
         
+        /* Nutrition Styles */
+        .quick-add-section {
+            margin-bottom: 2rem;
+        }
+        
+        .quick-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .quick-btn {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quick-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .water-btn:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        
+        .meal-btn:hover {
+            border-color: #f59e0b;
+            background: #fffbeb;
+        }
+        
+        .snack-btn:hover {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        
+        .custom-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        
+        .quick-icon {
+            font-size: 2rem;
+        }
+        
+        .quick-btn span {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        
+        .daily-summary {
+            margin-bottom: 2rem;
+        }
+        
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .summary-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .summary-icon {
+            font-size: 2.5rem;
+        }
+        
+        .summary-info {
+            flex: 1;
+        }
+        
+        .summary-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .summary-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+        
+        .meals-timeline {
+            margin-top: 2rem;
+        }
+        
+        .meal-item {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .meal-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .meal-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            text-align: center;
+        }
+        
+        .meal-content {
+            flex: 1;
+        }
+        
+        .meal-title {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .meal-details {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        .meal-time {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-align: right;
+        }
+        
+        .meal-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .meal-actions button {
+            background: none;
+            border: none;
+            padding: 0.25rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        
+        .edit-meal-btn {
+            color: var(--primary);
+        }
+        
+        .edit-meal-btn:hover {
+            background: var(--primary-light);
+        }
+        
+        .delete-meal-btn {
+            color: var(--error);
+        }
+        
+        .delete-meal-btn:hover {
+            background: var(--error);
+            color: var(--white);
+        }
+        
+        /* Meal Selector Styles */
+        .meal-selector {
+            margin-top: 1rem;
+        }
+        
+        .meal-categories {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-btn {
+            background: var(--gray-100);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .kyk-meal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .kyk-meal-btn {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+        
+        .kyk-meal-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .kyk-meal-btn .meal-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+        
+        .kyk-meal-btn .meal-info {
+            flex: 1;
+        }
+        
+        .kyk-meal-btn .meal-title {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .kyk-meal-btn .meal-description {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        .snack-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .snack-option {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .snack-option:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .snack-icon {
+            font-size: 2rem;
+        }
+        
+        .snack-name {
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+        
+        .snack-calories {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -1244,34 +1537,70 @@
                         <h2 class="card-title">Beslenme Takibi</h2>
                         <p class="text-gray-600">Günlük beslenme alışkanlıklarınızı kaydedin.</p>
                         
-                        <div class="form-group">
-                            <label class="form-label">Kategori</label>
-                            <select class="form-input" id="meal-category">
-                                <option value="main">Ana Yemek</option>
-                                <option value="water">Su</option>
-                                <option value="snack">Abur Cubur</option>
-                            </select>
+                        <!-- Quick Add Buttons -->
+                        <div class="quick-add-section">
+                            <h3 class="text-lg font-semibold mb-4">Hızlı Ekleme</h3>
+                            <div class="quick-buttons">
+                                <button class="quick-btn water-btn" onclick="quickAddMeal('water', 'Su', '250ml')">
+                                    <div class="quick-icon">💧</div>
+                                    <span>Su</span>
+                                </button>
+                                <button class="quick-btn meal-btn" onclick="showMealSelector()">
+                                    <div class="quick-icon">🍽️</div>
+                                    <span>Ana Yemek</span>
+                                </button>
+                                <button class="quick-btn snack-btn" onclick="showSnackSelector()">
+                                    <div class="quick-icon">🍎</div>
+                                    <span>Atıştırmalık</span>
+                                </button>
+                                <button class="quick-btn custom-btn" onclick="showCustomMealForm()">
+                                    <div class="quick-icon">✏️</div>
+                                    <span>Özel</span>
+                                </button>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label">İçerik</label>
-                            <input type="text" class="form-input" id="meal-content" placeholder="Ne yediniz/içtiniz?">
+                        <!-- Today's Meals Summary -->
+                        <div class="daily-summary">
+                            <h3 class="text-lg font-semibold mb-4">Bugünkü Özet</h3>
+                            <div class="summary-cards">
+                                <div class="summary-card">
+                                    <div class="summary-icon">💧</div>
+                                    <div class="summary-info">
+                                        <div class="summary-number" id="water-count">0</div>
+                                        <div class="summary-label">Su</div>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon">🍽️</div>
+                                    <div class="summary-info">
+                                        <div class="summary-number" id="meal-count">0</div>
+                                        <div class="summary-label">Ana Yemek</div>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon">🍎</div>
+                                    <div class="summary-info">
+                                        <div class="summary-number" id="snack-count">0</div>
+                                        <div class="summary-label">Atıştırmalık</div>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon">🔥</div>
+                                    <div class="summary-info">
+                                        <div class="summary-number" id="calorie-count">0</div>
+                                        <div class="summary-label">Kalori</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label">Miktar</label>
-                            <input type="text" class="form-input" id="meal-amount" placeholder="Örn: 1 porsiyon, 500ml">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Kalori</label>
-                            <input type="number" class="form-input" id="meal-calories" placeholder="Kalori miktarı">
-                        </div>
-                        
-                        <button class="btn btn-primary" onclick="addMeal()">Beslenme Kaydı Ekle</button>
-                        
-                        <div id="meals-list" class="mt-6">
-                            <!-- Meals will be listed here -->
+                        <!-- Today's Meals List -->
+                        <div class="meals-timeline">
+                            <h3 class="text-lg font-semibold mb-4">Bugünkü Yemekler</h3>
+                            <div id="meals-list">
+                                <!-- Meals will be listed here -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1415,6 +1744,45 @@
         let workoutSession = null;
         let workoutTimer = null;
         let workoutStartTime = null;
+        
+        // KYK Meals Data (will be loaded from Excel)
+        let kykMeals = {
+            monday: {
+                breakfast: 'Omlet, Peynir, Zeytin',
+                lunch: 'Tavuk, Pilav, Salata',
+                dinner: 'Balık, Patates, Çorba'
+            },
+            tuesday: {
+                breakfast: 'Menemen, Ekmek, Çay',
+                lunch: 'Et, Makarna, Yoğurt',
+                dinner: 'Köfte, Bulgur, Ayran'
+            },
+            wednesday: {
+                breakfast: 'Sucuklu Yumurta, Peynir',
+                lunch: 'Tavuk, Pilav, Salata',
+                dinner: 'Balık, Patates, Çorba'
+            },
+            thursday: {
+                breakfast: 'Menemen, Ekmek, Çay',
+                lunch: 'Et, Makarna, Yoğurt',
+                dinner: 'Köfte, Bulgur, Ayran'
+            },
+            friday: {
+                breakfast: 'Omlet, Peynir, Zeytin',
+                lunch: 'Tavuk, Pilav, Salata',
+                dinner: 'Balık, Patates, Çorba'
+            },
+            saturday: {
+                breakfast: 'Sucuklu Yumurta, Peynir',
+                lunch: 'Et, Makarna, Yoğurt',
+                dinner: 'Köfte, Bulgur, Ayran'
+            },
+            sunday: {
+                breakfast: 'Menemen, Ekmek, Çay',
+                lunch: 'Tavuk, Pilav, Salata',
+                dinner: 'Balık, Patates, Çorba'
+            }
+        };
         let equipmentGuides = {
             treadmill: {
                 title: 'Koşu Bandı Kullanım Rehberi',
@@ -1507,7 +1875,125 @@
             loadWorkouts();
             loadMeals();
             updateAdminStats();
+            updateNutritionSummary();
         });
+        
+        // Nutrition Functions
+        function quickAddMeal(category, name, amount) {
+            const meal = {
+                id: Date.now(),
+                category: category,
+                name: name,
+                amount: amount,
+                calories: category === 'water' ? 0 : Math.floor(Math.random() * 200) + 100,
+                date: new Date().toISOString().split('T')[0],
+                time: new Date().toTimeString().split(' ')[0].substring(0, 5),
+                createdAt: new Date().toISOString()
+            };
+            
+            meals.push(meal);
+            saveData();
+            loadMeals();
+            updateNutritionSummary();
+            updateAdminStats();
+            
+            showNotification('Beslenme Kaydı', `${name} eklendi!`);
+        }
+        
+        function showMealSelector() {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Ana Yemek Seçin</h3>
+                        <button class="modal-close" onclick="closeModal(this)">&times;</button>
+                    </div>
+                    <div class="meal-selector">
+                        <div class="meal-categories">
+                            <button class="category-btn active" onclick="showMealCategory('kyk')">KYK Yemekleri</button>
+                            <button class="category-btn" onclick="showMealCategory('custom')">Özel</button>
+                        </div>
+                        <div id="meal-options" class="meal-options">
+                            ${getKYKMealOptions()}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+        }
+        
+        function getKYKMealOptions() {
+            const today = new Date();
+            const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            const todayMeals = kykMeals[dayNames[today.getDay()]];
+            
+            return `
+                <div class="kyk-meal-options">
+                    <button class="kyk-meal-btn" onclick="selectKYKMeal('Kahvaltı', '${todayMeals.breakfast}', 300)">
+                        <div class="meal-icon">🌅</div>
+                        <div class="meal-info">
+                            <div class="meal-title">Kahvaltı</div>
+                            <div class="meal-description">${todayMeals.breakfast}</div>
+                        </div>
+                    </button>
+                    <button class="kyk-meal-btn" onclick="selectKYKMeal('Öğle Yemeği', '${todayMeals.lunch}', 500)">
+                        <div class="meal-icon">☀️</div>
+                        <div class="meal-info">
+                            <div class="meal-title">Öğle Yemeği</div>
+                            <div class="meal-description">${todayMeals.lunch}</div>
+                        </div>
+                    </button>
+                    <button class="kyk-meal-btn" onclick="selectKYKMeal('Akşam Yemeği', '${todayMeals.dinner}', 400)">
+                        <div class="meal-icon">🌙</div>
+                        <div class="meal-info">
+                            <div class="meal-title">Akşam Yemeği</div>
+                            <div class="meal-description">${todayMeals.dinner}</div>
+                        </div>
+                    </button>
+                </div>
+            `;
+        }
+        
+        function selectKYKMeal(name, description, calories) {
+            const meal = {
+                id: Date.now(),
+                category: 'main',
+                name: name,
+                amount: '1 porsiyon',
+                calories: calories,
+                description: description,
+                date: new Date().toISOString().split('T')[0],
+                time: new Date().toTimeString().split(' ')[0].substring(0, 5),
+                createdAt: new Date().toISOString()
+            };
+            
+            meals.push(meal);
+            saveData();
+            loadMeals();
+            updateNutritionSummary();
+            updateAdminStats();
+            
+            closeModal(document.querySelector('.modal-close'));
+            showNotification('Yemek Eklendi', `${name} eklendi!`);
+        }
+        
+        function updateNutritionSummary() {
+            const today = new Date().toISOString().split('T')[0];
+            const todayMeals = meals.filter(meal => meal.date === today);
+            
+            const waterCount = todayMeals.filter(meal => meal.category === 'water').length;
+            const mealCount = todayMeals.filter(meal => meal.category === 'main').length;
+            const snackCount = todayMeals.filter(meal => meal.category === 'snack').length;
+            const totalCalories = todayMeals.reduce((sum, meal) => sum + (meal.calories || 0), 0);
+            
+            document.getElementById('water-count').textContent = waterCount;
+            document.getElementById('meal-count').textContent = mealCount;
+            document.getElementById('snack-count').textContent = snackCount;
+            document.getElementById('calorie-count').textContent = totalCalories;
+        }
         
         // Equipment Guide Functions
         function showEquipmentGuide(equipmentType) {
