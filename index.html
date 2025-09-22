@@ -51,12 +51,22 @@
             min-height: 100vh;
             color: var(--gray-800);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        html {
+            overflow-x: hidden;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 0.5rem;
+            width: 100%;
         }
         
         .app {
@@ -596,6 +606,8 @@
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 2rem;
+            width: 100%;
+            max-width: 100%;
         }
         
         .calendar-grid.month-view {
@@ -612,15 +624,16 @@
         
         .calendar-day {
             background: var(--white);
-            padding: 1rem;
+            padding: 0.5rem;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-height: 80px;
+            min-height: 50px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             position: relative;
+            font-size: 0.8rem;
         }
         
         .calendar-day:hover {
@@ -1025,21 +1038,21 @@
         .quick-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            gap: 0.5rem;
         }
         
         .quick-btn {
             background: var(--white);
             border: 2px solid var(--gray-200);
-            border-radius: 15px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.25rem;
         }
         
         .quick-btn:hover {
@@ -1068,7 +1081,7 @@
         }
         
         .quick-icon {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
         
         .quick-btn span {
@@ -1083,7 +1096,7 @@
         .summary-cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            gap: 0.5rem;
         }
         
         .summary-card {
@@ -1314,21 +1327,21 @@
         .quick-event-buttons {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+            gap: 0.5rem;
         }
         
         .quick-event-btn {
             background: var(--white);
             border: 2px solid var(--gray-200);
-            border-radius: 15px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.25rem;
         }
         
         .quick-event-btn:hover {
@@ -1367,7 +1380,7 @@
         }
         
         .event-icon {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
         
         .quick-event-btn span {
@@ -1426,21 +1439,21 @@
         .quick-workout-buttons {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+            gap: 0.5rem;
         }
         
         .quick-workout-btn {
             background: var(--white);
             border: 2px solid var(--gray-200);
-            border-radius: 15px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.25rem;
         }
         
         .quick-workout-btn:hover {
@@ -1474,7 +1487,7 @@
         }
         
         .workout-icon {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
         
         .quick-workout-btn span {
@@ -1572,21 +1585,21 @@
         .quick-todo-buttons {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+            gap: 0.5rem;
         }
         
         .quick-todo-btn {
             background: var(--white);
             border: 2px solid var(--gray-200);
-            border-radius: 15px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.25rem;
         }
         
         .quick-todo-btn:hover {
@@ -1620,7 +1633,7 @@
         }
         
         .todo-icon {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
         
         .quick-todo-btn span {
