@@ -2406,14 +2406,6 @@
                         <h2 class="card-title">Beslenme Takibi</h2>
                         <p class="text-gray-600">Günlük beslenme alışkanlıklarınızı kaydedin.</p>
                         
-                        <!-- KYK Meals Section -->
-                        <div class="kyk-meals-section">
-                            <h3 class="text-lg font-semibold mb-4">KYK Yemekleri</h3>
-                            <div class="kyk-meals-buttons" id="kyk-meals-buttons">
-                                <div class="text-center text-gray-500">KYK yemek listesi yüklenmedi.</div>
-                            </div>
-                        </div>
-                        
                         <!-- Quick Add Buttons -->
                         <div class="quick-add-section">
                             <h3 class="text-lg font-semibold mb-4">Hızlı Ekleme</h3>
@@ -4135,7 +4127,6 @@
         
         function updateNutritionScreen() {
             updateNutritionSummary();
-            updateKykMealsButtons();
         }
         
         function calculateStreakDays() {
@@ -5109,22 +5100,22 @@
         function showKykMealSelector() {
             const todayMeals = getTodayKykMeals();
             
-            if (!todayMeals) {
-                showNotification('Bilgi', 'Bugün için KYK yemek bilgisi bulunamadı.');
-                return;
-            }
-            
             // Create modal
             const modal = document.createElement('div');
             modal.className = 'modal';
-            modal.innerHTML = `
+            
+            let modalContent = `
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3>KYK Yemekleri</h3>
+                        <h3>Ana Yemek Seçimi</h3>
                         <button class="modal-close" onclick="closeModal()">&times;</button>
                     </div>
                     <div class="modal-body">
                         <div class="kyk-meal-options">
+            `;
+            
+            if (todayMeals) {
+                modalContent += `
                             <button class="kyk-meal-option" onclick="addKykMeal('breakfast'); closeModal();">
                                 <div class="meal-option-icon">☀️</div>
                                 <div class="meal-option-info">
@@ -5140,7 +5131,10 @@
                                     <div class="meal-option-calories">${todayMeals.dinner.calories} kalori</div>
                                 </div>
                             </button>
-                            
+                `;
+            }
+            
+            modalContent += `
                             <button class="kyk-meal-option custom-meal" onclick="showCustomMealForm(); closeModal();">
                                 <div class="meal-option-icon">✏️</div>
                                 <div class="meal-option-info">
@@ -5153,6 +5147,7 @@
                 </div>
             `;
             
+            modal.innerHTML = modalContent;
             document.body.appendChild(modal);
         }
         
