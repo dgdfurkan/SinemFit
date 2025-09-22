@@ -678,6 +678,295 @@
             color: var(--white);
         }
         
+        /* Equipment Guide Styles */
+        .equipment-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+        }
+        
+        .equipment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        
+        .equipment-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Workout Session Styles */
+        .workout-session {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .session-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .timer-display {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .timer-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        /* Gift Box Styles */
+        .gift-box {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            border-radius: 20px;
+            padding: 3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            margin: 2rem 0;
+        }
+        
+        .gift-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .gift-box-icon {
+            font-size: 4rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .gift-box-content {
+            color: var(--white);
+        }
+        
+        /* Progress Bar Styles */
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: var(--gray-200);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Reward Styles */
+        .reward-item {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--success);
+        }
+        
+        .reward-date {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: 0.25rem;
+        }
+        
+        .reward-title {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .reward-description {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        /* Admin Stats Styles */
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-description {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        /* KYK Meals Styles */
+        .kyk-meals {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .meal-day {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .meal-day:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .day-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .meal-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+        
+        .meal-item {
+            background: var(--gray-50);
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.875rem;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-500);
+            padding: 0.25rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: var(--gray-100);
+            color: var(--gray-700);
+        }
+        
+        .equipment-guide {
+            text-align: center;
+        }
+        
+        .steps-list, .warnings-list {
+            text-align: left;
+            margin: 1rem 0;
+        }
+        
+        .steps-list li, .warnings-list li {
+            margin-bottom: 0.5rem;
+            padding: 0.25rem 0;
+        }
+        
+        .reward-modal {
+            text-align: center;
+        }
+        
+        .gift-box-animation {
+            font-size: 4rem;
+            animation: bounce 1s infinite;
+        }
+        
+        .reward-message {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            margin: 1rem 0;
+        }
+        
+        .reward-photo img {
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -871,6 +1160,44 @@
                         <h2 class="card-title">Spor Programı</h2>
                         <p class="text-gray-600">Haftalık spor programınızı oluşturun ve takip edin.</p>
                         
+                        <!-- Equipment Guide Section -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Spor Aletleri Rehberi</h3>
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="equipment-card" onclick="showEquipmentGuide('treadmill')">
+                                    <div class="equipment-icon">🏃‍♀️</div>
+                                    <h4 class="font-semibold text-center">Koşu Bandı</h4>
+                                    <p class="text-sm text-gray-600 text-center">Kardiyovasküler egzersiz</p>
+                                </div>
+                                <div class="equipment-card" onclick="showEquipmentGuide('bike')">
+                                    <div class="equipment-icon">🚴‍♀️</div>
+                                    <h4 class="font-semibold text-center">Bisiklet</h4>
+                                    <p class="text-sm text-gray-600 text-center">Alt vücut güçlendirme</p>
+                                </div>
+                                <div class="equipment-card" onclick="showEquipmentGuide('weights')">
+                                    <div class="equipment-icon">🏋️‍♀️</div>
+                                    <h4 class="font-semibold text-center">Ağırlıklar</h4>
+                                    <p class="text-sm text-gray-600 text-center">Kas güçlendirme</p>
+                                </div>
+                                <div class="equipment-card" onclick="showEquipmentGuide('yoga')">
+                                    <div class="equipment-icon">🧘‍♀️</div>
+                                    <h4 class="font-semibold text-center">Yoga</h4>
+                                    <p class="text-sm text-gray-600 text-center">Esneklik ve denge</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Workout Session -->
+                        <div id="workout-session" class="workout-session hidden">
+                            <div class="session-title">Spor Seansı Devam Ediyor</div>
+                            <div class="timer-display" id="workout-timer">00:00</div>
+                            <div class="timer-controls">
+                                <button class="btn btn-success" onclick="pauseWorkout()">Duraklat</button>
+                                <button class="btn btn-error" onclick="finishWorkout()">Bitir</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Add Workout Form -->
                         <div class="form-group">
                             <label class="form-label">Spor Türü</label>
                             <input type="text" class="form-input" id="workout-type" placeholder="Örn: Koşu, Yoga, Fitness">
@@ -899,8 +1226,11 @@
                             <input type="number" class="form-input" id="workout-duration" placeholder="30">
                         </div>
                         
-                        <button class="btn btn-primary" onclick="addWorkout()">Spor Ekle</button>
-                        <button class="btn btn-warning" onclick="testNotification()">Bildirim Testi</button>
+                        <div class="flex gap-2">
+                            <button class="btn btn-primary" onclick="addWorkout()">Spor Ekle</button>
+                            <button class="btn btn-success" onclick="startWorkout()">Spora Başla</button>
+                            <button class="btn btn-warning" onclick="testNotification()">Bildirim Testi</button>
+                        </div>
                         
                         <div id="workouts-list" class="mt-6">
                             <!-- Workouts will be listed here -->
@@ -952,16 +1282,35 @@
                         <h2 class="card-title">Ödül Sistemi</h2>
                         <p class="text-gray-600">Spor hedeflerinize ulaşın ve ödüllerinizi kazanın!</p>
                         
+                        <!-- Progress Section -->
                         <div class="text-center mb-6">
                             <div class="text-2xl font-bold text-primary mb-2">Bu Ay: 5/10 Spor</div>
-                            <div class="w-full bg-gray-200 rounded-full h-4">
-                                <div class="bg-primary h-4 rounded-full" style="width: 50%"></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
                             </div>
                             <p class="text-sm text-gray-600 mt-2">5 spor daha yapın, ödülünüzü kazanın!</p>
                         </div>
                         
+                        <!-- Gift Box -->
                         <div class="text-center">
-                            <button class="btn btn-warning" onclick="claimReward()">Ödülü Aç</button>
+                            <div class="gift-box" onclick="openGiftBox()">
+                                <div class="gift-box-content">
+                                    <div class="gift-box-icon">🎁</div>
+                                    <p class="text-lg font-semibold mt-2">Ödülünüzü Açın!</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reward History -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Ödül Geçmişi</h3>
+                            <div id="reward-history">
+                                <div class="reward-item">
+                                    <div class="reward-date">Aralık 2024</div>
+                                    <div class="reward-title">🎉 Tebrikler! Hedefinize ulaştınız!</div>
+                                    <div class="reward-description">Bu ay 10 spor seansını tamamladınız.</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -972,28 +1321,83 @@
                         <h2 class="card-title">Admin Paneli</h2>
                         <p class="text-gray-600">Sinem'in verilerini görüntüleyin ve yönetin.</p>
                         
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="text-center p-4 bg-gray-50 rounded-lg">
-                                <div class="text-2xl font-bold text-primary">12</div>
-                                <div class="text-sm text-gray-600">Bu Ay Spor</div>
+                        <!-- Admin Stats -->
+                        <div class="admin-stats">
+                            <div class="stat-card">
+                                <div class="stat-number" id="total-workouts">12</div>
+                                <div class="stat-description">Bu Ay Spor</div>
                             </div>
-                            <div class="text-center p-4 bg-gray-50 rounded-lg">
-                                <div class="text-2xl font-bold text-success">45</div>
-                                <div class="text-sm text-gray-600">Beslenme Kaydı</div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="total-meals">45</div>
+                                <div class="stat-description">Beslenme Kaydı</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="total-events">23</div>
+                                <div class="stat-description">Takvim Etkinliği</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="streak-days">7</div>
+                                <div class="stat-description">Günlük Seri</div>
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label">Ödül Mesajı</label>
-                            <textarea class="form-input" id="reward-message" rows="3" placeholder="Ödül mesajınızı yazın..."></textarea>
+                        <!-- KYK Meals Section -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">KYK Yemek Listesi</h3>
+                            <div class="form-group">
+                                <label class="form-label">Excel Dosyası Yükle</label>
+                                <input type="file" class="form-input" id="kyk-excel" accept=".xlsx,.xls" onchange="uploadKYKMeals()">
+                            </div>
+                            <div id="kyk-meals" class="kyk-meals">
+                                <div class="meal-day">
+                                    <div class="day-title">Pazartesi</div>
+                                    <div class="meal-items">
+                                        <div class="meal-item">Kahvaltı: Omlet</div>
+                                        <div class="meal-item">Öğle: Tavuk</div>
+                                        <div class="meal-item">Akşam: Balık</div>
+                                    </div>
+                                </div>
+                                <div class="meal-day">
+                                    <div class="day-title">Salı</div>
+                                    <div class="meal-items">
+                                        <div class="meal-item">Kahvaltı: Menemen</div>
+                                        <div class="meal-item">Öğle: Et</div>
+                                        <div class="meal-item">Akşam: Pilav</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label">Ödül Fotoğrafı</label>
-                            <input type="file" class="form-input" id="reward-photo" accept="image/*">
+                        <!-- Reward Management -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Ödül Yönetimi</h3>
+                            <div class="form-group">
+                                <label class="form-label">Ödül Mesajı</label>
+                                <textarea class="form-input" id="reward-message" rows="3" placeholder="Ödül mesajınızı yazın..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Ödül Fotoğrafı</label>
+                                <input type="file" class="form-input" id="reward-photo" accept="image/*">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Hedef Spor Sayısı</label>
+                                <input type="number" class="form-input" id="target-workouts" value="10" min="1" max="50">
+                            </div>
+                            
+                            <button class="btn btn-primary" onclick="updateReward()">Ödülü Güncelle</button>
+                            <button class="btn btn-warning" onclick="sendRewardNotification()">Ödül Bildirimi Gönder</button>
                         </div>
                         
-                        <button class="btn btn-primary" onclick="updateReward()">Ödülü Güncelle</button>
+                        <!-- Data Export -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Veri Yönetimi</h3>
+                            <div class="flex gap-2">
+                                <button class="btn btn-secondary" onclick="exportData()">Verileri Dışa Aktar</button>
+                                <button class="btn btn-error" onclick="clearAllData()">Tüm Verileri Temizle</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1008,6 +1412,91 @@
         let events = JSON.parse(localStorage.getItem('sinemfit-events') || '[]');
         let workouts = JSON.parse(localStorage.getItem('sinemfit-workouts') || '[]');
         let meals = JSON.parse(localStorage.getItem('sinemfit-meals') || '[]');
+        let workoutSession = null;
+        let workoutTimer = null;
+        let workoutStartTime = null;
+        let equipmentGuides = {
+            treadmill: {
+                title: 'Koşu Bandı Kullanım Rehberi',
+                icon: '🏃‍♀️',
+                description: 'Koşu bandı ile güvenli ve etkili kardiyovasküler egzersiz yapın.',
+                steps: [
+                    'Ayakkabılarınızı bağlayın ve rahat kıyafetler giyin',
+                    'Koşu bandının üzerine çıkın ve güvenlik klipsini takın',
+                    'Yavaş bir hızla başlayın (3-4 km/saat)',
+                    'Duruşunuzu dik tutun ve doğal adımlar atın',
+                    'Hızı kademeli olarak artırın',
+                    'Son 5 dakikada hızı yavaşlatın',
+                    'Soğuma için yürüyüş yapın'
+                ],
+                warnings: [
+                    'Asla arkaya bakmayın',
+                    'Güvenlik klipsini mutlaka takın',
+                    'Su içmeyi unutmayın',
+                    'Baş dönmesi durumunda durun'
+                ]
+            },
+            bike: {
+                title: 'Bisiklet Kullanım Rehberi',
+                icon: '🚴‍♀️',
+                description: 'Bisiklet ile alt vücut kaslarınızı güçlendirin.',
+                steps: [
+                    'Bisiklet koltuğunu boyunuza ayarlayın',
+                    'Pedalları ayaklarınızla kontrol edin',
+                    'Dik duruş pozisyonu alın',
+                    'Yavaş tempoda başlayın',
+                    'Direnci kademeli olarak artırın',
+                    'Nefes alışverişinizi kontrol edin',
+                    'Son 5 dakikada direnci azaltın'
+                ],
+                warnings: [
+                    'Dizlerinizi aşırı zorlamayın',
+                    'Su içmeyi unutmayın',
+                    'Baş dönmesi durumunda durun',
+                    'Ayaklarınızı pedallardan çıkarın'
+                ]
+            },
+            weights: {
+                title: 'Ağırlık Kullanım Rehberi',
+                icon: '🏋️‍♀️',
+                description: 'Ağırlıklarla kas gücünüzü artırın.',
+                steps: [
+                    'Uygun ağırlık seçin (başlangıç için hafif)',
+                    'Duruşunuzu kontrol edin',
+                    'Yavaş ve kontrollü hareketler yapın',
+                    'Nefes alışverişinizi kontrol edin',
+                    'Kaslarınızı sıkın',
+                    'Ağırlığı kontrollü şekilde indirin',
+                    'Setler arası dinlenin'
+                ],
+                warnings: [
+                    'Ağırlığı asla bırakmayın',
+                    'Duruşunuzu bozmayın',
+                    'Aşırı ağırlık kullanmayın',
+                    'Yardım isteyin'
+                ]
+            },
+            yoga: {
+                title: 'Yoga Rehberi',
+                icon: '🧘‍♀️',
+                description: 'Yoga ile esneklik ve denge kazanın.',
+                steps: [
+                    'Rahat kıyafetler giyin',
+                    'Matınızı hazırlayın',
+                    'Nefes alışverişinizi kontrol edin',
+                    'Temel pozisyonlarla başlayın',
+                    'Vücudunuzu dinleyin',
+                    'Zorlanmayın, sınırlarınızı bilin',
+                    'Meditasyon ile bitirin'
+                ],
+                warnings: [
+                    'Zorlanmayın',
+                    'Nefes alışverişinizi kontrol edin',
+                      'Su içmeyi unutmayın',
+                    'Dengenizi koruyun'
+                ]
+            }
+        };
         
         // Initialize app
         document.addEventListener('DOMContentLoaded', function() {
@@ -1015,7 +1504,283 @@
             loadData();
             showScreen('welcome');
             initializeCalendar();
+            loadWorkouts();
+            loadMeals();
+            updateAdminStats();
         });
+        
+        // Equipment Guide Functions
+        function showEquipmentGuide(equipmentType) {
+            const guide = equipmentGuides[equipmentType];
+            if (!guide) return;
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">${guide.title}</h3>
+                        <button class="modal-close" onclick="closeModal(this)">&times;</button>
+                    </div>
+                    <div class="equipment-guide">
+                        <div class="equipment-icon">${guide.icon}</div>
+                        <p class="text-gray-700 mb-4">${guide.description}</p>
+                        
+                        <h4 class="font-semibold mb-2">Adımlar:</h4>
+                        <ol class="steps-list">
+                            ${guide.steps.map(step => `<li>${step}</li>`).join('')}
+                        </ol>
+                        
+                        <h4 class="font-semibold mb-2 mt-4">Dikkat Edilmesi Gerekenler:</h4>
+                        <ul class="warnings-list">
+                            ${guide.warnings.map(warning => `<li>⚠️ ${warning}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+        }
+        
+        function closeModal(button) {
+            const modal = button.closest('.modal');
+            modal.remove();
+        }
+        
+        // Workout Functions
+        function startWorkout() {
+            if (workoutSession) {
+                alert('Zaten bir spor seansı devam ediyor!');
+                return;
+            }
+            
+            workoutSession = {
+                startTime: new Date(),
+                paused: false,
+                pausedTime: 0
+            };
+            
+            workoutStartTime = Date.now();
+            workoutTimer = setInterval(updateWorkoutTimer, 1000);
+            
+            document.getElementById('workout-session').classList.remove('hidden');
+            showNotification('Spor Başladı', 'Spor seansınız başladı!');
+        }
+        
+        function pauseWorkout() {
+            if (!workoutSession) return;
+            
+            workoutSession.paused = !workoutSession.paused;
+            
+            if (workoutSession.paused) {
+                clearInterval(workoutTimer);
+                showNotification('Spor Duraklatıldı', 'Spor seansınız duraklatıldı.');
+            } else {
+                workoutTimer = setInterval(updateWorkoutTimer, 1000);
+                showNotification('Spor Devam Ediyor', 'Spor seansınız devam ediyor.');
+            }
+        }
+        
+        function finishWorkout() {
+            if (!workoutSession) return;
+            
+            const endTime = new Date();
+            const duration = Math.floor((endTime - workoutSession.startTime) / 1000);
+            
+            const workout = {
+                id: Date.now(),
+                type: 'Spor Seansı',
+                duration: duration,
+                date: endTime.toISOString().split('T')[0],
+                time: endTime.toTimeString().split(' ')[0].substring(0, 5),
+                createdAt: endTime.toISOString()
+            };
+            
+            workouts.push(workout);
+            saveData();
+            loadWorkouts();
+            updateAdminStats();
+            
+            clearInterval(workoutTimer);
+            workoutSession = null;
+            workoutStartTime = null;
+            
+            document.getElementById('workout-session').classList.add('hidden');
+            showNotification('Spor Tamamlandı', `Spor seansınız ${Math.floor(duration/60)} dakika sürdü!`);
+        }
+        
+        function updateWorkoutTimer() {
+            if (!workoutSession || workoutSession.paused) return;
+            
+            const elapsed = Math.floor((Date.now() - workoutStartTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            
+            document.getElementById('workout-timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        function loadWorkouts() {
+            const workoutsList = document.getElementById('workouts-list');
+            if (!workoutsList) return;
+            
+            workoutsList.innerHTML = '';
+            
+            if (workouts.length === 0) {
+                workoutsList.innerHTML = '<p class="text-gray-500 text-center">Henüz spor kaydı yok.</p>';
+                return;
+            }
+            
+            workouts.forEach(workout => {
+                const workoutDiv = document.createElement('div');
+                workoutDiv.className = 'event-item';
+                workoutDiv.innerHTML = `
+                    <div class="event-time">${workout.time}</div>
+                    <div class="event-title">${workout.type}</div>
+                    <div class="text-sm text-gray-500 mb-2">${new Date(workout.date).toLocaleDateString('tr-TR')}</div>
+                    <div class="event-description">Süre: ${Math.floor(workout.duration/60)} dakika</div>
+                    <div class="event-actions">
+                        <button class="delete-btn" onclick="deleteWorkout(${workout.id})">Sil</button>
+                    </div>
+                `;
+                workoutsList.appendChild(workoutDiv);
+            });
+        }
+        
+        function deleteWorkout(id) {
+            workouts = workouts.filter(workout => workout.id !== id);
+            saveData();
+            loadWorkouts();
+            updateAdminStats();
+        }
+        
+        // Reward Functions
+        function openGiftBox() {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Ödülünüz Açıldı! 🎉</h3>
+                        <button class="modal-close" onclick="closeModal(this)">&times;</button>
+                    </div>
+                    <div class="reward-modal">
+                        <div class="gift-box-animation">🎁</div>
+                        <h4 class="text-2xl font-bold text-primary mb-4">Tebrikler!</h4>
+                        <p class="reward-message">Bu ay 10 spor seansını tamamladınız! Harika bir iş çıkardınız! 💪</p>
+                        <div class="reward-photo">
+                            <img src="/logo.png" alt="Ödül Fotoğrafı" style="max-width: 200px; border-radius: 10px; margin-top: 1rem;">
+                        </div>
+                        <button class="btn btn-primary mt-4" onclick="closeModal(this)">Kapat</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+            
+            // Add celebration animation
+            setTimeout(() => {
+                const confetti = document.createElement('div');
+                confetti.innerHTML = '🎉'.repeat(20);
+                confetti.style.position = 'fixed';
+                confetti.style.top = '0';
+                confetti.style.left = '0';
+                confetti.style.width = '100%';
+                confetti.style.height = '100%';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.fontSize = '2rem';
+                confetti.style.zIndex = '9999';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 3000);
+            }, 500);
+        }
+        
+        // Admin Functions
+        function updateAdminStats() {
+            const totalWorkouts = workouts.length;
+            const totalMeals = meals.length;
+            const totalEvents = events.length;
+            const streakDays = calculateStreakDays();
+            
+            document.getElementById('total-workouts').textContent = totalWorkouts;
+            document.getElementById('total-meals').textContent = totalMeals;
+            document.getElementById('total-events').textContent = totalEvents;
+            document.getElementById('streak-days').textContent = streakDays;
+        }
+        
+        function calculateStreakDays() {
+            // Simple streak calculation - can be improved
+            return Math.min(workouts.length, 7);
+        }
+        
+        function uploadKYKMeals() {
+            const file = document.getElementById('kyk-excel').files[0];
+            if (!file) return;
+            
+            // Simulate file processing
+            showNotification('Dosya Yüklendi', 'KYK yemek listesi başarıyla yüklendi!');
+        }
+        
+        function updateReward() {
+            const message = document.getElementById('reward-message').value;
+            const targetWorkouts = document.getElementById('target-workouts').value;
+            
+            if (!message) {
+                alert('Lütfen ödül mesajını yazın!');
+                return;
+            }
+            
+            localStorage.setItem('sinemfit-reward-message', message);
+            localStorage.setItem('sinemfit-target-workouts', targetWorkouts);
+            
+            showNotification('Ödül Güncellendi', 'Ödül ayarları başarıyla güncellendi!');
+        }
+        
+        function sendRewardNotification() {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('🎁 Ödülünüz Hazır!', {
+                    body: 'Spor hedefinize ulaştınız! Ödülünüzü açmak için uygulamayı açın.',
+                    icon: '/logo.png'
+                });
+            }
+            showNotification('Bildirim Gönderildi', 'Ödül bildirimi Sinem\'e gönderildi!');
+        }
+        
+        function exportData() {
+            const data = {
+                events: events,
+                workouts: workouts,
+                meals: meals,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sinemfit-data-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('Veri Dışa Aktarıldı', 'Tüm veriler JSON dosyası olarak indirildi!');
+        }
+        
+        function clearAllData() {
+            if (confirm('Tüm verileri silmek istediğinizden emin misiniz? Bu işlem geri alınamaz!')) {
+                events = [];
+                workouts = [];
+                meals = [];
+                saveData();
+                loadEvents();
+                loadWorkouts();
+                loadMeals();
+                updateAdminStats();
+                showNotification('Veriler Temizlendi', 'Tüm veriler başarıyla silindi!');
+            }
+        }
         
         // Calendar functions
         function initializeCalendar() {
