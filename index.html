@@ -2099,6 +2099,111 @@
             box-shadow: 0 8px 25px rgba(107, 114, 128, 0.3);
         }
         
+        /* Meal Detail Card Styles */
+        .meal-detail-card {
+            background: linear-gradient(135deg, var(--primary-light), var(--white));
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .meal-detail-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.2);
+        }
+        
+        .meal-detail-card.custom-meal {
+            background: linear-gradient(135deg, var(--gray-100), var(--white));
+            border-color: var(--gray-400);
+        }
+        
+        .meal-detail-card.custom-meal:hover {
+            box-shadow: 0 8px 25px rgba(107, 114, 128, 0.2);
+        }
+        
+        .meal-detail-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+        
+        .meal-detail-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .meal-detail-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            flex: 1;
+        }
+        
+        .meal-detail-calories {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .meal-detail-items {
+            margin-bottom: 1rem;
+        }
+        
+        .meal-item {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+        }
+        
+        .meal-item:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+        
+        .meal-add-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+        }
+        
+        .meal-add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+        }
+        
+        .meal-add-btn.custom-btn {
+            background: linear-gradient(135deg, var(--gray-500), var(--gray-700));
+            box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
+        }
+        
+        .meal-add-btn.custom-btn:hover {
+            box-shadow: 0 8px 25px rgba(107, 114, 128, 0.4);
+        }
+        
         .meal-option-icon {
             font-size: 1.5rem;
             flex-shrink: 0;
@@ -5159,33 +5264,55 @@
             `;
             
             if (todayMeals) {
+                // Kahvaltı detayları
                 modalContent += `
-                            <button class="kyk-meal-option" onclick="addKykMeal('breakfast'); closeModal();">
-                                <div class="meal-option-icon">☀️</div>
-                                <div class="meal-option-info">
-                                    <div class="meal-option-title">KYK Kahvaltısı</div>
-                                    <div class="meal-option-calories">${todayMeals.breakfast.calories} kalori</div>
+                            <div class="meal-detail-card">
+                                <div class="meal-detail-header">
+                                    <div class="meal-detail-icon">☀️</div>
+                                    <div class="meal-detail-title">KYK Kahvaltısı</div>
+                                    <div class="meal-detail-calories">${todayMeals.breakfast.calories} kalori</div>
                                 </div>
-                            </button>
-                            
-                            <button class="kyk-meal-option" onclick="addKykMeal('dinner'); closeModal();">
-                                <div class="meal-option-icon">🌙</div>
-                                <div class="meal-option-info">
-                                    <div class="meal-option-title">KYK Akşam Yemeği</div>
-                                    <div class="meal-option-calories">${todayMeals.dinner.calories} kalori</div>
+                                <div class="meal-detail-items">
+                                    ${todayMeals.breakfast.items.map(item => `<div class="meal-item">${item}</div>`).join('')}
                                 </div>
-                            </button>
+                                <button class="meal-add-btn" onclick="addKykMeal('breakfast'); closeModal();">
+                                    Kahvaltıyı Ekle
+                                </button>
+                            </div>
+                `;
+                
+                // Akşam yemeği detayları
+                modalContent += `
+                            <div class="meal-detail-card">
+                                <div class="meal-detail-header">
+                                    <div class="meal-detail-icon">🌙</div>
+                                    <div class="meal-detail-title">KYK Akşam Yemeği</div>
+                                    <div class="meal-detail-calories">${todayMeals.dinner.calories} kalori</div>
+                                </div>
+                                <div class="meal-detail-items">
+                                    ${todayMeals.dinner.items.map(item => `<div class="meal-item">${item}</div>`).join('')}
+                                </div>
+                                <button class="meal-add-btn" onclick="addKykMeal('dinner'); closeModal();">
+                                    Akşam Yemeğini Ekle
+                                </button>
+                            </div>
                 `;
             }
             
             modalContent += `
-                            <button class="kyk-meal-option custom-meal" onclick="showCustomMealForm(); closeModal();">
-                                <div class="meal-option-icon">✏️</div>
-                                <div class="meal-option-info">
-                                    <div class="meal-option-title">Özel Yemek Ekle</div>
-                                    <div class="meal-option-calories">Kendi yemeğini ekle</div>
+                            <div class="meal-detail-card custom-meal">
+                                <div class="meal-detail-header">
+                                    <div class="meal-detail-icon">✏️</div>
+                                    <div class="meal-detail-title">Özel Yemek Ekle</div>
+                                    <div class="meal-detail-calories">Kendi yemeğini ekle</div>
                                 </div>
-                            </button>
+                                <div class="meal-detail-items">
+                                    <div class="meal-item">Kendi yemeğini manuel olarak ekleyebilirsin</div>
+                                </div>
+                                <button class="meal-add-btn custom-btn" onclick="showCustomMealForm(); closeModal();">
+                                    Özel Yemek Ekle
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
