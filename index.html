@@ -5307,9 +5307,9 @@
         // Yemek öğelerini işleyen fonksiyon
         function processMealItems(items) {
             return items.map(item => {
-                // "/" işareti varsa seçenekleri ayır
-                if (item.includes(' / ')) {
-                    const options = item.split(' / ').map(opt => opt.trim());
+                // "/" işareti varsa seçenekleri ayır (hem " / " hem de "/" için)
+                if (item.includes('/')) {
+                    const options = item.split(/\s*\/\s*/).map(opt => opt.trim());
                     return `
                         <div class="meal-item-group">
                             <div class="meal-item-label">🔀</div>
@@ -5603,19 +5603,9 @@
         }
         
         function loadKykMealsFromFile() {
-            // Try to load from localStorage first (for local testing)
-            const localMeals = localStorage.getItem('sinemfit-kyk-meals');
-            if (localMeals && localMeals !== '{}') {
-                try {
-                    kykMeals = JSON.parse(localMeals);
-                    updateKykMealsDisplay();
-                    showNotification('Başarılı', 'KYK yemekleri localStorage\'dan yüklendi!');
-                    console.log('Loaded from localStorage:', kykMeals);
-                    return;
-                } catch (error) {
-                    console.error('Error parsing localStorage meals:', error);
-                }
-            }
+            // Force load from JSON file (clear localStorage for testing)
+            localStorage.removeItem('sinemfit-kyk-meals');
+            console.log('Cleared localStorage, loading from JSON...');
             
             // Try to load from JSON file
             fetch('./kyk-meals.json')
