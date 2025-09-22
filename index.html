@@ -5100,7 +5100,9 @@
         }
         
         function showKykMealSelector() {
+            console.log('showKykMealSelector called');
             const todayMeals = getTodayKykMeals();
+            console.log('Today meals in selector:', todayMeals);
             
             // Create modal
             const modal = document.createElement('div');
@@ -5160,9 +5162,76 @@
             }
         }
         
+        function showCustomMealForm() {
+            const mealName = prompt('Yemek adını girin:');
+            if (!mealName || !mealName.trim()) {
+                return;
+            }
+            
+            const mealAmount = prompt('Miktar girin (örn: 1 porsiyon, 250ml):', '1 porsiyon');
+            if (!mealAmount || !mealAmount.trim()) {
+                return;
+            }
+            
+            const mealCalories = prompt('Kalori girin:', '200');
+            if (!mealCalories || isNaN(mealCalories)) {
+                return;
+            }
+            
+            const meal = {
+                id: Date.now(),
+                category: 'main',
+                name: mealName.trim(),
+                amount: mealAmount.trim(),
+                calories: parseInt(mealCalories),
+                timestamp: new Date().toISOString()
+            };
+            
+            meals.push(meal);
+            localStorage.setItem('sinemfit-meals', JSON.stringify(meals));
+            updateNutritionSummary();
+            
+            showNotification('Başarılı', `${mealName} eklendi!`);
+        }
+        
+        function showSnackSelector() {
+            const snackName = prompt('Atıştırmalık adını girin:');
+            if (!snackName || !snackName.trim()) {
+                return;
+            }
+            
+            const snackAmount = prompt('Miktar girin (örn: 1 adet, 100g):', '1 adet');
+            if (!snackAmount || !snackAmount.trim()) {
+                return;
+            }
+            
+            const snackCalories = prompt('Kalori girin:', '150');
+            if (!snackCalories || isNaN(snackCalories)) {
+                return;
+            }
+            
+            const snack = {
+                id: Date.now(),
+                category: 'snack',
+                name: snackName.trim(),
+                amount: snackAmount.trim(),
+                calories: parseInt(snackCalories),
+                timestamp: new Date().toISOString()
+            };
+            
+            meals.push(snack);
+            localStorage.setItem('sinemfit-meals', JSON.stringify(meals));
+            updateNutritionSummary();
+            
+            showNotification('Başarılı', `${snackName} eklendi!`);
+        }
+        
         function getTodayKykMeals() {
             const today = new Date();
             const dateString = today.toISOString().split('T')[0];
+            console.log('Today date string:', dateString);
+            console.log('Available KYK meals:', Object.keys(kykMeals));
+            console.log('Today meals:', kykMeals[dateString]);
             return kykMeals[dateString] || null;
         }
         
