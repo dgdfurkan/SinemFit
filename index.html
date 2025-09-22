@@ -1260,6 +1260,264 @@
             color: var(--gray-600);
         }
         
+        /* Quick Event Styles */
+        .quick-event-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .quick-event-btn {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quick-event-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .work-btn:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        
+        .study-btn:hover {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+        }
+        
+        .personal-btn:hover {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        
+        .social-btn:hover {
+            border-color: #f59e0b;
+            background: #fffbeb;
+        }
+        
+        .health-btn:hover {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        
+        .custom-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        
+        .event-icon {
+            font-size: 2rem;
+        }
+        
+        .quick-event-btn span {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        
+        /* Event Templates */
+        .event-templates {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .template-btn {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 15px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+        
+        .template-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .template-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+        
+        .template-info {
+            flex: 1;
+        }
+        
+        .template-title {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .template-desc {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        /* Quick Workout Styles */
+        .quick-workout-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .quick-workout-btn {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quick-workout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cardio-btn:hover {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        
+        .strength-btn:hover {
+            border-color: #f59e0b;
+            background: #fffbeb;
+        }
+        
+        .yoga-btn:hover {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+        }
+        
+        .dance-btn:hover {
+            border-color: #ec4899;
+            background: #fdf2f8;
+        }
+        
+        .custom-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        
+        .workout-icon {
+            font-size: 2rem;
+        }
+        
+        .quick-workout-btn span {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        
+        /* Workout Templates */
+        .workout-templates {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .workout-template-btn {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 15px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+        
+        .workout-template-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .workout-template-btn .template-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+        
+        .workout-template-btn .template-info {
+            flex: 1;
+        }
+        
+        .workout-template-btn .template-title {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .workout-template-btn .template-desc {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        /* Workout Stats */
+        .workout-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .stat-item {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .stat-item .stat-icon {
+            font-size: 2.5rem;
+        }
+        
+        .stat-item .stat-info {
+            flex: 1;
+        }
+        
+        .stat-item .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .stat-item .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+        
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -1411,30 +1669,70 @@
                             </div>
                         </div>
                         
-                        <!-- Add Event Form -->
+                        <!-- Quick Event Add -->
                         <div class="mt-6">
-                            <h3 class="text-lg font-semibold mb-4">Yeni Etkinlik Ekle</h3>
-                            <div class="form-group">
-                                <label class="form-label">Etkinlik Başlığı</label>
-                                <input type="text" class="form-input" id="event-title" placeholder="Etkinlik başlığı">
+                            <h3 class="text-lg font-semibold mb-4">Hızlı Etkinlik Ekleme</h3>
+                            <div class="quick-event-buttons">
+                                <button class="quick-event-btn work-btn" onclick="showQuickEventForm('work')">
+                                    <div class="event-icon">💼</div>
+                                    <span>İş</span>
+                                </button>
+                                <button class="quick-event-btn study-btn" onclick="showQuickEventForm('study')">
+                                    <div class="event-icon">📚</div>
+                                    <span>Ders</span>
+                                </button>
+                                <button class="quick-event-btn personal-btn" onclick="showQuickEventForm('personal')">
+                                    <div class="event-icon">👤</div>
+                                    <span>Kişisel</span>
+                                </button>
+                                <button class="quick-event-btn social-btn" onclick="showQuickEventForm('social')">
+                                    <div class="event-icon">👥</div>
+                                    <span>Sosyal</span>
+                                </button>
+                                <button class="quick-event-btn health-btn" onclick="showQuickEventForm('health')">
+                                    <div class="event-icon">🏥</div>
+                                    <span>Sağlık</span>
+                                </button>
+                                <button class="quick-event-btn custom-btn" onclick="showCustomEventForm()">
+                                    <div class="event-icon">✏️</div>
+                                    <span>Özel</span>
+                                </button>
                             </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Tarih</label>
-                                <input type="date" class="form-input" id="event-date">
+                        </div>
+                        
+                        <!-- Event Templates -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Etkinlik Şablonları</h3>
+                            <div class="event-templates">
+                                <button class="template-btn" onclick="useEventTemplate('morning-routine')">
+                                    <div class="template-icon">🌅</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Sabah Rutini</div>
+                                        <div class="template-desc">07:00 - Kahvaltı, 08:00 - İşe Git</div>
+                                    </div>
+                                </button>
+                                <button class="template-btn" onclick="useEventTemplate('evening-routine')">
+                                    <div class="template-icon">🌙</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Akşam Rutini</div>
+                                        <div class="template-desc">18:00 - Eve Dön, 19:00 - Yemek</div>
+                                    </div>
+                                </button>
+                                <button class="template-btn" onclick="useEventTemplate('study-session')">
+                                    <div class="template-icon">📖</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Ders Çalışma</div>
+                                        <div class="template-desc">2 saatlik ders çalışma seansı</div>
+                                    </div>
+                                </button>
+                                <button class="template-btn" onclick="useEventTemplate('workout-session')">
+                                    <div class="template-icon">💪</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Spor Seansı</div>
+                                        <div class="template-desc">1 saatlik spor programı</div>
+                                    </div>
+                                </button>
                             </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Saat</label>
-                                <input type="time" class="form-input" id="event-time">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Açıklama</label>
-                                <textarea class="form-input" id="event-description" rows="3" placeholder="Etkinlik açıklaması"></textarea>
-                            </div>
-                            
-                            <button class="btn btn-primary" onclick="addEvent()">Etkinlik Ekle</button>
                         </div>
                         
                         <!-- All Events List -->
@@ -1490,39 +1788,75 @@
                             </div>
                         </div>
                         
-                        <!-- Add Workout Form -->
-                        <div class="form-group">
-                            <label class="form-label">Spor Türü</label>
-                            <input type="text" class="form-input" id="workout-type" placeholder="Örn: Koşu, Yoga, Fitness">
+                        <!-- Quick Workout Add -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Hızlı Spor Ekleme</h3>
+                            <div class="quick-workout-buttons">
+                                <button class="quick-workout-btn cardio-btn" onclick="showQuickWorkoutForm('cardio')">
+                                    <div class="workout-icon">🏃‍♀️</div>
+                                    <span>Kardiyo</span>
+                                </button>
+                                <button class="quick-workout-btn strength-btn" onclick="showQuickWorkoutForm('strength')">
+                                    <div class="workout-icon">💪</div>
+                                    <span>Güç</span>
+                                </button>
+                                <button class="quick-workout-btn yoga-btn" onclick="showQuickWorkoutForm('yoga')">
+                                    <div class="workout-icon">🧘‍♀️</div>
+                                    <span>Yoga</span>
+                                </button>
+                                <button class="quick-workout-btn dance-btn" onclick="showQuickWorkoutForm('dance')">
+                                    <div class="workout-icon">💃</div>
+                                    <span>Dans</span>
+                                </button>
+                                <button class="quick-workout-btn custom-btn" onclick="showCustomWorkoutForm()">
+                                    <div class="workout-icon">✏️</div>
+                                    <span>Özel</span>
+                                </button>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label">Gün</label>
-                            <select class="form-input" id="workout-day">
-                                <option value="monday">Pazartesi</option>
-                                <option value="tuesday">Salı</option>
-                                <option value="wednesday">Çarşamba</option>
-                                <option value="thursday">Perşembe</option>
-                                <option value="friday">Cuma</option>
-                                <option value="saturday">Cumartesi</option>
-                                <option value="sunday">Pazar</option>
-                            </select>
+                        <!-- Workout Templates -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Spor Şablonları</h3>
+                            <div class="workout-templates">
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('morning-cardio')">
+                                    <div class="template-icon">🌅</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Sabah Kardiyo</div>
+                                        <div class="template-desc">30 dk koşu/yürüyüş</div>
+                                    </div>
+                                </button>
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('evening-strength')">
+                                    <div class="template-icon">🌙</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Akşam Güç</div>
+                                        <div class="template-desc">45 dk ağırlık antrenmanı</div>
+                                    </div>
+                                </button>
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('yoga-session')">
+                                    <div class="template-icon">🧘‍♀️</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Yoga Seansı</div>
+                                        <div class="template-desc">60 dk yoga ve meditasyon</div>
+                                    </div>
+                                </button>
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('dance-party')">
+                                    <div class="template-icon">💃</div>
+                                    <div class="template-info">
+                                        <div class="template-title">Dans Partisi</div>
+                                        <div class="template-desc">40 dk dans ve eğlence</div>
+                                    </div>
+                                </button>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label">Saat</label>
-                            <input type="time" class="form-input" id="workout-time">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Süre (dakika)</label>
-                            <input type="number" class="form-input" id="workout-duration" placeholder="30">
-                        </div>
-                        
-                        <div class="flex gap-2">
-                            <button class="btn btn-primary" onclick="addWorkout()">Spor Ekle</button>
-                            <button class="btn btn-success" onclick="startWorkout()">Spora Başla</button>
-                            <button class="btn btn-warning" onclick="testNotification()">Bildirim Testi</button>
+                        <!-- Action Buttons -->
+                        <div class="mt-6">
+                            <div class="flex gap-2 flex-wrap">
+                                <button class="btn btn-success" onclick="startWorkout()">Spora Başla</button>
+                                <button class="btn btn-warning" onclick="testNotification()">Bildirim Testi</button>
+                                <button class="btn btn-info" onclick="showWorkoutStats()">İstatistikler</button>
+                            </div>
                         </div>
                         
                         <div id="workouts-list" class="mt-6">
@@ -1993,6 +2327,456 @@
             document.getElementById('meal-count').textContent = mealCount;
             document.getElementById('snack-count').textContent = snackCount;
             document.getElementById('calorie-count').textContent = totalCalories;
+        }
+        
+        // Quick Event Functions
+        function showQuickEventForm(category) {
+            const categoryData = {
+                work: { title: 'İş', icon: '💼', color: '#3b82f6' },
+                study: { title: 'Ders', icon: '📚', color: '#8b5cf6' },
+                personal: { title: 'Kişisel', icon: '👤', color: '#10b981' },
+                social: { title: 'Sosyal', icon: '👥', color: '#f59e0b' },
+                health: { title: 'Sağlık', icon: '🏥', color: '#ef4444' }
+            };
+            
+            const data = categoryData[category];
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">${data.title} Etkinliği Ekle</h3>
+                        <button class="modal-close" onclick="closeModal(this)">&times;</button>
+                    </div>
+                    <div class="quick-event-form">
+                        <div class="form-group">
+                            <label class="form-label">Etkinlik Başlığı</label>
+                            <input type="text" class="form-input" id="quick-event-title" placeholder="${data.title} etkinliği">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tarih</label>
+                            <input type="date" class="form-input" id="quick-event-date" value="${new Date().toISOString().split('T')[0]}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Saat</label>
+                            <input type="time" class="form-input" id="quick-event-time" value="${new Date().toTimeString().split(' ')[0].substring(0, 5)}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Açıklama</label>
+                            <textarea class="form-input" id="quick-event-description" rows="2" placeholder="Etkinlik açıklaması"></textarea>
+                        </div>
+                        <button class="btn btn-primary" onclick="addQuickEvent('${category}')">Etkinlik Ekle</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+        }
+        
+        function showCustomEventForm() {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Özel Etkinlik Ekle</h3>
+                        <button class="modal-close" onclick="closeModal(this)">&times;</button>
+                    </div>
+                    <div class="custom-event-form">
+                        <div class="form-group">
+                            <label class="form-label">Etkinlik Başlığı</label>
+                            <input type="text" class="form-input" id="custom-event-title" placeholder="Etkinlik başlığı">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Kategori</label>
+                            <select class="form-input" id="custom-event-category">
+                                <option value="work">💼 İş</option>
+                                <option value="study">📚 Ders</option>
+                                <option value="personal">👤 Kişisel</option>
+                                <option value="social">👥 Sosyal</option>
+                                <option value="health">🏥 Sağlık</option>
+                                <option value="custom">✏️ Özel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tarih</label>
+                            <input type="date" class="form-input" id="custom-event-date" value="${new Date().toISOString().split('T')[0]}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Saat</label>
+                            <input type="time" class="form-input" id="custom-event-time" value="${new Date().toTimeString().split(' ')[0].substring(0, 5)}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Açıklama</label>
+                            <textarea class="form-input" id="custom-event-description" rows="3" placeholder="Etkinlik açıklaması"></textarea>
+                        </div>
+                        <button class="btn btn-primary" onclick="addCustomEvent()">Etkinlik Ekle</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+        }
+        
+        function addQuickEvent(category) {
+            const title = document.getElementById('quick-event-title').value;
+            const date = document.getElementById('quick-event-date').value;
+            const time = document.getElementById('quick-event-time').value;
+            const description = document.getElementById('quick-event-description').value;
+            
+            if (!title) {
+                alert('Lütfen etkinlik başlığını girin!');
+                return;
+            }
+            
+            const event = {
+                id: Date.now(),
+                title: title,
+                category: category,
+                date: date,
+                time: time,
+                description: description,
+                createdAt: new Date().toISOString()
+            };
+            
+            events.push(event);
+            saveData();
+            loadEvents();
+            loadTodayEvents();
+            renderCalendar();
+            
+            closeModal(document.querySelector('.modal-close'));
+            showNotification('Etkinlik Eklendi', `${title} etkinliği eklendi!`);
+        }
+        
+        function addCustomEvent() {
+            const title = document.getElementById('custom-event-title').value;
+            const category = document.getElementById('custom-event-category').value;
+            const date = document.getElementById('custom-event-date').value;
+            const time = document.getElementById('custom-event-time').value;
+            const description = document.getElementById('custom-event-description').value;
+            
+            if (!title) {
+                alert('Lütfen etkinlik başlığını girin!');
+                return;
+            }
+            
+            const event = {
+                id: Date.now(),
+                title: title,
+                category: category,
+                date: date,
+                time: time,
+                description: description,
+                createdAt: new Date().toISOString()
+            };
+            
+            events.push(event);
+            saveData();
+            loadEvents();
+            loadTodayEvents();
+            renderCalendar();
+            
+            closeModal(document.querySelector('.modal-close'));
+            showNotification('Etkinlik Eklendi', `${title} etkinliği eklendi!`);
+        }
+        
+        function useEventTemplate(templateType) {
+            const templates = {
+                'morning-routine': {
+                    title: 'Sabah Rutini',
+                    time: '07:00',
+                    description: 'Kahvaltı, hazırlanma, işe gitme'
+                },
+                'evening-routine': {
+                    title: 'Akşam Rutini',
+                    time: '18:00',
+                    description: 'Eve dönüş, yemek, dinlenme'
+                },
+                'study-session': {
+                    title: 'Ders Çalışma',
+                    time: '20:00',
+                    description: '2 saatlik ders çalışma seansı'
+                },
+                'workout-session': {
+                    title: 'Spor Seansı',
+                    time: '19:00',
+                    description: '1 saatlik spor programı'
+                }
+            };
+            
+            const template = templates[templateType];
+            const event = {
+                id: Date.now(),
+                title: template.title,
+                category: 'personal',
+                date: new Date().toISOString().split('T')[0],
+                time: template.time,
+                description: template.description,
+                createdAt: new Date().toISOString()
+            };
+            
+            events.push(event);
+            saveData();
+            loadEvents();
+            loadTodayEvents();
+            renderCalendar();
+            
+            showNotification('Şablon Eklendi', `${template.title} şablonu eklendi!`);
+        }
+        
+        // Quick Workout Functions
+        function showQuickWorkoutForm(type) {
+            const typeData = {
+                cardio: { title: 'Kardiyo', icon: '🏃‍♀️', color: '#ef4444' },
+                strength: { title: 'Güç', icon: '💪', color: '#f59e0b' },
+                yoga: { title: 'Yoga', icon: '🧘‍♀️', color: '#8b5cf6' },
+                dance: { title: 'Dans', icon: '💃', color: '#ec4899' }
+            };
+            
+            const data = typeData[type];
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">${data.title} Antrenmanı Ekle</h3>
+                        <button class="modal-close" onclick="closeModal(this)">&times;</button>
+                    </div>
+                    <div class="quick-workout-form">
+                        <div class="form-group">
+                            <label class="form-label">Antrenman Adı</label>
+                            <input type="text" class="form-input" id="quick-workout-name" placeholder="${data.title} antrenmanı">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Gün</label>
+                            <select class="form-input" id="quick-workout-day">
+                                <option value="monday">Pazartesi</option>
+                                <option value="tuesday">Salı</option>
+                                <option value="wednesday">Çarşamba</option>
+                                <option value="thursday">Perşembe</option>
+                                <option value="friday">Cuma</option>
+                                <option value="saturday">Cumartesi</option>
+                                <option value="sunday">Pazar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Saat</label>
+                            <input type="time" class="form-input" id="quick-workout-time" value="${new Date().toTimeString().split(' ')[0].substring(0, 5)}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Süre (dakika)</label>
+                            <input type="number" class="form-input" id="quick-workout-duration" placeholder="30" value="30">
+                        </div>
+                        <button class="btn btn-primary" onclick="addQuickWorkout('${type}')">Antrenman Ekle</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+        }
+        
+        function showCustomWorkoutForm() {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Özel Antrenman Ekle</h3>
+                        <button class="modal-close" onclick="closeModal(this)">&times;</button>
+                    </div>
+                    <div class="custom-workout-form">
+                        <div class="form-group">
+                            <label class="form-label">Antrenman Adı</label>
+                            <input type="text" class="form-input" id="custom-workout-name" placeholder="Antrenman adı">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tür</label>
+                            <select class="form-input" id="custom-workout-type">
+                                <option value="cardio">🏃‍♀️ Kardiyo</option>
+                                <option value="strength">💪 Güç</option>
+                                <option value="yoga">🧘‍♀️ Yoga</option>
+                                <option value="dance">💃 Dans</option>
+                                <option value="custom">✏️ Özel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Gün</label>
+                            <select class="form-input" id="custom-workout-day">
+                                <option value="monday">Pazartesi</option>
+                                <option value="tuesday">Salı</option>
+                                <option value="wednesday">Çarşamba</option>
+                                <option value="thursday">Perşembe</option>
+                                <option value="friday">Cuma</option>
+                                <option value="saturday">Cumartesi</option>
+                                <option value="sunday">Pazar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Saat</label>
+                            <input type="time" class="form-input" id="custom-workout-time" value="${new Date().toTimeString().split(' ')[0].substring(0, 5)}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Süre (dakika)</label>
+                            <input type="number" class="form-input" id="custom-workout-duration" placeholder="30">
+                        </div>
+                        <button class="btn btn-primary" onclick="addCustomWorkout()">Antrenman Ekle</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+        }
+        
+        function addQuickWorkout(type) {
+            const name = document.getElementById('quick-workout-name').value;
+            const day = document.getElementById('quick-workout-day').value;
+            const time = document.getElementById('quick-workout-time').value;
+            const duration = parseInt(document.getElementById('quick-workout-duration').value) || 30;
+            
+            if (!name) {
+                alert('Lütfen antrenman adını girin!');
+                return;
+            }
+            
+            const workout = {
+                id: Date.now(),
+                type: name,
+                category: type,
+                day: day,
+                time: time,
+                duration: duration,
+                createdAt: new Date().toISOString()
+            };
+            
+            workouts.push(workout);
+            saveData();
+            loadWorkouts();
+            updateAdminStats();
+            
+            closeModal(document.querySelector('.modal-close'));
+            showNotification('Antrenman Eklendi', `${name} antrenmanı eklendi!`);
+        }
+        
+        function addCustomWorkout() {
+            const name = document.getElementById('custom-workout-name').value;
+            const type = document.getElementById('custom-workout-type').value;
+            const day = document.getElementById('custom-workout-day').value;
+            const time = document.getElementById('custom-workout-time').value;
+            const duration = parseInt(document.getElementById('custom-workout-duration').value) || 30;
+            
+            if (!name) {
+                alert('Lütfen antrenman adını girin!');
+                return;
+            }
+            
+            const workout = {
+                id: Date.now(),
+                type: name,
+                category: type,
+                day: day,
+                time: time,
+                duration: duration,
+                createdAt: new Date().toISOString()
+            };
+            
+            workouts.push(workout);
+            saveData();
+            loadWorkouts();
+            updateAdminStats();
+            
+            closeModal(document.querySelector('.modal-close'));
+            showNotification('Antrenman Eklendi', `${name} antrenmanı eklendi!`);
+        }
+        
+        function useWorkoutTemplate(templateType) {
+            const templates = {
+                'morning-cardio': {
+                    type: 'Sabah Kardiyo',
+                    time: '07:00',
+                    duration: 30,
+                    category: 'cardio'
+                },
+                'evening-strength': {
+                    type: 'Akşam Güç',
+                    time: '19:00',
+                    duration: 45,
+                    category: 'strength'
+                },
+                'yoga-session': {
+                    type: 'Yoga Seansı',
+                    time: '20:00',
+                    duration: 60,
+                    category: 'yoga'
+                },
+                'dance-party': {
+                    type: 'Dans Partisi',
+                    time: '18:00',
+                    duration: 40,
+                    category: 'dance'
+                }
+            };
+            
+            const template = templates[templateType];
+            const workout = {
+                id: Date.now(),
+                type: template.type,
+                category: template.category,
+                day: 'monday',
+                time: template.time,
+                duration: template.duration,
+                createdAt: new Date().toISOString()
+            };
+            
+            workouts.push(workout);
+            saveData();
+            loadWorkouts();
+            updateAdminStats();
+            
+            showNotification('Şablon Eklendi', `${template.type} şablonu eklendi!`);
+        }
+        
+        function showWorkoutStats() {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Spor İstatistikleri</h3>
+                        <button class="modal-close" onclick="closeModal(this)">&times;</button>
+                    </div>
+                    <div class="workout-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">💪</div>
+                            <div class="stat-info">
+                                <div class="stat-number">${workouts.length}</div>
+                                <div class="stat-label">Toplam Antrenman</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-info">
+                                <div class="stat-number">${workouts.reduce((sum, w) => sum + w.duration, 0)}</div>
+                                <div class="stat-label">Toplam Dakika</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">🔥</div>
+                            <div class="stat-info">
+                                <div class="stat-number">${Math.floor(workouts.reduce((sum, w) => sum + w.duration, 0) / 60)}</div>
+                                <div class="stat-label">Toplam Saat</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
         }
         
         // Equipment Guide Functions
