@@ -1784,7 +1784,7 @@
             <div class="container">
                 <div class="header-content">
                     <div class="logo-section">
-                        <img src="/logo.png" alt="SinemFit Logo" class="logo">
+                        <img src="./logo.png" alt="SinemFit Logo" class="logo">
                         <h1 class="app-title">SinemFit</h1>
                     </div>
                     
@@ -2193,12 +2193,12 @@
                         <p class="text-gray-600">Spor hedeflerinize ulaşın ve ödüllerinizi kazanın!</p>
                         
                         <!-- Progress Section -->
-                        <div class="text-center mb-6">
-                            <div class="text-2xl font-bold text-primary mb-2">Bu Ay: 5/10 Spor</div>
+                        <div class="text-center mb-6" id="reward-progress-section" style="display: none;">
+                            <div class="text-2xl font-bold text-primary mb-2" id="reward-progress-text">Bu Ay: 0/0 Spor</div>
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width: 50%"></div>
+                                <div class="progress-fill" id="reward-progress-fill" style="width: 0%"></div>
                             </div>
-                            <p class="text-sm text-gray-600 mt-2">5 spor daha yapın, ödülünüzü kazanın!</p>
+                            <p class="text-sm text-gray-600 mt-2" id="reward-progress-message">Hedef belirlenmedi</p>
                         </div>
                         
                         <!-- Gift Box -->
@@ -3577,6 +3577,27 @@
         
         // Reward Functions
         function openGiftBox() {
+            const rewardData = JSON.parse(localStorage.getItem('sinemfit-reward') || '{}');
+            
+            if (!rewardData.message || !rewardData.targetWorkouts) {
+                alert('Henüz ödül belirlenmemiş. Admin panelinden ödül ayarlayın.');
+                return;
+            }
+            
+            // Check if target is reached
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+            const monthlyWorkouts = workouts.filter(workout => {
+                const workoutDate = new Date(workout.createdAt);
+                return workoutDate.getMonth() === currentMonth && workoutDate.getFullYear() === currentYear;
+            }).length;
+            
+            if (monthlyWorkouts < rewardData.targetWorkouts) {
+                const remaining = rewardData.targetWorkouts - monthlyWorkouts;
+                alert(`Henüz hedefinize ulaşmadınız. ${remaining} spor daha yapmanız gerekiyor.`);
+                return;
+            }
+            
             const modal = document.createElement('div');
             modal.className = 'modal';
             modal.innerHTML = `
@@ -3588,10 +3609,8 @@
                     <div class="reward-modal">
                         <div class="gift-box-animation">🎁</div>
                         <h4 class="text-2xl font-bold text-primary mb-4">Tebrikler!</h4>
-                        <p class="reward-message">Bu ay 10 spor seansını tamamladınız! Harika bir iş çıkardınız! 💪</p>
-                        <div class="reward-photo">
-                            <img src="/logo.png" alt="Ödül Fotoğrafı" style="max-width: 200px; border-radius: 10px; margin-top: 1rem;">
-                        </div>
+                        <p class="reward-message">${rewardData.message}</p>
+                        ${rewardData.photo ? `<div class="reward-photo"><img src="${rewardData.photo}" alt="Ödül Fotoğrafı" style="max-width: 200px; border-radius: 10px; margin-top: 1rem;"></div>` : ''}
                         <button class="btn btn-primary mt-4" onclick="closeModal(this)">Kapat</button>
                     </div>
                 </div>
@@ -3616,6 +3635,8 @@
                 
                 setTimeout(() => confetti.remove(), 3000);
             }, 500);
+            
+            showNotification('Ödül Kazanıldı!', 'Tebrikler! Ödülünüzü kazandınız!');
         }
         
         // Admin Functions
@@ -4030,6 +4051,7 @@
             loadEvents();
             loadWorkouts();
             loadMeals();
+            updateRewardProgress();
         }
         
         function saveData() {
@@ -4326,6 +4348,7 @@
         function updateReward() {
             const message = document.getElementById('reward-message').value;
             const photo = document.getElementById('reward-photo').files[0];
+            const targetWorkouts = parseInt(document.getElementById('target-workouts').value) || 10;
             
             if (!message) {
                 alert('Lütfen ödül mesajını yazın');
@@ -4336,12 +4359,51 @@
             const reward = {
                 message: message,
                 photo: photo ? photo.name : null,
+                targetWorkouts: targetWorkouts,
                 updatedAt: new Date().toISOString()
             };
             
             localStorage.setItem('sinemfit-reward', JSON.stringify(reward));
             
+            // Update reward progress display
+            updateRewardProgress();
+            
             alert('Ödül güncellendi!');
+        }
+        
+        function updateRewardProgress() {
+            const rewardData = JSON.parse(localStorage.getItem('sinemfit-reward') || '{}');
+            const progressSection = document.getElementById('reward-progress-section');
+            
+            if (rewardData.message && rewardData.targetWorkouts) {
+                // Show progress section
+                progressSection.style.display = 'block';
+                
+                // Calculate current month's workouts
+                const currentMonth = new Date().getMonth();
+                const currentYear = new Date().getFullYear();
+                const monthlyWorkouts = workouts.filter(workout => {
+                    const workoutDate = new Date(workout.createdAt);
+                    return workoutDate.getMonth() === currentMonth && workoutDate.getFullYear() === currentYear;
+                }).length;
+                
+                const target = rewardData.targetWorkouts;
+                const progress = Math.min((monthlyWorkouts / target) * 100, 100);
+                
+                // Update progress display
+                document.getElementById('reward-progress-text').textContent = `Bu Ay: ${monthlyWorkouts}/${target} Spor`;
+                document.getElementById('reward-progress-fill').style.width = `${progress}%`;
+                
+                if (monthlyWorkouts >= target) {
+                    document.getElementById('reward-progress-message').textContent = '🎉 Hedef tamamlandı! Ödülünüzü alabilirsiniz!';
+                } else {
+                    const remaining = target - monthlyWorkouts;
+                    document.getElementById('reward-progress-message').textContent = `${remaining} spor daha yapın, ödülünüzü kazanın!`;
+                }
+            } else {
+                // Hide progress section if no reward is set
+                progressSection.style.display = 'none';
+            }
         }
         
         // Notification System
