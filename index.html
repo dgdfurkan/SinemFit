@@ -5040,7 +5040,7 @@
                 console.log(`Processing line ${i}: "${line}"`);
                 
                 // Date line (e.g., "15 Eylül 2025") - Check if this line contains a date pattern
-                if (line.match(/\d+\s+\w+\s+\d+/)) {
+                if (line.match(/^\d+\s+\w+\s+\d+$/)) {
                     console.log('Found date line:', line);
                     const dateMatch = line.match(/(\d+)\s+(\w+)\s+(\d+)/);
                     if (dateMatch) {
@@ -5111,7 +5111,9 @@
                 else if (currentMeal && currentDate && line && 
                          !line.includes('kalori') && 
                          line !== '☀️' && line !== '🌙' &&
-                         line !== 'Kahvaltı' && line !== 'Akşam Yemeği') {
+                         line !== 'Kahvaltı' && line !== 'Akşam Yemeği' &&
+                         !line.match(/^\d+$/) && // Don't add single numbers
+                         !line.match(/^\d+\s+\w+\s+\d+$/)) { // Don't add date lines
                     console.log(`Adding item to ${currentMeal}:`, line);
                     meals[currentDate][currentMeal].items.push(line);
                 }
@@ -5122,12 +5124,10 @@
         }
         
         function saveKykMealsToFile(meals) {
-            // In a real implementation, this would save to the server
-            // For now, we'll save to localStorage and show a message
+            // Save to localStorage for persistence
             localStorage.setItem('sinemfit-kyk-meals', JSON.stringify(meals));
-            
-            // Show success message
-            showNotification('Başarılı', 'Yemekler JSON dosyasına kaydedildi!');
+            console.log('Saved to localStorage:', meals);
+            showNotification('Başarılı', 'Yemekler localStorage\'a kaydedildi!');
         }
         
         function showKykMealSelector() {
