@@ -516,6 +516,168 @@
             }
         }
         
+        /* Calendar Styles */
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .calendar-nav {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .calendar-nav:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+        
+        .calendar-grid {
+            display: grid;
+            gap: 1px;
+            background: var(--gray-200);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .calendar-grid.month-view {
+            grid-template-columns: repeat(7, 1fr);
+        }
+        
+        .calendar-grid.week-view {
+            grid-template-columns: repeat(7, 1fr);
+        }
+        
+        .calendar-grid.day-view {
+            grid-template-columns: 1fr;
+        }
+        
+        .calendar-day {
+            background: var(--white);
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .calendar-day:hover {
+            background: var(--primary-light);
+        }
+        
+        .calendar-day.today {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .calendar-day.has-events {
+            background: var(--accent);
+            color: var(--white);
+        }
+        
+        .calendar-day.has-events::after {
+            content: '●';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 0.75rem;
+        }
+        
+        .calendar-day-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .day-number {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .day-events {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+        
+        .event-item {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .event-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .event-time {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: 0.25rem;
+        }
+        
+        .event-title {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .event-description {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        .event-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .event-actions button {
+            background: none;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .edit-btn {
+            color: var(--primary);
+        }
+        
+        .edit-btn:hover {
+            background: var(--primary-light);
+        }
+        
+        .delete-btn {
+            color: var(--error);
+        }
+        
+        .delete-btn:hover {
+            background: var(--error);
+            color: var(--white);
+        }
+        
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -632,25 +794,73 @@
                         <h2 class="card-title">Takvim</h2>
                         <p class="text-gray-600">Günlük, haftalık ve aylık planlarınızı yönetin.</p>
                         
-                        <div class="form-group">
-                            <label class="form-label">Etkinlik Başlığı</label>
-                            <input type="text" class="form-input" id="event-title" placeholder="Etkinlik başlığı">
+                        <!-- Calendar View Toggle -->
+                        <div class="flex gap-2 mb-6">
+                            <button class="btn btn-primary" onclick="setCalendarView('month')" id="month-view-btn">Aylık</button>
+                            <button class="btn btn-secondary" onclick="setCalendarView('week')" id="week-view-btn">Haftalık</button>
+                            <button class="btn btn-secondary" onclick="setCalendarView('day')" id="day-view-btn">Günlük</button>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label">Tarih</label>
-                            <input type="date" class="form-input" id="event-date">
+                        <!-- Calendar Header -->
+                        <div class="calendar-header">
+                            <button class="calendar-nav" onclick="previousPeriod()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="15,18 9,12 15,6"></polyline>
+                                </svg>
+                            </button>
+                            <h3 id="current-period" class="text-xl font-bold"></h3>
+                            <button class="calendar-nav" onclick="nextPeriod()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9,18 15,12 9,6"></polyline>
+                                </svg>
+                            </button>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label">Saat</label>
-                            <input type="time" class="form-input" id="event-time">
+                        <!-- Calendar Grid -->
+                        <div id="calendar-grid" class="calendar-grid">
+                            <!-- Calendar will be generated here -->
                         </div>
                         
-                        <button class="btn btn-primary" onclick="addEvent()">Etkinlik Ekle</button>
+                        <!-- Today's Events -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Bugünkü Etkinlikler</h3>
+                            <div id="today-events">
+                                <!-- Today's events will be listed here -->
+                            </div>
+                        </div>
                         
-                        <div id="events-list" class="mt-6">
-                            <!-- Events will be listed here -->
+                        <!-- Add Event Form -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Yeni Etkinlik Ekle</h3>
+                            <div class="form-group">
+                                <label class="form-label">Etkinlik Başlığı</label>
+                                <input type="text" class="form-input" id="event-title" placeholder="Etkinlik başlığı">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Tarih</label>
+                                <input type="date" class="form-input" id="event-date">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Saat</label>
+                                <input type="time" class="form-input" id="event-time">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Açıklama</label>
+                                <textarea class="form-input" id="event-description" rows="3" placeholder="Etkinlik açıklaması"></textarea>
+                            </div>
+                            
+                            <button class="btn btn-primary" onclick="addEvent()">Etkinlik Ekle</button>
+                        </div>
+                        
+                        <!-- All Events List -->
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold mb-4">Tüm Etkinlikler</h3>
+                            <div id="events-list">
+                                <!-- Events will be listed here -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -793,6 +1003,8 @@
     <script>
         // Global variables
         let currentScreen = 'welcome';
+        let currentCalendarView = 'month';
+        let currentDate = new Date();
         let events = JSON.parse(localStorage.getItem('sinemfit-events') || '[]');
         let workouts = JSON.parse(localStorage.getItem('sinemfit-workouts') || '[]');
         let meals = JSON.parse(localStorage.getItem('sinemfit-meals') || '[]');
@@ -802,7 +1014,268 @@
             checkNotificationPermission();
             loadData();
             showScreen('welcome');
+            initializeCalendar();
         });
+        
+        // Calendar functions
+        function initializeCalendar() {
+            updateCalendarHeader();
+            renderCalendar();
+            loadTodayEvents();
+        }
+        
+        function setCalendarView(view) {
+            currentCalendarView = view;
+            
+            // Update button states
+            document.getElementById('month-view-btn').className = 'btn btn-secondary';
+            document.getElementById('week-view-btn').className = 'btn btn-secondary';
+            document.getElementById('day-view-btn').className = 'btn btn-secondary';
+            
+            if (view === 'month') {
+                document.getElementById('month-view-btn').className = 'btn btn-primary';
+            } else if (view === 'week') {
+                document.getElementById('week-view-btn').className = 'btn btn-primary';
+            } else if (view === 'day') {
+                document.getElementById('day-view-btn').className = 'btn btn-primary';
+            }
+            
+            updateCalendarHeader();
+            renderCalendar();
+        }
+        
+        function updateCalendarHeader() {
+            const periodElement = document.getElementById('current-period');
+            if (!periodElement) return;
+            
+            if (currentCalendarView === 'month') {
+                const monthNames = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 
+                                  'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+                periodElement.textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+            } else if (currentCalendarView === 'week') {
+                const weekStart = getWeekStart(currentDate);
+                const weekEnd = new Date(weekStart);
+                weekEnd.setDate(weekStart.getDate() + 6);
+                periodElement.textContent = `${weekStart.getDate()}-${weekEnd.getDate()} ${getMonthName(weekStart.getMonth())} ${weekStart.getFullYear()}`;
+            } else if (currentCalendarView === 'day') {
+                const dayNames = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+                periodElement.textContent = `${dayNames[currentDate.getDay()]}, ${currentDate.getDate()} ${getMonthName(currentDate.getMonth())} ${currentDate.getFullYear()}`;
+            }
+        }
+        
+        function getMonthName(month) {
+            const monthNames = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 
+                              'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+            return monthNames[month];
+        }
+        
+        function getWeekStart(date) {
+            const start = new Date(date);
+            start.setDate(date.getDate() - date.getDay());
+            return start;
+        }
+        
+        function previousPeriod() {
+            if (currentCalendarView === 'month') {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+            } else if (currentCalendarView === 'week') {
+                currentDate.setDate(currentDate.getDate() - 7);
+            } else if (currentCalendarView === 'day') {
+                currentDate.setDate(currentDate.getDate() - 1);
+            }
+            updateCalendarHeader();
+            renderCalendar();
+        }
+        
+        function nextPeriod() {
+            if (currentCalendarView === 'month') {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+            } else if (currentCalendarView === 'week') {
+                currentDate.setDate(currentDate.getDate() + 7);
+            } else if (currentCalendarView === 'day') {
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            updateCalendarHeader();
+            renderCalendar();
+        }
+        
+        function renderCalendar() {
+            const grid = document.getElementById('calendar-grid');
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            grid.className = `calendar-grid ${currentCalendarView}-view`;
+            
+            if (currentCalendarView === 'month') {
+                renderMonthView(grid);
+            } else if (currentCalendarView === 'week') {
+                renderWeekView(grid);
+            } else if (currentCalendarView === 'day') {
+                renderDayView(grid);
+            }
+        }
+        
+        function renderMonthView(grid) {
+            // Add day headers
+            const dayHeaders = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
+            dayHeaders.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-day-header';
+                header.textContent = day;
+                grid.appendChild(header);
+            });
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const startDate = new Date(firstDay);
+            startDate.setDate(startDate.getDate() - firstDay.getDay());
+            
+            // Add empty cells for days before month start
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day';
+                emptyDay.style.background = 'var(--gray-100)';
+                grid.appendChild(emptyDay);
+            }
+            
+            // Add days of month
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                
+                const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+                const today = new Date();
+                
+                if (dayDate.toDateString() === today.toDateString()) {
+                    dayElement.classList.add('today');
+                }
+                
+                const dayEvents = getEventsForDate(dayDate);
+                if (dayEvents.length > 0) {
+                    dayElement.classList.add('has-events');
+                }
+                
+                dayElement.innerHTML = `
+                    <div class="day-number">${day}</div>
+                    <div class="day-events">${dayEvents.length} etkinlik</div>
+                `;
+                
+                dayElement.onclick = () => showDayEvents(dayDate);
+                grid.appendChild(dayElement);
+            }
+        }
+        
+        function renderWeekView(grid) {
+            const weekStart = getWeekStart(currentDate);
+            
+            // Add day headers
+            const dayHeaders = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
+            dayHeaders.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-day-header';
+                header.textContent = day;
+                grid.appendChild(header);
+            });
+            
+            // Add week days
+            for (let i = 0; i < 7; i++) {
+                const dayDate = new Date(weekStart);
+                dayDate.setDate(weekStart.getDate() + i);
+                
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                
+                const today = new Date();
+                if (dayDate.toDateString() === today.toDateString()) {
+                    dayElement.classList.add('today');
+                }
+                
+                const dayEvents = getEventsForDate(dayDate);
+                if (dayEvents.length > 0) {
+                    dayElement.classList.add('has-events');
+                }
+                
+                dayElement.innerHTML = `
+                    <div class="day-number">${dayDate.getDate()}</div>
+                    <div class="day-events">${dayEvents.length} etkinlik</div>
+                `;
+                
+                dayElement.onclick = () => showDayEvents(dayDate);
+                grid.appendChild(dayElement);
+            }
+        }
+        
+        function renderDayView(grid) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day';
+            
+            const today = new Date();
+            if (currentDate.toDateString() === today.toDateString()) {
+                dayElement.classList.add('today');
+            }
+            
+            const dayEvents = getEventsForDate(currentDate);
+            
+            dayElement.innerHTML = `
+                <div class="day-number">${currentDate.getDate()}</div>
+                <div class="day-events">${dayEvents.length} etkinlik</div>
+            `;
+            
+            dayElement.onclick = () => showDayEvents(currentDate);
+            grid.appendChild(dayElement);
+        }
+        
+        function getEventsForDate(date) {
+            const dateString = date.toISOString().split('T')[0];
+            return events.filter(event => event.date === dateString);
+        }
+        
+        function showDayEvents(date) {
+            const dayEvents = getEventsForDate(date);
+            const dateString = date.toLocaleDateString('tr-TR');
+            
+            let message = `${dateString} tarihinde ${dayEvents.length} etkinlik var:\n\n`;
+            dayEvents.forEach(event => {
+                message += `• ${event.time} - ${event.title}\n`;
+                if (event.description) {
+                    message += `  ${event.description}\n`;
+                }
+                message += '\n';
+            });
+            
+            alert(message);
+        }
+        
+        function loadTodayEvents() {
+            const todayEventsContainer = document.getElementById('today-events');
+            if (!todayEventsContainer) return;
+            
+            const today = new Date();
+            const todayEvents = getEventsForDate(today);
+            
+            todayEventsContainer.innerHTML = '';
+            
+            if (todayEvents.length === 0) {
+                todayEventsContainer.innerHTML = '<p class="text-gray-500 text-center">Bugün için etkinlik yok.</p>';
+                return;
+            }
+            
+            todayEvents.forEach(event => {
+                const eventDiv = document.createElement('div');
+                eventDiv.className = 'event-item';
+                eventDiv.innerHTML = `
+                    <div class="event-time">${event.time}</div>
+                    <div class="event-title">${event.title}</div>
+                    ${event.description ? `<div class="event-description">${event.description}</div>` : ''}
+                    <div class="event-actions">
+                        <button class="edit-btn" onclick="editEvent(${event.id})">Düzenle</button>
+                        <button class="delete-btn" onclick="deleteEvent(${event.id})">Sil</button>
+                    </div>
+                `;
+                todayEventsContainer.appendChild(eventDiv);
+            });
+        }
         
         // Screen management
         function showScreen(screenId) {
@@ -885,6 +1358,7 @@
             const title = document.getElementById('event-title').value;
             const date = document.getElementById('event-date').value;
             const time = document.getElementById('event-time').value;
+            const description = document.getElementById('event-description').value;
             
             if (!title || !date || !time) {
                 alert('Lütfen tüm alanları doldurun');
@@ -896,19 +1370,52 @@
                 title: title,
                 date: date,
                 time: time,
+                description: description,
                 createdAt: new Date().toISOString()
             };
             
             events.push(event);
             saveData();
             loadEvents();
+            loadTodayEvents();
+            renderCalendar();
             
             // Clear form
             document.getElementById('event-title').value = '';
             document.getElementById('event-date').value = '';
             document.getElementById('event-time').value = '';
+            document.getElementById('event-description').value = '';
             
             showNotification('Etkinlik Eklendi', `${title} etkinliği takviminize eklendi.`);
+        }
+        
+        function editEvent(id) {
+            const event = events.find(e => e.id === id);
+            if (!event) return;
+            
+            const newTitle = prompt('Etkinlik başlığı:', event.title);
+            if (newTitle === null) return;
+            
+            const newDate = prompt('Tarih (YYYY-MM-DD):', event.date);
+            if (newDate === null) return;
+            
+            const newTime = prompt('Saat (HH:MM):', event.time);
+            if (newTime === null) return;
+            
+            const newDescription = prompt('Açıklama:', event.description || '');
+            if (newDescription === null) return;
+            
+            event.title = newTitle;
+            event.date = newDate;
+            event.time = newTime;
+            event.description = newDescription;
+            
+            saveData();
+            loadEvents();
+            loadTodayEvents();
+            renderCalendar();
+            
+            showNotification('Etkinlik Güncellendi', `${newTitle} etkinliği güncellendi.`);
         }
         
         function loadEvents() {
@@ -922,21 +1429,24 @@
                 return;
             }
             
-            events.forEach(event => {
+            // Sort events by date and time
+            const sortedEvents = events.sort((a, b) => {
+                const dateA = new Date(`${a.date} ${a.time}`);
+                const dateB = new Date(`${b.date} ${b.time}`);
+                return dateA - dateB;
+            });
+            
+            sortedEvents.forEach(event => {
                 const eventDiv = document.createElement('div');
-                eventDiv.className = 'p-4 bg-gray-50 rounded-lg mb-2';
+                eventDiv.className = 'event-item';
                 eventDiv.innerHTML = `
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h3 class="font-semibold">${event.title}</h3>
-                            <p class="text-sm text-gray-600">${event.date} - ${event.time}</p>
-                        </div>
-                        <button onclick="deleteEvent(${event.id})" class="text-red-500 hover:text-red-700">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="3,6 5,6 21,6"></polyline>
-                                <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6M8,6V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6"></path>
-                            </svg>
-                        </button>
+                    <div class="event-time">${event.time}</div>
+                    <div class="event-title">${event.title}</div>
+                    <div class="text-sm text-gray-500 mb-2">${new Date(event.date).toLocaleDateString('tr-TR')}</div>
+                    ${event.description ? `<div class="event-description">${event.description}</div>` : ''}
+                    <div class="event-actions">
+                        <button class="edit-btn" onclick="editEvent(${event.id})">Düzenle</button>
+                        <button class="delete-btn" onclick="deleteEvent(${event.id})">Sil</button>
                     </div>
                 `;
                 eventsList.appendChild(eventDiv);
@@ -947,6 +1457,8 @@
             events = events.filter(event => event.id !== id);
             saveData();
             loadEvents();
+            loadTodayEvents();
+            renderCalendar();
         }
         
         // Workouts
