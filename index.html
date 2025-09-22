@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SinemFit - Sağlıklı Yaşam Uygulaması</title>
-    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="icon" type="image/png" href="./logo.png">
     
     <!-- PWA Meta Tags -->
     <meta name="description" content="Sinem için özel tasarlanmış sağlıklı yaşam takip uygulaması">
     <meta name="theme-color" content="#e91e63">
-    <link rel="apple-touch-icon" href="/logo.png">
+    <link rel="apple-touch-icon" href="./logo.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="SinemFit">
@@ -4161,7 +4161,7 @@
             if ('Notification' in window && Notification.permission === 'granted') {
                 new Notification('🎁 Ödülünüz Hazır!', {
                     body: 'Spor hedefinize ulaştınız! Ödülünüzü açmak için uygulamayı açın.',
-                    icon: '/logo.png'
+                    icon: './logo.png'
                 });
             }
             showNotification('Bildirim Gönderildi', 'Ödül bildirimi Sinem\'e gönderildi!');
@@ -4529,8 +4529,8 @@
             if ('Notification' in window && Notification.permission === 'granted') {
                 new Notification(title, {
                     body: body,
-                    icon: '/logo.png',
-                    badge: '/logo.png'
+                    icon: './logo.png',
+                    badge: './logo.png'
                 });
             }
         }
@@ -4967,8 +4967,8 @@
                     setTimeout(() => {
                         new Notification(title, {
                             body: body,
-                            icon: '/logo.png',
-                            badge: '/logo.png',
+                            icon: './logo.png',
+                            badge: './logo.png',
                             tag: 'sinemfit-notification'
                         });
                     }, delay);
@@ -5039,8 +5039,8 @@
                 const line = lines[i];
                 console.log(`Processing line ${i}: "${line}"`);
                 
-                // Date line (e.g., "15 Eylül 2025")
-                if (line.match(/^\d+\s+\w+\s+\d+$/)) {
+                // Date line (e.g., "15 Eylül 2025") - Check if this line contains a date pattern
+                if (line.match(/\d+\s+\w+\s+\d+/)) {
                     console.log('Found date line:', line);
                     const dateMatch = line.match(/(\d+)\s+(\w+)\s+(\d+)/);
                     if (dateMatch) {
@@ -5362,16 +5362,32 @@
         }
         
         function loadKykMealsFromFile() {
+            // Try to load from localStorage first (for local testing)
+            const localMeals = localStorage.getItem('sinemfit-kyk-meals');
+            if (localMeals) {
+                try {
+                    kykMeals = JSON.parse(localMeals);
+                    updateKykMealsDisplay();
+                    showNotification('Başarılı', 'KYK yemekleri localStorage\'dan yüklendi!');
+                    console.log('Loaded from localStorage:', kykMeals);
+                    return;
+                } catch (error) {
+                    console.error('Error parsing localStorage meals:', error);
+                }
+            }
+            
+            // If localStorage is empty, try to fetch from server (for GitHub Pages)
             fetch('./kyk-meals.json')
                 .then(response => response.json())
                 .then(data => {
                     kykMeals = data;
                     updateKykMealsDisplay();
                     showNotification('Başarılı', 'KYK yemekleri JSON dosyasından yüklendi!');
+                    console.log('Loaded from server:', kykMeals);
                 })
                 .catch(error => {
                     console.error('Error loading KYK meals:', error);
-                    showNotification('Hata', 'KYK yemekleri yüklenemedi!');
+                    showNotification('Hata', 'KYK yemekleri yüklenemedi! Önce admin panelinden yemekleri yükleyin.');
                 });
         }
         
