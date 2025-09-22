@@ -2233,9 +2233,9 @@
         }
         
         .meal-item-label {
-            font-size: 0.7rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: var(--gray-600);
+            color: var(--primary);
             margin-right: 0.3rem;
         }
         
@@ -5310,140 +5310,21 @@
         // Yemek öğelerini işleyen fonksiyon
         function processMealItems(items) {
             return items.map(item => {
-                // Emoji ekleme fonksiyonu
-                const addEmoji = (text) => {
-                    const emojiMap = {
-                        'Menemen': '🍳',
-                        'Dere Otlu Poğaça': '🥐',
-                        'Labne Peynir': '🧀',
-                        'Siyah/ Yeşil Zeytin': '🫒',
-                        'Reçel Çeşitleri': '🍯',
-                        '500 mı su': '💧',
-                        'Çeyrek Ekmek': '🍞',
-                        'Yayla Çorba': '🍲',
-                        'Tarhana Çorba': '🍲',
-                        'Et Tantuni': '🍖',
-                        'Lavaş': '🥖',
-                        'Patates Kızartması': '🍟',
-                        'Bezelye Yemeği': '🫛',
-                        'Salçalı Bulgur Pilavı': '🍚',
-                        'Kaşık Salata': '🥗',
-                        'Yoğurtlu Semizotu': '🥬',
-                        'Yoğurt': '🥛',
-                        'Ayran': '🥛',
-                        'Mercimek Çorba': '🍲',
-                        'Kremalı Mantar Çorba': '🍄',
-                        'Buğu Kebabı': '🍖',
-                        'İmam Bayıldı': '🍆',
-                        'Şehriyeli Pirinç Pilavı': '🍚',
-                        'Peynirli Omlet': '🍳',
-                        'Simit': '🥯',
-                        'Kaşar Peyniri': '🧀',
-                        'Sürülebilir Çikolata': '🍫',
-                        'Arabaşı Çorba': '🍲',
-                        'Anadolu Çorba': '🍲',
-                        'Kadınbudu Köfte': '🍖',
-                        'Fırın Sebze': '🥕',
-                        'Mücver': '🥕',
-                        'Salçalı Makarna': '🍝',
-                        'Karışık Pizza': '🍕',
-                        'Haşlanmış Yumurta': '🥚',
-                        'Krem Peynir': '🧀',
-                        'Mevsim Sebzeleri Söğüş': '🥒',
-                        'Şehriye Çorba': '🍲',
-                        'Tavuk Suyu Çorba': '🍲',
-                        'Etli Çökertme Kebabı': '🍖',
-                        'Yeşil Fasulye Yemeği': '🫛',
-                        'Şehriyeli Bulgur Pilavı': '🍚',
-                        'Karışık Salata': '🥗',
-                        'Zeytinli/ Peynirli Açma': '🥐',
-                        'Zeytinli Açma': '🥐',
-                        'Peynirli Açma': '🥐',
-                        'Bal+Tereyağ': '🍯',
-                        'Ezogelin Çorba': '🍲',
-                        'Cennet Çorba': '🍲',
-                        'Şinitzel': '🍖',
-                        'Söğüş': '🥒',
-                        'Karışık Dolma': '🥬',
-                        'Spagetti Napoliten': '🍝',
-                        'Supangle': '🍰',
-                        'Sucuklu Yumurta': '🍳',
-                        'Çikolatalı Milföy Börek': '🥐',
-                        'Yöresel Peynir': '🧀',
-                        'Tahinli Pekmez': '🍯',
-                        'Kuru Fasulye': '🫘',
-                        'Şakşuka': '🍆',
-                        'Baklava': '🍰',
-                        'Kadayıf': '🍰',
-                        'Sosis Kokteyl': '🌭',
-                        'Tavuk Fajita': '🍖',
-                        'Barbunya Yemeği': '🫘',
-                        'Erişte': '🍜',
-                        'Kaşarlı Omlet': '🍳',
-                        'Mozaik Kek': '🧁',
-                        'Izgara Köfte': '🍖',
-                        'Patlıcan Çığırtma': '🍆',
-                        'Yoğurtlu Makarna': '🍝',
-                        'Yaş Pasta': '🍰',
-                        'Karışık Kızartma': '🍟',
-                        'Köri Soslu Tavuk': '🍖',
-                        'Elma Dilim Patates': '🍟',
-                        'Sebzeli Bulgur Pilavı': '🍚',
-                        'Rus Salatası': '🥗',
-                        'Sade Omlet': '🍳',
-                        'Nohut Yemeği': '🫘',
-                        'Napoliten Soslu Karışık Kızartma': '🍟',
-                        'Şekerpare': '🍰',
-                        'Turşu': '🥒',
-                        'Domates Çorba': '🍲',
-                        'Tavuk Sote': '🍖',
-                        'Cacık': '🥛',
-                        'Patatesli Börek': '🥐',
-                        'Yüksük Çorba': '🍲',
-                        'Tavuk Köfte': '🍖',
-                        'Mevsim Türlü': '🥕',
-                        'Tarator': '🥛',
-                        'Sade Açma': '🥐',
-                        'Kaşarlı Köfte': '🍖',
-                        'Ispanak Yemeği': '🥬'
-                    };
-                    
-                    // Özel durumlar
-                    if (text.includes('Siyah/ Yeşil Zeytin')) {
-                        return '🫒 Siyah/🫒 Yeşil Zeytin';
-                    }
-                    if (text.includes('Yoğurtlu Semizotu')) {
-                        return '🥬🥛 Yoğurtlu Semizotu';
-                    }
-                    if (text.includes('Siyah/YeşiI Zeytin')) {
-                        return '🫒 Siyah/🫒 Yeşil Zeytin';
-                    }
-                    
-                    // Normal emoji eşleştirme
-                    for (const [key, emoji] of Object.entries(emojiMap)) {
-                        if (text.includes(key)) {
-                            return `${emoji} ${text}`;
-                        }
-                    }
-                    
-                    return text;
-                };
-                
                 // "/" işareti varsa seçenekleri ayır
                 if (item.includes('/')) {
                     const options = item.split('/').map(opt => opt.trim());
                     return `
                         <div class="meal-item-group">
-                            <div class="meal-item-label">Seç:</div>
+                            <div class="meal-item-label">🔀</div>
                             ${options.map(option => `
                                 <div class="meal-item-option" onclick="selectMealOption(this)">
-                                    ${addEmoji(option)}
+                                    ${option}
                                 </div>
                             `).join('')}
                         </div>
                     `;
                 } else {
-                    return `<div class="meal-item" onclick="selectMealItem(this)">${addEmoji(item)}</div>`;
+                    return `<div class="meal-item" onclick="selectMealItem(this)">${item}</div>`;
                 }
             }).join('');
         }

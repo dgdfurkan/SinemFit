@@ -8,8 +8,8 @@
         "🍟 Patates Kızartması",
         "🥚 Haşlanmış Yumurta",
         "🧀 Beyaz Peynir",
-        "🫒 Siyah/Yeşil Zeytin",
-        "🥗 Mevsim Sebzeleri Söğüş",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
+        "🥒 Mevsim Sebzeleri Söğüş",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -17,10 +17,10 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Mercimek Çorba / Kremalı Mantar Çorba",
-        "🍖 Buğu Kebabı / İmam Bayıldı",
+        "🍲 Mercimek Çorba / 🍄 Kremalı Mantar Çorba",
+        "🍖 Buğu Kebabı / 🍆 İmam Bayıldı",
         "🍚 Şehriyeli Pirinç Pilavı",
-        "🥬 Yoğurtlu Semizotu",
+        "🥬🥛 Yoğurtlu Semizotu",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -33,9 +33,9 @@
       "calories": 770,
       "items": [
         "🍳 Peynirli Omlet",
-        "🥨 Simit",
+        "🥯 Simit",
         "🧀 Kaşar Peyniri",
-        "🫒 Siyah/Yeşil Zeytin",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
         "🍫 Sürülebilir Çikolata",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
@@ -44,8 +44,8 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Arabaşı Çorba / Anadolu Çorba",
-        "🥩 Kadınbudu Köfte+Fırın Sebze / Mücver",
+        "🍲 Arabaşı Çorba / 🍲 Anadolu Çorba",
+        "🍖 Kadınbudu Köfte+🥕 Fırın Sebze / 🥕 Mücver",
         "🍝 Salçalı Makarna",
         "🥛 Ayran",
         "💧 500 ml su",
@@ -62,8 +62,8 @@
         "🍕 Karışık Pizza",
         "🥚 Haşlanmış Yumurta",
         "🧀 Krem Peynir",
-        "🫒 Siyah/Yeşil Zeytin",
-        "🥗 Mevsim Sebzeleri Söğüş",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
+        "🥒 Mevsim Sebzeleri Söğüş",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -71,8 +71,8 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Şehriye Çorba / Tavuk Suyu Çorba",
-        "🍖 Etli Çökertme Kebabı / Yeşil Fasulye Yemeği",
+        "🍲 Şehriye Çorba / 🍲 Tavuk Suyu Çorba",
+        "🍖 Etli Çökertme Kebabı / 🫛 Yeşil Fasulye Yemeği",
         "🍚 Şehriyeli Bulgur Pilavı",
         "🥗 Karışık Salata",
         "💧 500 ml su",
@@ -87,9 +87,9 @@
       "calories": 770,
       "items": [
         "🍳 Peynirli Omlet",
-        "🥐 Zeytinli/Peynirli Açma",
+        "🥐 Zeytinli/🥐 Peynirli Açma",
         "🧀 Kaşar Peyniri",
-        "🫒 Siyah/Yeşil Zeytin",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
         "🍯 Reçel Çeşitleri",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
@@ -99,7 +99,7 @@
       "calories": 1300,
       "items": [
         "🍲 Şehriye Çorba",
-        "🥩 Salçalı Köfte",
+        "🍖 Salçalı Köfte",
         "🍚 Şehriyeli Bulgur Pilavı",
         "🍈 Kavun",
         "💧 500 ml su",
@@ -113,11 +113,11 @@
     "breakfast": {
       "calories": 770,
       "items": [
-        "🥐 Zeytinli/Peynirli Açma",
+        "🥐 Zeytinli/🥐 Peynirli Açma",
         "🥚 Haşlanmış Yumurta",
         "🧀 Kaşar Peyniri",
-        "🫒 Siyah/Yeşil Zeytin",
-        "🍯 Bal+Tereyağ",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
+        "🍯 Bal+🧈 Tereyağ",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -125,8 +125,8 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Ezogelin Çorba / Cennet Çorba",
-        "🍖 Şinitzel+Söğüş / Karışık Dolma + Yoğurt",
+        "🍲 Ezogelin Çorba / 🍲 Cennet Çorba",
+        "🍖 Şinitzel+🥒 Söğüş / 🥬 Karışık Dolma + 🥛 Yoğurt",
         "🍝 Spagetti Napoliten",
         "🍰 Supangle",
         "💧 500 ml su",
@@ -143,8 +143,8 @@
         "🍳 Sucuklu Yumurta",
         "🥐 Çikolatalı Milföy Börek",
         "🧀 Yöresel Peynir",
-        "🫒 Siyah/Yeşil Zeytin",
-        "🥗 Mevsim Sebzeleri Söğüş",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
+        "🥒 Mevsim Sebzeleri Söğüş",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -153,7 +153,7 @@
       "calories": 1300,
       "items": [
         "🍲 Mercimek Çorba",
-        "🍖 Tavuk Şiş+Köz Sebzeler / Ispanak Yemeği",
+        "🍖 Tavuk Şiş+🥕 Köz Sebzeler / 🥬 Ispanak Yemeği",
         "🍝 Fırın Makarna",
         "🥛 Yoğurt",
         "💧 500 ml su",
@@ -170,7 +170,7 @@
         "🍟 Patates Kızartması",
         "🥚 Haşlanmış Yumurta",
         "🧀 Labne Peynir",
-        "🫒 Siyah/Yeşil Zeytin",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
         "🍯 Tahinli Pekmez",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
@@ -179,10 +179,10 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Arabaşı Çorba / Ayran Aşı Çorba",
-        "🍲 Kuru Fasulye / Şakşuka",
+        "🍲 Arabaşı Çorba / 🍲 Ayran Aşı Çorba",
+        "🫘 Kuru Fasulye / 🍆 Şakşuka",
         "🍚 Şehriyeli Pirinç Pilavı",
-        "🍰 Baklava-Kadayıf(Cevizli/Fındıklı)",
+        "🍰 Baklava-🍰 Kadayıf(Cevizli/Fındıklı)",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -197,7 +197,7 @@
         "🍳 Menemen",
         "🥐 Dere Otlu Poğaça",
         "🧀 Labne Peynir",
-        "🫒 Siyah/Yeşil Zeytin",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
         "🍯 Reçel Çeşitleri",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
@@ -206,8 +206,8 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Yayla Çorba / Tarhana Çorba",
-        "🍖 Et Tantuni+Lavaş+Patates Kızartması / Bezelye Yemeği",
+        "🍲 Yayla Çorba / 🍲 Tarhana Çorba",
+        "🍖 Et Tantuni+🥖 Lavaş+🍟 Patates Kızartması / 🫛 Bezelye Yemeği",
         "🍚 Salçalı Bulgur Pilavı",
         "🥗 Kaşık Salata",
         "💧 500 ml su",
@@ -224,8 +224,8 @@
         "🌭 Sosis Kokteyl(Salçalı veya Kızartma)",
         "🥚 Haşlanmış Yumurta",
         "🧀 Beyaz Peynir",
-        "🫒 Siyah/Yeşil Zeytin",
-        "🥗 Mevsim Sebzeleri Söğüş",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
+        "🥒 Mevsim Sebzeleri Söğüş",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -233,9 +233,9 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Ezogelin Çorba / Sebze Çorba",
-        "🍖 Tavuk Fajita / Barbunya Yemeği",
-        "🍝 Erişte",
+        "🍲 Ezogelin Çorba / 🍲 Sebze Çorba",
+        "🍖 Tavuk Fajita / 🫘 Barbunya Yemeği",
+        "🍜 Erişte",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -250,7 +250,7 @@
         "🍳 Kaşarlı Omlet",
         "🧁 Mozaik Kek",
         "🧀 Yöresel Peynir",
-        "🫒 Siyah/Yeşil Zeytin",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
         "🍯 Tahinli Pekmez",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
@@ -259,9 +259,9 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Şehriye Çorba / Tavuk Suyu Çorba",
-        "🍖 Izgara Köfte+Söğüş / Patlıcan Çığırtma",
-        "🍝 Yoğurtlu Makarna",
+        "🍲 Şehriye Çorba / 🍲 Tavuk Suyu Çorba",
+        "🍖 Izgara Köfte+🥒 Söğüş / 🍆 Patlıcan Çığırtma",
+        "🍝🥛 Yoğurtlu Makarna",
         "🍰 Yaş Pasta",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
@@ -277,8 +277,8 @@
         "🍟 Karışık Kızartma",
         "🥚 Haşlanmış Yumurta",
         "🧀 Beyaz Peynir",
-        "🫒 Siyah/Yeşil Zeytin",
-        "🥗 Mevsim Sebzeleri Söğüş",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
+        "🥒 Mevsim Sebzeleri Söğüş",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -286,8 +286,8 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Yayla Çorba / Köylüm Çorba",
-        "🍖 Köri Soslu Tavuk+Elma Dilim Patates / Mücver",
+        "🍲 Yayla Çorba / 🍲 Köylüm Çorba",
+        "🍖 Köri Soslu Tavuk+🍟 Elma Dilim Patates / 🥕 Mücver",
         "🍚 Sebzeli Bulgur Pilavı",
         "🥗 Rus Salatası",
         "💧 500 ml su",
@@ -302,9 +302,9 @@
       "calories": 770,
       "items": [
         "🍳 Sade Omlet",
-        "🥨 Simit",
+        "🥯 Simit",
         "🧀 Kaşar Peyniri",
-        "🫒 Siyah/Yeşil Zeytin",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
         "🍫 Sürülebilir Çikolata",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
@@ -313,8 +313,8 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Arabaşı Çorba / Anadolu Çorba",
-        "🍲 Nohut Yemeği / Napoliten Soslu Karışık Kızartma+Yoğurt",
+        "🍲 Arabaşı Çorba / 🍲 Anadolu Çorba",
+        "🫘 Nohut Yemeği / 🍟 Napoliten Soslu Karışık Kızartma+🥛 Yoğurt",
         "🍚 Şehriyeli Pirinç Pilavı",
         "🍰 Şekerpare",
         "🥒 Turşu",
@@ -332,8 +332,8 @@
         "🍟 Patates Kızartması",
         "🥚 Haşlanmış Yumurta",
         "🧀 Beyaz Peynir",
-        "🫒 Siyah/Yeşil Zeytin",
-        "🥗 Mevsim Sebzeleri Söğüş",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
+        "🥒 Mevsim Sebzeleri Söğüş",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -341,8 +341,8 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Mercimek Çorba / Domates Çorba",
-        "🍖 Tavuk Sote / Karışık Dolma",
+        "🍲 Mercimek Çorba / 🍲 Domates Çorba",
+        "🍖 Tavuk Sote / 🥬 Karışık Dolma",
         "🍝 Salçalı Makarna",
         "🥛 Cacık",
         "💧 500 ml su",
@@ -359,8 +359,8 @@
         "🥐 Patatesli Börek",
         "🥚 Haşlanmış Yumurta",
         "🧀 Kaşar Peyniri",
-        "🫒 Siyah/Yeşil Zeytin",
-        "🥗 Mevsim Sebzeleri Söğüş",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
+        "🥒 Mevsim Sebzeleri Söğüş",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
       ]
@@ -368,8 +368,8 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Yayla Çorba / Yüksük Çorba",
-        "🍖 Tavuk Köfte+Fırın Sebze / Mevsim Türlü",
+        "🍲 Yayla Çorba / 🍲 Yüksük Çorba",
+        "🍖 Tavuk Köfte+🥕 Fırın Sebze / 🥕 Mevsim Türlü",
         "🍚 Şehriyeli Pirinç Pilavı",
         "🥛 Tarator",
         "💧 500 ml su",
@@ -386,7 +386,7 @@
         "🍳 Sucuklu Yumurta",
         "🥐 Sade Açma",
         "🧀 Yöresel Peynir",
-        "🫒 Siyah/Yeşil Zeytin",
+        "🫒 Siyah/🫒 Yeşil Zeytin",
         "🍯 Reçel Çeşitleri",
         "💧 500 ml su",
         "🍞 Çeyrek Ekmek"
@@ -395,8 +395,8 @@
     "dinner": {
       "calories": 1300,
       "items": [
-        "🍲 Ezogelin Çorba / Cennet Çorba",
-        "🍖 Kaşarlı Köfte+Karışık Salata / Ispanak Yemeği+Yoğurt",
+        "🍲 Ezogelin Çorba / 🍲 Cennet Çorba",
+        "🍖 Kaşarlı Köfte+🥗 Karışık Salata / 🥬 Ispanak Yemeği+🥛 Yoğurt",
         "🍝 Salçalı Makarna",
         "🥛 Ayran",
         "💧 500 ml su",
