@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SinemFit - Sağlıklı Yaşam Uygulaması</title>
+    <link rel="icon" type="image/png" href="/logo.png">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Sinem için özel tasarlanmış sağlıklı yaşam takip uygulaması">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="apple-touch-icon" href="/logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SinemFit">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --white: #ffffff;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+        }
+        
+        .app-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            color: var(--gray-600);
+        }
+        
+        .menu-toggle:hover {
+            background: var(--gray-100);
+        }
+        
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: var(--gray-600);
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover {
+            background: var(--gray-100);
+            color: var(--primary);
+        }
+        
+        .nav-item.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 2rem 0;
+        }
+        
+        .screen {
+            display: none;
+        }
+        
+        .screen.active {
+            display: block;
+        }
+        
+        .welcome-screen {
+            text-align: center;
+            color: var(--white);
+            padding: 4rem 0;
+        }
+        
+        .welcome-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .welcome-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .welcome-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgb(99 102 241 / 0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--gray-300);
+        }
+        
+        .btn-success {
+            background: var(--success);
+            color: var(--white);
+        }
+        
+        .btn-warning {
+            background: var(--warning);
+            color: var(--white);
+        }
+        
+        .btn-error {
+            background: var(--error);
+            color: var(--white);
+        }
+        
+        .grid {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-sm {
+            font-size: 0.875rem;
+        }
+        
+        .text-lg {
+            font-size: 1.125rem;
+        }
+        
+        .text-xl {
+            font-size: 1.25rem;
+        }
+        
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+        
+        .font-semibold {
+            font-weight: 600;
+        }
+        
+        .text-gray-500 {
+            color: var(--gray-500);
+        }
+        
+        .text-gray-600 {
+            color: var(--gray-600);
+        }
+        
+        .text-gray-700 {
+            color: var(--gray-700);
+        }
+        
+        .text-gray-900 {
+            color: var(--gray-900);
+        }
+        
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+        
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .mt-4 {
+            margin-top: 1rem;
+        }
+        
+        .mt-6 {
+            margin-top: 1.5rem;
+        }
+        
+        .p-4 {
+            padding: 1rem;
+        }
+        
+        .p-6 {
+            padding: 1.5rem;
+        }
+        
+        .rounded {
+            border-radius: 0.25rem;
+        }
+        
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+        
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+        
+        .shadow {
+            box-shadow: var(--shadow);
+        }
+        
+        .shadow-lg {
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .flex-col {
+            flex-direction: column;
+        }
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .justify-center {
+            justify-content: center;
+        }
+        
+        .justify-between {
+            justify-content: space-between;
+        }
+        
+        .gap-2 {
+            gap: 0.5rem;
+        }
+        
+        .gap-4 {
+            gap: 1rem;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .notification-permission {
+            background: var(--warning);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .notification-permission button {
+            background: var(--white);
+            color: var(--warning);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                border-top: 1px solid var(--gray-200);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+            }
+            
+            .nav.active {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1rem;
+            }
+            
+            .grid-cols-2,
+            .grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 0.5rem;
+            }
+            
+            .card {
+                padding: 1rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-300);
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gray-400);
+        }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <img src="/logo.png" alt="SinemFit Logo" class="logo">
+                        <h1 class="app-title">SinemFit</h1>
+                    </div>
+                    
+                    <button class="menu-toggle" onclick="toggleMobileMenu()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    
+                    <nav class="nav" id="nav">
+                        <a href="#" class="nav-item" onclick="showScreen('welcome')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9,22 9,12 15,12 15,22"></polyline>
+                            </svg>
+                            Ana Sayfa
+                        </a>
+                        <a href="#" class="nav-item" onclick="showScreen('calendar')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            Takvim
+                        </a>
+                        <a href="#" class="nav-item" onclick="showScreen('workout')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6.5 6.5h11v11h-11z"></path>
+                                <path d="M6.5 6.5L12 12l5.5-5.5"></path>
+                                <path d="M12 12l5.5 5.5L12 23l-5.5-5.5z"></path>
+                            </svg>
+                            Spor
+                        </a>
+                        <a href="#" class="nav-item" onclick="showScreen('nutrition')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                            Beslenme
+                        </a>
+                        <a href="#" class="nav-item" onclick="showScreen('rewards')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                            Ödüller
+                        </a>
+                        <a href="#" class="nav-item" onclick="showScreen('admin')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                            </svg>
+                            Admin
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <main class="main-content">
+            <div class="container">
+                <!-- Notification Permission -->
+                <div id="notification-permission" class="notification-permission hidden">
+                    <span>Bildirimler için izin verin</span>
+                    <button onclick="requestNotificationPermission()">İzin Ver</button>
+                </div>
+                
+                <!-- Welcome Screen -->
+                <div id="welcome" class="screen active">
+                    <div class="welcome-screen">
+                        <img src="/logo.png" alt="SinemFit Logo" class="welcome-logo">
+                        <h1 class="welcome-title">SinemFit</h1>
+                        <p class="welcome-subtitle">Sağlıklı yaşam yolculuğuna hoş geldin!</p>
+                        <button class="btn btn-primary" onclick="showScreen('calendar')">
+                            Başlayalım
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9,18 15,12 9,6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Calendar Screen -->
+                <div id="calendar" class="screen">
+                    <div class="card">
+                        <h2 class="card-title">Takvim</h2>
+                        <p class="text-gray-600">Günlük, haftalık ve aylık planlarınızı yönetin.</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Etkinlik Ekle</label>
+                            <input type="text" class="form-input" id="event-title" placeholder="Etkinlik başlığı">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Tarih</label>
+                            <input type="date" class="form-input" id="event-date">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Saat</label>
+                            <input type="time" class="form-input" id="event-time">
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="addEvent()">Etkinlik Ekle</button>
+                        
+                        <div id="events-list" class="mt-6">
+                            <!-- Events will be listed here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Workout Screen -->
+                <div id="workout" class="screen">
+                    <div class="card">
+                        <h2 class="card-title">Spor Programı</h2>
+                        <p class="text-gray-600">Haftalık spor programınızı oluşturun ve takip edin.</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Spor Türü</label>
+                            <input type="text" class="form-input" id="workout-type" placeholder="Örn: Koşu, Yoga, Fitness">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Gün</label>
+                            <select class="form-input" id="workout-day">
+                                <option value="monday">Pazartesi</option>
+                                <option value="tuesday">Salı</option>
+                                <option value="wednesday">Çarşamba</option>
+                                <option value="thursday">Perşembe</option>
+                                <option value="friday">Cuma</option>
+                                <option value="saturday">Cumartesi</option>
+                                <option value="sunday">Pazar</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Saat</label>
+                            <input type="time" class="form-input" id="workout-time">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Süre (dakika)</label>
+                            <input type="number" class="form-input" id="workout-duration" placeholder="30">
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="addWorkout()">Spor Ekle</button>
+                        <button class="btn btn-warning" onclick="testNotification()">Bildirim Testi</button>
+                        
+                        <div id="workouts-list" class="mt-6">
+                            <!-- Workouts will be listed here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nutrition Screen -->
+                <div id="nutrition" class="screen">
+                    <div class="card">
+                        <h2 class="card-title">Beslenme Takibi</h2>
+                        <p class="text-gray-600">Günlük beslenme alışkanlıklarınızı kaydedin.</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Kategori</label>
+                            <select class="form-input" id="meal-category">
+                                <option value="main">Ana Yemek</option>
+                                <option value="water">Su</option>
+                                <option value="snack">Abur Cubur</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">İçerik</label>
+                            <input type="text" class="form-input" id="meal-content" placeholder="Ne yediniz/içtiniz?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Miktar</label>
+                            <input type="text" class="form-input" id="meal-amount" placeholder="Örn: 1 porsiyon, 500ml">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Kalori</label>
+                            <input type="number" class="form-input" id="meal-calories" placeholder="Kalori miktarı">
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="addMeal()">Beslenme Kaydı Ekle</button>
+                        
+                        <div id="meals-list" class="mt-6">
+                            <!-- Meals will be listed here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rewards Screen -->
+                <div id="rewards" class="screen">
+                    <div class="card">
+                        <h2 class="card-title">Ödül Sistemi</h2>
+                        <p class="text-gray-600">Spor hedeflerinize ulaşın ve ödüllerinizi kazanın!</p>
+                        
+                        <div class="text-center mb-6">
+                            <div class="text-2xl font-bold text-primary mb-2">Bu Ay: 5/10 Spor</div>
+                            <div class="w-full bg-gray-200 rounded-full h-4">
+                                <div class="bg-primary h-4 rounded-full" style="width: 50%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">5 spor daha yapın, ödülünüzü kazanın!</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="btn btn-warning" onclick="claimReward()">Ödülü Aç</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Admin Screen -->
+                <div id="admin" class="screen">
+                    <div class="card">
+                        <h2 class="card-title">Admin Paneli</h2>
+                        <p class="text-gray-600">Sinem'in verilerini görüntüleyin ve yönetin.</p>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <div class="text-2xl font-bold text-primary">12</div>
+                                <div class="text-sm text-gray-600">Bu Ay Spor</div>
+                            </div>
+                            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                                <div class="text-2xl font-bold text-success">45</div>
+                                <div class="text-sm text-gray-600">Beslenme Kaydı</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Ödül Mesajı</label>
+                            <textarea class="form-input" id="reward-message" rows="3" placeholder="Ödül mesajınızı yazın..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Ödül Fotoğrafı</label>
+                            <input type="file" class="form-input" id="reward-photo" accept="image/*">
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="updateReward()">Ödülü Güncelle</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Global variables
+        let currentScreen = 'welcome';
+        let events = JSON.parse(localStorage.getItem('sinemfit-events') || '[]');
+        let workouts = JSON.parse(localStorage.getItem('sinemfit-workouts') || '[]');
+        let meals = JSON.parse(localStorage.getItem('sinemfit-meals') || '[]');
+        
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            checkNotificationPermission();
+            loadData();
+            showScreen('welcome');
+        });
+        
+        // Screen management
+        function showScreen(screenId) {
+            // Hide all screens
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            
+            // Remove active class from nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected screen
+            document.getElementById(screenId).classList.add('active');
+            
+            // Add active class to nav item
+            document.querySelector(`[onclick="showScreen('${screenId}')"]`).classList.add('active');
+            
+            currentScreen = screenId;
+            
+            // Close mobile menu
+            document.getElementById('nav').classList.remove('active');
+        }
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            document.getElementById('nav').classList.toggle('active');
+        }
+        
+        // Notification permission
+        function checkNotificationPermission() {
+            if ('Notification' in window) {
+                if (Notification.permission === 'default') {
+                    document.getElementById('notification-permission').classList.remove('hidden');
+                }
+            }
+        }
+        
+        function requestNotificationPermission() {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(function(permission) {
+                    if (permission === 'granted') {
+                        document.getElementById('notification-permission').classList.add('hidden');
+                        showNotification('Bildirimler aktif!', 'Artık spor hatırlatmalarınızı alacaksınız.');
+                    }
+                });
+            }
+        }
+        
+        function showNotification(title, body) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification(title, {
+                    body: body,
+                    icon: '/logo.png',
+                    badge: '/logo.png'
+                });
+            }
+        }
+        
+        function testNotification() {
+            showNotification('Test Bildirimi', 'Bu bir test bildirimidir. Bildirimler çalışıyor!');
+        }
+        
+        // Data management
+        function loadData() {
+            loadEvents();
+            loadWorkouts();
+            loadMeals();
+        }
+        
+        function saveData() {
+            localStorage.setItem('sinemfit-events', JSON.stringify(events));
+            localStorage.setItem('sinemfit-workouts', JSON.stringify(workouts));
+            localStorage.setItem('sinemfit-meals', JSON.stringify(meals));
+        }
+        
+        // Events
+        function addEvent() {
+            const title = document.getElementById('event-title').value;
+            const date = document.getElementById('event-date').value;
+            const time = document.getElementById('event-time').value;
+            
+            if (!title || !date || !time) {
+                alert('Lütfen tüm alanları doldurun');
+                return;
+            }
+            
+            const event = {
+                id: Date.now(),
+                title: title,
+                date: date,
+                time: time,
+                createdAt: new Date().toISOString()
+            };
+            
+            events.push(event);
+            saveData();
+            loadEvents();
+            
+            // Clear form
+            document.getElementById('event-title').value = '';
+            document.getElementById('event-date').value = '';
+            document.getElementById('event-time').value = '';
+            
+            showNotification('Etkinlik Eklendi', `${title} etkinliği takviminize eklendi.`);
+        }
+        
+        function loadEvents() {
+            const eventsList = document.getElementById('events-list');
+            if (!eventsList) return;
+            
+            eventsList.innerHTML = '';
+            
+            if (events.length === 0) {
+                eventsList.innerHTML = '<p class="text-gray-500 text-center">Henüz etkinlik eklenmemiş.</p>';
+                return;
+            }
+            
+            events.forEach(event => {
+                const eventDiv = document.createElement('div');
+                eventDiv.className = 'p-4 bg-gray-50 rounded-lg mb-2';
+                eventDiv.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="font-semibold">${event.title}</h3>
+                            <p class="text-sm text-gray-600">${event.date} - ${event.time}</p>
+                        </div>
+                        <button onclick="deleteEvent(${event.id})" class="text-red-500 hover:text-red-700">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3,6 5,6 21,6"></polyline>
+                                <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6M8,6V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                eventsList.appendChild(eventDiv);
+            });
+        }
+        
+        function deleteEvent(id) {
+            events = events.filter(event => event.id !== id);
+            saveData();
+            loadEvents();
+        }
+        
+        // Workouts
+        function addWorkout() {
+            const type = document.getElementById('workout-type').value;
+            const day = document.getElementById('workout-day').value;
+            const time = document.getElementById('workout-time').value;
+            const duration = document.getElementById('workout-duration').value;
+            
+            if (!type || !day || !time || !duration) {
+                alert('Lütfen tüm alanları doldurun');
+                return;
+            }
+            
+            const workout = {
+                id: Date.now(),
+                type: type,
+                day: day,
+                time: time,
+                duration: parseInt(duration),
+                createdAt: new Date().toISOString()
+            };
+            
+            workouts.push(workout);
+            saveData();
+            loadWorkouts();
+            
+            // Clear form
+            document.getElementById('workout-type').value = '';
+            document.getElementById('workout-day').value = 'monday';
+            document.getElementById('workout-time').value = '';
+            document.getElementById('workout-duration').value = '';
+            
+            showNotification('Spor Eklendi', `${type} sporu programınıza eklendi.`);
+        }
+        
+        function loadWorkouts() {
+            const workoutsList = document.getElementById('workouts-list');
+            if (!workoutsList) return;
+            
+            workoutsList.innerHTML = '';
+            
+            if (workouts.length === 0) {
+                workoutsList.innerHTML = '<p class="text-gray-500 text-center">Henüz spor programı eklenmemiş.</p>';
+                return;
+            }
+            
+            workouts.forEach(workout => {
+                const workoutDiv = document.createElement('div');
+                workoutDiv.className = 'p-4 bg-gray-50 rounded-lg mb-2';
+                workoutDiv.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="font-semibold">${workout.type}</h3>
+                            <p class="text-sm text-gray-600">${getDayName(workout.day)} - ${workout.time} (${workout.duration} dk)</p>
+                        </div>
+                        <button onclick="deleteWorkout(${workout.id})" class="text-red-500 hover:text-red-700">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3,6 5,6 21,6"></polyline>
+                                <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6M8,6V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                workoutsList.appendChild(workoutDiv);
+            });
+        }
+        
+        function deleteWorkout(id) {
+            workouts = workouts.filter(workout => workout.id !== id);
+            saveData();
+            loadWorkouts();
+        }
+        
+        function getDayName(day) {
+            const days = {
+                'monday': 'Pazartesi',
+                'tuesday': 'Salı',
+                'wednesday': 'Çarşamba',
+                'thursday': 'Perşembe',
+                'friday': 'Cuma',
+                'saturday': 'Cumartesi',
+                'sunday': 'Pazar'
+            };
+            return days[day] || day;
+        }
+        
+        // Meals
+        function addMeal() {
+            const category = document.getElementById('meal-category').value;
+            const content = document.getElementById('meal-content').value;
+            const amount = document.getElementById('meal-amount').value;
+            const calories = document.getElementById('meal-calories').value;
+            
+            if (!content) {
+                alert('Lütfen içerik alanını doldurun');
+                return;
+            }
+            
+            const meal = {
+                id: Date.now(),
+                category: category,
+                content: content,
+                amount: amount,
+                calories: calories ? parseInt(calories) : null,
+                date: new Date().toISOString().split('T')[0],
+                createdAt: new Date().toISOString()
+            };
+            
+            meals.push(meal);
+            saveData();
+            loadMeals();
+            
+            // Clear form
+            document.getElementById('meal-content').value = '';
+            document.getElementById('meal-amount').value = '';
+            document.getElementById('meal-calories').value = '';
+            
+            showNotification('Beslenme Kaydı Eklendi', `${content} kaydedildi.`);
+        }
+        
+        function loadMeals() {
+            const mealsList = document.getElementById('meals-list');
+            if (!mealsList) return;
+            
+            mealsList.innerHTML = '';
+            
+            if (meals.length === 0) {
+                mealsList.innerHTML = '<p class="text-gray-500 text-center">Henüz beslenme kaydı eklenmemiş.</p>';
+                return;
+            }
+            
+            meals.forEach(meal => {
+                const mealDiv = document.createElement('div');
+                mealDiv.className = 'p-4 bg-gray-50 rounded-lg mb-2';
+                mealDiv.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="font-semibold">${getCategoryName(meal.category)}</h3>
+                            <p class="text-sm text-gray-600">${meal.content}</p>
+                            ${meal.amount ? `<p class="text-sm text-gray-500">Miktar: ${meal.amount}</p>` : ''}
+                            ${meal.calories ? `<p class="text-sm text-gray-500">Kalori: ${meal.calories}</p>` : ''}
+                            <p class="text-xs text-gray-400">${meal.date}</p>
+                        </div>
+                        <button onclick="deleteMeal(${meal.id})" class="text-red-500 hover:text-red-700">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3,6 5,6 21,6"></polyline>
+                                <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6M8,6V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                mealsList.appendChild(mealDiv);
+            });
+        }
+        
+        function deleteMeal(id) {
+            meals = meals.filter(meal => meal.id !== id);
+            saveData();
+            loadMeals();
+        }
+        
+        function getCategoryName(category) {
+            const categories = {
+                'main': 'Ana Yemek',
+                'water': 'Su',
+                'snack': 'Abur Cubur'
+            };
+            return categories[category] || category;
+        }
+        
+        // Rewards
+        function claimReward() {
+            showNotification('Ödül Kazanıldı!', 'Tebrikler! Ödülünüzü kazandınız!');
+            alert('🎉 Tebrikler! Ödülünüzü kazandınız! 🎉');
+        }
+        
+        // Admin
+        function updateReward() {
+            const message = document.getElementById('reward-message').value;
+            const photo = document.getElementById('reward-photo').files[0];
+            
+            if (!message) {
+                alert('Lütfen ödül mesajını yazın');
+                return;
+            }
+            
+            // Save reward data
+            const reward = {
+                message: message,
+                photo: photo ? photo.name : null,
+                updatedAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('sinemfit-reward', JSON.stringify(reward));
+            
+            alert('Ödül güncellendi!');
+        }
+    </script>
+  </body>
+</html>
