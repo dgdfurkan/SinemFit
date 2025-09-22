@@ -3032,6 +3032,14 @@
             
             // Load KYK meals from JSON file
             loadKykMealsFromFile();
+            
+            // Force load JSON file if localStorage is empty
+            setTimeout(() => {
+                if (Object.keys(kykMeals).length === 0) {
+                    console.log('KYK meals empty, forcing JSON load...');
+                    loadKykMealsFromFile();
+                }
+            }, 1000);
         });
         
         // Nutrition Functions
@@ -5365,7 +5373,7 @@
         function loadKykMealsFromFile() {
             // Try to load from localStorage first (for local testing)
             const localMeals = localStorage.getItem('sinemfit-kyk-meals');
-            if (localMeals) {
+            if (localMeals && localMeals !== '{}') {
                 try {
                     kykMeals = JSON.parse(localMeals);
                     updateKykMealsDisplay();
@@ -5379,12 +5387,19 @@
             
             // If localStorage is empty, try to fetch from server (for GitHub Pages)
             fetch('./kyk-meals.json')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     kykMeals = data;
+                    // Also save to localStorage for future use
+                    localStorage.setItem('sinemfit-kyk-meals', JSON.stringify(data));
                     updateKykMealsDisplay();
                     showNotification('Başarılı', 'KYK yemekleri JSON dosyasından yüklendi!');
-                    console.log('Loaded from server:', kykMeals);
+                    console.log('Loaded from server and saved to localStorage:', kykMeals);
                 })
                 .catch(error => {
                     console.error('Error loading KYK meals:', error);
