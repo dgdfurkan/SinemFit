@@ -1948,6 +1948,68 @@
             background: var(--primary-light);
             color: var(--primary);
         }
+        
+        /* KYK Meals Buttons for Users */
+        .kyk-meals-buttons {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .kyk-meal-button {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            padding: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .kyk-meal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+        }
+        
+        .kyk-meal-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .kyk-meal-info {
+            flex: 1;
+        }
+        
+        .kyk-meal-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .kyk-meal-calories {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        .kyk-admin-section {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .kyk-preview-section {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1rem;
+        }
     </style>
   </head>
   <body>
@@ -2235,6 +2297,14 @@
                         <h2 class="card-title">Beslenme Takibi</h2>
                         <p class="text-gray-600">Günlük beslenme alışkanlıklarınızı kaydedin.</p>
                         
+                        <!-- KYK Meals Section -->
+                        <div class="kyk-meals-section">
+                            <h3 class="text-lg font-semibold mb-4">KYK Yemekleri</h3>
+                            <div class="kyk-meals-buttons" id="kyk-meals-buttons">
+                                <div class="text-center text-gray-500">KYK yemek listesi yüklenmedi.</div>
+                            </div>
+                        </div>
+                        
                         <!-- Quick Add Buttons -->
                         <div class="quick-add-section">
                             <h3 class="text-lg font-semibold mb-4">Hızlı Ekleme</h3>
@@ -2478,64 +2548,31 @@
                         <div class="mt-6">
                             <h3 class="text-lg font-semibold mb-4">KYK Yemek Yönetimi</h3>
                             
-                            <!-- Current Day Meals -->
-                            <div class="kyk-meals-section">
-                                <h4 class="text-md font-semibold mb-3">Bugünün Yemekleri</h4>
-                                <div class="kyk-meals-display" id="kyk-meals-display">
-                                    <div class="kyk-meal-card">
-                                        <div class="meal-header">
-                                            <span class="meal-icon">☀️</span>
-                                            <span class="meal-title">Kahvaltı</span>
-                                            <span class="meal-calories">770 kalori</span>
+                            <!-- Admin Meal Upload -->
+                            <div class="kyk-admin-section">
+                                <h4 class="text-md font-semibold mb-3">Aylık Yemek Listesi Ekle</h4>
+                            <div class="form-group">
+                                    <label class="form-label">Yemek Listesi (JSON formatında)</label>
+                                    <textarea class="form-input" id="kyk-meals-input" rows="10" placeholder="JSON formatında yemek listesini buraya yapıştır..."></textarea>
                             </div>
-                                    <div class="meal-items">
-                                            <div class="meal-item">Patates Kızartması</div>
-                                            <div class="meal-item">Haşlanmış Yumurta</div>
-                                            <div class="meal-item">Beyaz Peynir</div>
-                                            <div class="meal-item">Siyah/Yeşil Zeytin</div>
-                                            <div class="meal-item">Mevsim Sebzeleri Söğüş</div>
-                                            <div class="meal-item">500 ml su</div>
-                                            <div class="meal-item">Çeyrek Ekmek</div>
-                                    </div>
-                                        <button class="kyk-meal-btn" onclick="addKykMeal('breakfast')">
-                                            Kahvaltıyı Ekle
-                                        </button>
-                                </div>
-                                    
-                                    <div class="kyk-meal-card">
-                                        <div class="meal-header">
-                                            <span class="meal-icon">🌙</span>
-                                            <span class="meal-title">Akşam Yemeği</span>
-                                            <span class="meal-calories">1300 kalori</span>
-                                        </div>
-                                    <div class="meal-items">
-                                            <div class="meal-item">Mercimek Çorba / Kremalı Mantar Çorba</div>
-                                            <div class="meal-item">Buğu Kebabı / İmam Bayıldı</div>
-                                            <div class="meal-item">Şehriyeli Pirinç Pilavı</div>
-                                            <div class="meal-item">Yoğurtlu Semizotu</div>
-                                            <div class="meal-item">500 ml su</div>
-                                            <div class="meal-item">Çeyrek Ekmek</div>
-                                    </div>
-                                        <button class="kyk-meal-btn" onclick="addKykMeal('dinner')">
-                                            Akşam Yemeğini Ekle
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Meal Management -->
-                            <div class="kyk-management">
-                                <h4 class="text-md font-semibold mb-3">Yemek Yönetimi</h4>
                                 <div class="kyk-controls">
-                                    <button class="kyk-btn" onclick="loadKykMeals()">
+                                    <button class="kyk-btn" onclick="loadKykMealsFromInput()">
                                         Yemekleri Yükle
+                                    </button>
+                                    <button class="kyk-btn" onclick="loadKykMealsFromFile()">
+                                        JSON Dosyasından Yükle
                                     </button>
                                     <button class="kyk-btn" onclick="saveKykMeals()">
                                         Yemekleri Kaydet
                                     </button>
-                                    <button class="kyk-btn" onclick="exportKykMeals()">
-                                        Excel Olarak İndir
-                                    </button>
+                                    </div>
+                                </div>
+                            
+                            <!-- Current Day Preview -->
+                            <div class="kyk-preview-section">
+                                <h4 class="text-md font-semibold mb-3">Bugünün Yemekleri (Önizleme)</h4>
+                                <div class="kyk-meals-display" id="kyk-meals-display">
+                                    <div class="text-center text-gray-500">Henüz yemek listesi yüklenmedi.</div>
                                 </div>
                             </div>
                         </div>
@@ -2589,189 +2626,8 @@
         let workoutTimer = null;
         let workoutStartTime = null;
         
-        // KYK Meals Data (will be loaded from Excel)
-        let kykMeals = {
-            '2025-09-15': {
-                date: '15 Eylül 2025',
-                day: 'Pazartesi',
-                breakfast: {
-                    calories: 770,
-                    items: ['Patates Kızartması', 'Haşlanmış Yumurta', 'Beyaz Peynir', 'Siyah/Yeşil Zeytin', 'Mevsim Sebzeleri Söğüş', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Mercimek Çorba / Kremalı Mantar Çorba', 'Buğu Kebabı / İmam Bayıldı', 'Şehriyeli Pirinç Pilavı', 'Yoğurtlu Semizotu', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-16': {
-                date: '16 Eylül 2025',
-                day: 'Salı',
-                breakfast: {
-                    calories: 770,
-                    items: ['Peynirli Omlet', 'Simit', 'Kaşar Peyniri', 'Siyah/Yeşil Zeytin', 'Sürülebilir Çikolata', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Arabaşı Çorba / Anadolu Çorba', 'Kadınbudu Köfte+Fırın Sebze / Mücver', 'Salçalı Makarna', 'Ayran', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-17': {
-                date: '17 Eylül 2025',
-                day: 'Çarşamba',
-                breakfast: {
-                    calories: 770,
-                    items: ['Karışık Pizza', 'Haşlanmış Yumurta', 'Krem Peynir', 'Siyah/Yeşil Zeytin', 'Mevsim Sebzeleri Söğüş', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Şehriye Çorba / Tavuk Suyu Çorba', 'Etli Çökertme Kebabı / Yeşil Fasulye Yemeği', 'Şehriyeli Bulgur Pilavı', 'Karışık Salata', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-18': {
-                date: '18 Eylül 2025',
-                day: 'Perşembe',
-                breakfast: {
-                    calories: 770,
-                    items: ['Peynirli Omlet', 'Zeytinli/Peynirli Açma', 'Kaşar Peyniri', 'Siyah/Yeşil Zeytin', 'Reçel Çeşitleri', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Şehriye Çorba', 'Salçalı Köfte', 'Şehriyeli Bulgur Pilavı', 'Kavun', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-19': {
-                date: '19 Eylül 2025',
-                day: 'Cuma',
-                breakfast: {
-                    calories: 770,
-                    items: ['Zeytinli/Peynirli Açma', 'Haşlanmış Yumurta', 'Kaşar Peyniri', 'Siyah/Yeşil Zeytin', 'Bal+Tereyağ', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Ezogelin Çorba / Cennet Çorba', 'Şinitzel+Söğüş / Karışık Dolma + Yoğurt', 'Spagetti Napoliten', 'Supangle', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-20': {
-                date: '20 Eylül 2025',
-                day: 'Cumartesi',
-                breakfast: {
-                    calories: 770,
-                    items: ['Sucuklu Yumurta', 'Çikolatalı Milföy Börek', 'Yöresel Peynir', 'Siyah/Yeşil Zeytin', 'Mevsim Sebzeleri Söğüş', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Mercimek Çorba', 'Tavuk Şiş+Köz Sebzeler / Ispanak Yemeği', 'Fırın Makarna', 'Yoğurt', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-21': {
-                date: '21 Eylül 2025',
-                day: 'Pazar',
-                breakfast: {
-                    calories: 770,
-                    items: ['Patates Kızartması', 'Haşlanmış Yumurta', 'Labne Peynir', 'Siyah/Yeşil Zeytin', 'Tahinli Pekmez', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Arabaşı Çorba / Ayran Aşı Çorba', 'Kuru Fasulye / Şakşuka', 'Şehriyeli Pirinç Pilavı', 'Baklava-Kadayıf(Cevizli/Fındıklı)', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-22': {
-                date: '22 Eylül 2025',
-                day: 'Pazartesi',
-                breakfast: {
-                    calories: 770,
-                    items: ['Menemen', 'Dere Otlu Poğaça', 'Labne Peynir', 'Siyah/Yeşil Zeytin', 'Reçel Çeşitleri', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Yayla Çorba / Tarhana Çorba', 'Et Tantuni+Lavaş+Patates Kızartması / Bezelye Yemeği', 'Salçalı Bulgur Pilavı', 'Kaşık Salata', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-23': {
-                date: '23 Eylül 2025',
-                day: 'Salı',
-                breakfast: {
-                    calories: 770,
-                    items: ['Sosis Kokteyl(Salçalı veya Kızartma)', 'Haşlanmış Yumurta', 'Beyaz Peynir', 'Siyah/Yeşil Zeytin', 'Mevsim Sebzeleri Söğüş', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Ezogelin Çorba / Sebze Çorba', 'Tavuk Fajita / Barbunya Yemeği', 'Erişte', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-24': {
-                date: '24 Eylül 2025',
-                day: 'Çarşamba',
-                breakfast: {
-                    calories: 770,
-                    items: ['Kaşarlı Omlet', 'Mozaik Kek', 'Yöresel Peynir', 'Siyah/Yeşil Zeytin', 'Tahinli Pekmez', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Şehriye Çorba / Tavuk Suyu Çorba', 'Izgara Köfte+Söğüş / Patlıcan Çığırtma', 'Yoğurtlu Makarna', 'Yaş Pasta', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-25': {
-                date: '25 Eylül 2025',
-                day: 'Perşembe',
-                breakfast: {
-                    calories: 770,
-                    items: ['Karışık Kızartma', 'Haşlanmış Yumurta', 'Beyaz Peynir', 'Siyah/Yeşil Zeytin', 'Mevsim Sebzeleri Söğüş', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Yayla Çorba / Köylüm Çorba', 'Köri Soslu Tavuk+Elma Dilim Patates / Mücver', 'Sebzeli Bulgur Pilavı', 'Rus Salatası', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-26': {
-                date: '26 Eylül 2025',
-                day: 'Cuma',
-                breakfast: {
-                    calories: 770,
-                    items: ['Sade Omlet', 'Simit', 'Kaşar Peyniri', 'Siyah/Yeşil Zeytin', 'Sürülebilir Çikolata', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Arabaşı Çorba / Anadolu Çorba', 'Nohut Yemeği / Napoliten Soslu Karışık Kızartma+Yoğurt', 'Şehriyeli Pirinç Pilavı', 'Şekerpare', 'Turşu', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-27': {
-                date: '27 Eylül 2025',
-                day: 'Cumartesi',
-                breakfast: {
-                    calories: 770,
-                    items: ['Patates Kızartması', 'Haşlanmış Yumurta', 'Beyaz Peynir', 'Siyah/Yeşil Zeytin', 'Mevsim Sebzeleri Söğüş', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Mercimek Çorba / Domates Çorba', 'Tavuk Sote / Karışık Dolma', 'Salçalı Makarna', 'Cacık', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-29': {
-                date: '29 Eylül 2025',
-                day: 'Pazartesi',
-                breakfast: {
-                    calories: 770,
-                    items: ['Patatesli Börek', 'Haşlanmış Yumurta', 'Kaşar Peyniri', 'Siyah/Yeşil Zeytin', 'Mevsim Sebzeleri Söğüş', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Yayla Çorba / Yüksük Çorba', 'Tavuk Köfte+Fırın Sebze / Mevsim Türlü', 'Şehriyeli Pirinç Pilavı', 'Tarator', '500 ml su', 'Çeyrek Ekmek']
-                }
-            },
-            '2025-09-30': {
-                date: '30 Eylül 2025',
-                day: 'Salı',
-                breakfast: {
-                    calories: 770,
-                    items: ['Sucuklu Yumurta', 'Sade Açma', 'Yöresel Peynir', 'Siyah/Yeşil Zeytin', 'Reçel Çeşitleri', '500 ml su', 'Çeyrek Ekmek']
-                },
-                dinner: {
-                    calories: 1300,
-                    items: ['Ezogelin Çorba / Cennet Çorba', 'Kaşarlı Köfte+Karışık Salata / Ispanak Yemeği+Yoğurt', 'Salçalı Makarna', 'Ayran', '500 ml su', 'Çeyrek Ekmek']
-                }
-            }
-        };
+        // KYK Meals Data (loaded from JSON file)
+        let kykMeals = {};
         let equipmentGuides = {
             treadmill: {
                 title: 'Koşu Bandı',
@@ -3075,6 +2931,9 @@
             updateNutritionSummary();
             initializeNotifications();
             loadTodos();
+            
+            // Load KYK meals from JSON file
+            loadKykMealsFromFile();
         });
         
         // Nutrition Functions
@@ -4168,6 +4027,11 @@
             updateKykMealsDisplay();
         }
         
+        function updateNutritionScreen() {
+            updateNutritionSummary();
+            updateKykMealsButtons();
+        }
+        
         function calculateStreakDays() {
             // Simple streak calculation - can be improved
             return Math.min(workouts.length, 7);
@@ -4521,6 +4385,19 @@
             
             // Close mobile menu
             document.getElementById('nav').classList.remove('active');
+            
+            // Update screen-specific data
+            if (screenId === 'calendar') {
+                updateCalendar();
+            } else if (screenId === 'workout') {
+                updateWorkoutSummary();
+            } else if (screenId === 'nutrition') {
+                updateNutritionScreen();
+            } else if (screenId === 'admin') {
+                updateAdminStats();
+            } else if (screenId === 'todos') {
+                updateTodosDisplay();
+            }
         }
         
         // Mobile menu toggle
@@ -5018,6 +4895,39 @@
         }
         
         // KYK Meals Functions
+        function loadKykMealsFromFile() {
+            fetch('./kyk-meals.json')
+                .then(response => response.json())
+                .then(data => {
+                    kykMeals = data;
+                    updateKykMealsDisplay();
+                    updateKykMealsButtons();
+                    showNotification('Başarılı', 'KYK yemekleri JSON dosyasından yüklendi!');
+                })
+                .catch(error => {
+                    console.error('Error loading KYK meals:', error);
+                    showNotification('Hata', 'KYK yemekleri yüklenemedi!');
+                });
+        }
+        
+        function loadKykMealsFromInput() {
+            const input = document.getElementById('kyk-meals-input').value;
+            if (!input.trim()) {
+                showNotification('Hata', 'Lütfen JSON verisi girin!');
+                return;
+            }
+            
+            try {
+                const data = JSON.parse(input);
+                kykMeals = data;
+                updateKykMealsDisplay();
+                updateKykMealsButtons();
+                showNotification('Başarılı', 'KYK yemekleri yüklendi!');
+            } catch (error) {
+                showNotification('Hata', 'Geçersiz JSON formatı!');
+            }
+        }
+        
         function getTodayKykMeals() {
             const today = new Date();
             const dateString = today.toISOString().split('T')[0];
@@ -5043,9 +4953,6 @@
                     <div class="meal-items">
                         ${todayMeals.breakfast.items.map(item => `<div class="meal-item">${item}</div>`).join('')}
                     </div>
-                    <button class="kyk-meal-btn" onclick="addKykMeal('breakfast')">
-                        Kahvaltıyı Ekle
-                    </button>
                 </div>
                 
                 <div class="kyk-meal-card">
@@ -5057,10 +4964,35 @@
                     <div class="meal-items">
                         ${todayMeals.dinner.items.map(item => `<div class="meal-item">${item}</div>`).join('')}
                     </div>
-                    <button class="kyk-meal-btn" onclick="addKykMeal('dinner')">
-                        Akşam Yemeğini Ekle
-                    </button>
                 </div>
+            `;
+        }
+        
+        function updateKykMealsButtons() {
+            const todayMeals = getTodayKykMeals();
+            const buttonsContainer = document.getElementById('kyk-meals-buttons');
+            
+            if (!todayMeals) {
+                buttonsContainer.innerHTML = '<div class="text-center text-gray-500">Bugün için KYK yemek bilgisi bulunamadı.</div>';
+                return;
+            }
+            
+            buttonsContainer.innerHTML = `
+                <button class="kyk-meal-button" onclick="addKykMeal('breakfast')">
+                    <div class="kyk-meal-icon">☀️</div>
+                    <div class="kyk-meal-info">
+                        <div class="kyk-meal-title">KYK Kahvaltısı</div>
+                        <div class="kyk-meal-calories">${todayMeals.breakfast.calories} kalori</div>
+                    </div>
+                </button>
+                
+                <button class="kyk-meal-button" onclick="addKykMeal('dinner')">
+                    <div class="kyk-meal-icon">🌙</div>
+                    <div class="kyk-meal-info">
+                        <div class="kyk-meal-title">KYK Akşam Yemeği</div>
+                        <div class="kyk-meal-calories">${todayMeals.dinner.calories} kalori</div>
+                    </div>
+                </button>
             `;
         }
         
@@ -5072,13 +5004,13 @@
             }
             
             const meal = todayMeals[mealType];
-            const mealName = mealType === 'breakfast' ? 'Kahvaltı' : 'Akşam Yemeği';
+            const mealName = mealType === 'breakfast' ? 'KYK Kahvaltısı' : 'KYK Akşam Yemeği';
             
             // Add each item as a separate meal entry
             meal.items.forEach(item => {
                 const mealEntry = {
                     id: Date.now() + Math.random(),
-                    category: mealType === 'breakfast' ? 'main' : 'main',
+                    category: 'main',
                     name: item,
                     amount: '1 porsiyon',
                     calories: Math.round(meal.calories / meal.items.length),
@@ -5097,33 +5029,9 @@
             showNotification('Başarılı', `${mealName} eklendi! (${meal.items.length} öğe)`);
         }
         
-        function loadKykMeals() {
-            const savedMeals = localStorage.getItem('sinemfit-kyk-meals');
-            if (savedMeals) {
-                const parsedMeals = JSON.parse(savedMeals);
-                Object.assign(kykMeals, parsedMeals);
-                updateKykMealsDisplay();
-                showNotification('Başarılı', 'KYK yemekleri yüklendi!');
-            } else {
-                showNotification('Bilgi', 'Kaydedilmiş KYK yemek bilgisi bulunamadı.');
-            }
-        }
-        
         function saveKykMeals() {
             localStorage.setItem('sinemfit-kyk-meals', JSON.stringify(kykMeals));
             showNotification('Başarılı', 'KYK yemekleri kaydedildi!');
-        }
-        
-        function exportKykMeals() {
-            const dataStr = JSON.stringify(kykMeals, null, 2);
-            const dataBlob = new Blob([dataStr], {type: 'application/json'});
-            const url = URL.createObjectURL(dataBlob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'kyk-meals.json';
-            link.click();
-            URL.revokeObjectURL(url);
-            showNotification('Başarılı', 'KYK yemekleri JSON olarak indirildi!');
         }
     </script>
     
