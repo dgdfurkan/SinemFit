@@ -5040,9 +5040,9 @@
                 console.log(`Processing line ${i}: "${line}"`);
                 
                 // Date line (e.g., "15 Eylül 2025") - Check if this line contains a date pattern
-                if (line.match(/^\d+\s+\w+\s+\d+$/)) {
+                if (line.match(/^\d+\s+[A-Za-züçğıöşÜÇĞIÖŞ]+\s+\d+$/)) {
                     console.log('Found date line:', line);
-                    const dateMatch = line.match(/(\d+)\s+(\w+)\s+(\d+)/);
+                    const dateMatch = line.match(/(\d+)\s+([A-Za-züçğıöşÜÇĞIÖŞ]+)\s+(\d+)/);
                     if (dateMatch) {
                         const day = dateMatch[1];
                         const month = dateMatch[2];
@@ -5113,7 +5113,8 @@
                          line !== '☀️' && line !== '🌙' &&
                          line !== 'Kahvaltı' && line !== 'Akşam Yemeği' &&
                          !line.match(/^\d+$/) && // Don't add single numbers
-                         !line.match(/^\d+\s+\w+\s+\d+$/)) { // Don't add date lines
+                         !line.match(/^\d+\s+[A-Za-züçğıöşÜÇĞIÖŞ]+\s+\d+$/) && // Don't add date lines
+                         !line.match(/^(Pazartesi|Salı|Çarşamba|Perşembe|Cuma|Cumartesi|Pazar)$/)) { // Don't add day names
                     console.log(`Adding item to ${currentMeal}:`, line);
                     meals[currentDate][currentMeal].items.push(line);
                 }
