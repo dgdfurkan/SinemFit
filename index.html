@@ -4481,7 +4481,10 @@
             currentScreen = screenId;
             
             // Close mobile menu
-            document.getElementById('nav').classList.remove('active');
+            const nav = document.getElementById('nav');
+            if (nav) {
+                nav.classList.remove('active');
+            }
             
             // Update screen-specific data
             if (screenId === 'calendar') {
@@ -5022,8 +5025,11 @@
         }
         
         function parseKykMealsText(text) {
+            console.log('Starting to parse text:', text.substring(0, 200) + '...');
             const meals = {};
             const lines = text.split('\n').map(line => line.trim()).filter(line => line);
+            console.log('Total lines after filtering:', lines.length);
+            console.log('First 10 lines:', lines.slice(0, 10));
             
             let currentDate = null;
             let currentMeal = null;
@@ -5031,9 +5037,11 @@
             
             for (let i = 0; i < lines.length; i++) {
                 const line = lines[i];
+                console.log(`Processing line ${i}: "${line}"`);
                 
                 // Date line (e.g., "15 Eylül 2025")
                 if (line.match(/^\d+\s+\w+\s+\d+$/)) {
+                    console.log('Found date line:', line);
                     const dateMatch = line.match(/(\d+)\s+(\w+)\s+(\d+)/);
                     if (dateMatch) {
                         const day = dateMatch[1];
@@ -5056,39 +5064,47 @@
                                 breakfast: { calories: 0, items: [] },
                                 dinner: { calories: 0, items: [] }
                             };
+                            console.log('Created date entry:', currentDate);
                         }
                     }
                 }
                 // Day of week (e.g., "Pazartesi")
                 else if (line.match(/^(Pazartesi|Salı|Çarşamba|Perşembe|Cuma|Cumartesi|Pazar)$/)) {
+                    console.log('Found day line:', line);
                     if (currentDate) {
                         meals[currentDate].day = line;
                     }
                 }
                 // Meal type indicators
                 else if (line === '☀️') {
+                    console.log('Found breakfast emoji');
                     currentMeal = 'breakfast';
                     currentCalories = 0;
                 }
                 else if (line === '🌙') {
+                    console.log('Found dinner emoji');
                     currentMeal = 'dinner';
                     currentCalories = 0;
                 }
                 // Meal type with calories (e.g., "Kahvaltı" or "Akşam Yemeği")
                 else if (line === 'Kahvaltı') {
+                    console.log('Found breakfast text');
                     currentMeal = 'breakfast';
                     currentCalories = 0;
                 }
                 else if (line === 'Akşam Yemeği') {
+                    console.log('Found dinner text');
                     currentMeal = 'dinner';
                     currentCalories = 0;
                 }
                 // Calories line (e.g., "770 kalori")
                 else if (line.match(/\d+\s+kalori/)) {
+                    console.log('Found calories line:', line);
                     const caloriesMatch = line.match(/(\d+)\s+kalori/);
                     if (caloriesMatch && currentMeal && currentDate) {
                         currentCalories = parseInt(caloriesMatch[1]);
                         meals[currentDate][currentMeal].calories = currentCalories;
+                        console.log(`Set ${currentMeal} calories to ${currentCalories}`);
                     }
                 }
                 // Meal items (everything else that's not empty)
@@ -5096,6 +5112,7 @@
                          !line.includes('kalori') && 
                          line !== '☀️' && line !== '🌙' &&
                          line !== 'Kahvaltı' && line !== 'Akşam Yemeği') {
+                    console.log(`Adding item to ${currentMeal}:`, line);
                     meals[currentDate][currentMeal].items.push(line);
                 }
             }
