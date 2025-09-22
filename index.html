@@ -2072,31 +2072,31 @@
                         <div class="mt-6">
                             <h3 class="text-lg font-semibold mb-4">Spor Şablonları</h3>
                             <div class="workout-templates">
-                                <button class="workout-template-btn" onclick="useWorkoutTemplate('kyk-cardio')">
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('cardio')">
                                     <div class="template-icon">🏃‍♀️</div>
                                     <div class="template-info">
-                                        <div class="template-title">KYK Kardiyo</div>
-                                        <div class="template-desc">30 dk koşu bandı/eliptik</div>
+                                        <div class="template-title">Kardiyo Antrenmanı</div>
+                                        <div class="template-desc">30 dk koşu bandı/elips</div>
                                     </div>
                                 </button>
-                                <button class="workout-template-btn" onclick="useWorkoutTemplate('kyk-strength')">
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('strength')">
                                     <div class="template-icon">💪</div>
                                     <div class="template-info">
-                                        <div class="template-title">KYK Güç Antrenmanı</div>
+                                        <div class="template-title">Güç Antrenmanı</div>
                                         <div class="template-desc">45 dk makine antrenmanı</div>
                                     </div>
                                 </button>
-                                <button class="workout-template-btn" onclick="useWorkoutTemplate('kyk-full-body')">
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('full-body')">
                                     <div class="template-icon">🏋️‍♀️</div>
                                     <div class="template-info">
-                                        <div class="template-title">KYK Tam Vücut</div>
+                                        <div class="template-title">Tam Vücut Antrenmanı</div>
                                         <div class="template-desc">60 dk tüm vücut</div>
                                     </div>
                                 </button>
-                                <button class="workout-template-btn" onclick="useWorkoutTemplate('kyk-quick')">
+                                <button class="workout-template-btn" onclick="useWorkoutTemplate('quick')">
                                     <div class="template-icon">⚡</div>
                                     <div class="template-info">
-                                        <div class="template-title">KYK Hızlı Antrenman</div>
+                                        <div class="template-title">Hızlı Antrenman</div>
                                         <div class="template-desc">20 dk hızlı antrenman</div>
                                     </div>
                                 </button>
@@ -2527,7 +2527,7 @@
                 ]
             },
             chestPress: {
-                title: 'Göğüs Pres Makinesi',
+                title: 'Chest Press Makinesi',
                 icon: '💪',
                 description: 'Göğüs kaslarını güvenli şekilde çalıştırır.',
                 steps: [
@@ -2559,7 +2559,7 @@
                 ]
             },
             legPress: {
-                title: 'Bacak İtiş Makinesi',
+                title: 'Leg Press Makinesi',
                 icon: '🦵',
                 description: 'Bacak kaslarını güvenli şekilde çalıştırır.',
                 steps: [
@@ -2571,6 +2571,54 @@
                 warnings: [
                     'Dizlerinizi kilitlemeyin',
                     'Ayaklarınızı omuz genişliğinde tutun',
+                    'Kontrollü hareket edin'
+                ]
+            },
+            legExtension: {
+                title: 'Leg Extension / Leg Curl Makinesi',
+                icon: '🦵',
+                description: 'Ön ve arka bacak kaslarını hedefler.',
+                steps: [
+                    'Makine ayarlarını yapın',
+                    'Ayaklarınızı sabitleyin',
+                    'Kontrollü şekilde hareket edin',
+                    'Tam hareket aralığı kullanın'
+                ],
+                warnings: [
+                    'Dizlerinizi kilitlemeyin',
+                    'Kontrollü hareket edin',
+                    'Ağırlığı kademeli artırın'
+                ]
+            },
+            shoulderPress: {
+                title: 'Omuz Pres Makinesi',
+                icon: '💪',
+                description: 'Omuz kasları için kullanılır.',
+                steps: [
+                    'Sandalye yüksekliğini ayarlayın',
+                    'Kollarınızı destekleyin',
+                    'Ağırlığı kontrollü şekilde itin',
+                    'Yavaşça başlangıç pozisyonuna dönün'
+                ],
+                warnings: [
+                    'Uygun ağırlık seçin',
+                    'Tam hareket aralığı kullanın',
+                    'Kontrollü hareket edin'
+                ]
+            },
+            cableStation: {
+                title: 'Kablolu İstasyon',
+                icon: '🔗',
+                description: 'Çok amaçlı makine - birçok bölgeyi çalıştırır.',
+                steps: [
+                    'Uygun ağırlığı seçin',
+                    'Kabloyu doğru pozisyonda tutun',
+                    'Kontrollü şekilde çekin',
+                    'Yavaşça başlangıç pozisyonuna dönün'
+                ],
+                warnings: [
+                    'Kabloyu kontrol edin',
+                    'Tam hareket aralığı kullanın',
                     'Kontrollü hareket edin'
                 ]
             },
@@ -2606,12 +2654,28 @@
                     'Kademeli ağırlık artırın'
                 ]
             },
-            bench: {
-                title: 'Sehpalar',
+            flatBench: {
+                title: 'Düz Sehpa',
                 icon: '🪑',
-                description: 'Dambıl ve bar egzersizleri için temel.',
+                description: 'Dambıl ve bar ile göğüs pres için.',
                 steps: [
                     'Sehpa yüksekliğini ayarlayın',
+                    'Güvenli pozisyon alın',
+                    'Ağırlığı kontrollü şekilde kaldırın',
+                    'Ağırlığı güvenli şekilde bırakın'
+                ],
+                warnings: [
+                    'Spotter kullanın',
+                    'Sırtınızı destekleyin',
+                    'Kontrollü hareket edin'
+                ]
+            },
+            adjustableBench: {
+                title: 'Ayarlanabilir Sehpa',
+                icon: '🪑',
+                description: 'Eğimi değiştirilerek farklı kas gruplarını çalıştırır.',
+                steps: [
+                    'Sehpa eğimini ayarlayın',
                     'Güvenli pozisyon alın',
                     'Ağırlığı kontrollü şekilde kaldırın',
                     'Ağırlığı güvenli şekilde bırakın'
@@ -2635,6 +2699,22 @@
                 warnings: [
                     'Dengenizi koruyun',
                     'Sırtınızı dik tutun',
+                    'Kontrollü hareket edin'
+                ]
+            },
+            abBench: {
+                title: 'Mekik Sehpası',
+                icon: '🔄',
+                description: 'Karın kası egzersizleri için kullanılır.',
+                steps: [
+                    'Sehpa pozisyonunu ayarlayın',
+                    'Ayaklarınızı sabitleyin',
+                    'Üst vücudunuzu yukarı kaldırın',
+                    'Yavaşça başlangıç pozisyonuna dönün'
+                ],
+                warnings: [
+                    'Boynunuzu zorlamayın',
+                    'Karın kaslarınızı aktif kullanın',
                     'Kontrollü hareket edin'
                 ]
             },
@@ -2668,22 +2748,6 @@
                     'Tam hareket aralığı kullanın',
                     'Kontrollü hareket edin',
                     'Dengenizi koruyun'
-                ]
-            },
-            abBench: {
-                title: 'Mekik Sehpası',
-                icon: '🔄',
-                description: 'Karın kasları için özel tasarım.',
-                steps: [
-                    'Sehpa pozisyonunu ayarlayın',
-                    'Ayaklarınızı sabitleyin',
-                    'Üst vücudunuzu yukarı kaldırın',
-                    'Yavaşça başlangıç pozisyonuna dönün'
-                ],
-                warnings: [
-                    'Boynunuzu zorlamayın',
-                    'Karın kaslarınızı aktif kullanın',
-                    'Kontrollü hareket edin'
                 ]
             },
             exerciseMats: {
@@ -3201,33 +3265,33 @@
         
         function useWorkoutTemplate(templateType) {
             const templates = {
-                'kyk-cardio': {
-                    type: 'KYK Kardiyo',
+                'cardio': {
+                    type: 'Kardiyo Antrenmanı',
                     time: '07:00',
                     duration: 30,
                     category: 'cardio',
-                    equipment: 'Koşu Bandı, Eliptik Bisiklet'
+                    equipment: 'Koşu Bandı, Elips Bisiklet'
                 },
-                'kyk-strength': {
-                    type: 'KYK Güç Antrenmanı',
+                'strength': {
+                    type: 'Güç Antrenmanı',
                     time: '19:00',
                     duration: 45,
                     category: 'strength',
-                    equipment: 'Dambıllar, Göğüs Pres, Lat Pulldown'
+                    equipment: 'Dambıllar, Göğüs Pres Makinesi'
                 },
-                'kyk-full-body': {
-                    type: 'KYK Tam Vücut',
+                'full-body': {
+                    type: 'Tam Vücut Antrenmanı',
                     time: '18:00',
                     duration: 60,
                     category: 'fullbody',
                     equipment: 'Tüm Makineler'
                 },
-                'kyk-quick': {
-                    type: 'KYK Hızlı Antrenman',
+                'quick': {
+                    type: 'Hızlı Antrenman',
                     time: '12:00',
                     duration: 20,
                     category: 'quick',
-                    equipment: 'Dambıllar, Mat'
+                    equipment: 'Dambıllar, Egzersiz Matları'
                 }
             };
             
