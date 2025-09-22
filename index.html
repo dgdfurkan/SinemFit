@@ -2006,28 +2006,32 @@
                         
                         <!-- Equipment Guide Section -->
                         <div class="mt-6">
-                            <h3 class="text-lg font-semibold mb-4">Spor Aletleri Rehberi</h3>
-                            <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div class="equipment-card" onclick="showEquipmentGuide('treadmill')">
-                                    <div class="equipment-icon">🏃‍♀️</div>
-                                    <h4 class="font-semibold text-center">Koşu Bandı</h4>
-                                    <p class="text-sm text-gray-600 text-center">Kardiyovasküler egzersiz</p>
-                                </div>
-                                <div class="equipment-card" onclick="showEquipmentGuide('bike')">
-                                    <div class="equipment-icon">🚴‍♀️</div>
-                                    <h4 class="font-semibold text-center">Bisiklet</h4>
-                                    <p class="text-sm text-gray-600 text-center">Alt vücut güçlendirme</p>
-                                </div>
-                                <div class="equipment-card" onclick="showEquipmentGuide('weights')">
-                                    <div class="equipment-icon">🏋️‍♀️</div>
-                                    <h4 class="font-semibold text-center">Ağırlıklar</h4>
-                                    <p class="text-sm text-gray-600 text-center">Kas güçlendirme</p>
-                                </div>
-                                <div class="equipment-card" onclick="showEquipmentGuide('yoga')">
-                                    <div class="equipment-icon">🧘‍♀️</div>
-                                    <h4 class="font-semibold text-center">Yoga</h4>
-                                    <p class="text-sm text-gray-600 text-center">Esneklik ve denge</p>
-                                </div>
+                            <h3 class="text-lg font-semibold mb-4">Hızlı Spor Ekleme</h3>
+                            <div class="quick-workout-buttons">
+                                <button class="quick-workout-btn" onclick="quickAddWorkout('Koşu Bandı', 'cardio', 30)">
+                                    <div class="workout-icon">🏃‍♀️</div>
+                                    <span>Koşu Bandı</span>
+                                </button>
+                                <button class="quick-workout-btn" onclick="quickAddWorkout('Eliptik Bisiklet', 'cardio', 30)">
+                                    <div class="workout-icon">🚴‍♀️</div>
+                                    <span>Eliptik</span>
+                                </button>
+                                <button class="quick-workout-btn" onclick="quickAddWorkout('Kondisyon Bisikleti', 'cardio', 30)">
+                                    <div class="workout-icon">🚴‍♀️</div>
+                                    <span>Bisiklet</span>
+                                </button>
+                                <button class="quick-workout-btn" onclick="quickAddWorkout('Dambıllar', 'strength', 45)">
+                                    <div class="workout-icon">🏋️‍♀️</div>
+                                    <span>Dambıllar</span>
+                                </button>
+                                <button class="quick-workout-btn" onclick="quickAddWorkout('Göğüs Pres', 'strength', 45)">
+                                    <div class="workout-icon">💪</div>
+                                    <span>Göğüs Pres</span>
+                                </button>
+                                <button class="quick-workout-btn" onclick="quickAddWorkout('Lat Pulldown', 'strength', 45)">
+                                    <div class="workout-icon">💪</div>
+                                    <span>Lat Pulldown</span>
+                                </button>
                             </div>
                         </div>
                         
